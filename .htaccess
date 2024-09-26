@@ -1,0 +1,14 @@
+# Activar el motor de reescritura
+RewriteEngine On
+Options All - Indexes
+RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ index.php?views=$1
+
+# Ocultar extensiones para archivos estáticos (php, html, htm, etc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1 [L]
+
+# Redirigir todas las solicitudes a index.php (MVC)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
