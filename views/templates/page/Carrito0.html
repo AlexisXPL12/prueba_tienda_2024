@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header.dark-mode {
+            background-color: #1f1f1f;
+            border-bottom: 1px solid #333;
+        }
+
+        .icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .navbar-custom-1 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-1 .nav-link {
+            color: #000;
+            background-color: #ffb56a;
+            border-radius: 8px;
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+
+        .navbar-custom-1 .nav-link:hover {
+            background-color: #ff9f3a;
+        }
+
+        .navbar-custom-2 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-2 .navbar-brand img {
+            max-height: 50px;
+        }
+
+        .navbar-custom-2 .navbar-text {
+            color: #000;
+        }
+
+        .navbar-custom-2 .social-icons a {
+            color: #000;
+            margin-right: 10px;
+        }
+
+        .navbar-custom-2 .social-icons a:hover {
+            color: #ff6347;
+        }
+
+        .navbar-custom-2 .search-bar input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .search-bar button {
+            background: none;
+            border: none;
+            color: #ff6347;
+            font-size: 20px;
+        }
+
+        .navbar-custom-2 .icon-text img {
+            max-height: 30px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .moon-icon {
+            font-size: 1.5rem;
+        }
+
+        .cart-header {
+            background-color: black;
+            opacity: 0.8;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-header h1 {
+            margin: 0;
+            font-size: 40px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .cart-icon {
+            width: 60px;
+            margin-right: 10px;
+            /* Espacio a la derecha del icono */
+            vertical-align: middle;
+            /* Alineación vertical */
+        }
+
+        /*CONTENIDO*/
+
+        .promo-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .promo-input {
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        .total-section {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .details-icon {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .payment-methods img {
+            width: 100px;
+            height: auto;
+            margin: 10px;
+        }
+
+        /*FOOTER*/
+        .footer {
+            position: relative;
+            color: white;
+        }
+
+        .footer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.7;
+            /* para oscurecer la imagen */
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+            margin: 0px;
+        }
+
+        .footer p,
+        .footer li {
+            color: white;
+        }
+
+        .footer .menu,
+        .footer .services {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .footer .menu li,
+        .footer .services li {
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-info {
+            margin-top: 10px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 50px;
+        }
+
+        .footer .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .footer .contact-info i {
+            margin-right: 10px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENU-->
+    <!-- Header 1 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"
+                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white; opacity: 0.8;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1" style="justify-content: space-around;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tienda.html">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cursos.html">Cursos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Deseados.html"><i class="fas fa-star"></i> Deseados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contactar.html"><i class="fas fa-comment-dots"></i> Contáctenos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header 2 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
+        <a href="Perfil.html" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
+            <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
+            <span class="navbar-text ms-2">Perfil</span>
+        </a>
+
+        <a class="navbar-brand mx-auto" href="Inicio.html"><img src="img/xtremeai.png" alt="XTREME AI"
+                style="max-height: 50px; position: relative; width: 90%; justify-content: center;"></a>
+        <div class="d-flex search-bar col-6">
+            <button type="button"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Buscar..." class="col-11">
+        </div>
+        <div class="d-flex align-items-center ms-3 col-3" style="justify-content: space-around;">
+            <div class="social-icons" style="font-size: 20px;">
+                <a href="#" style="color: #4267B2;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span class="navbar-text ms-3">Atención 24/7</span>
+            <div>
+                <span class="icon" id="darkModeToggle">🌙</span>
+            </div>
+        </div>
+    </nav>
+    <!-- Imagen encabezado -->
+    <div class="cart-header">
+        <div class="col-2">
+            <button onclick="goBack()" class="btn btn-danger">Volver</button>
+        </div>
+        <div class="col-8">
+            <h1><img src="img/logocarrito.png" alt="Carrito Icon" class="cart-icon">Carrito</h1>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <!--CONTENIDO-->
+    <div class="container" style="margin-top: 30px;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="row border-bottom mb-3">
+                        <div class="col text-center">
+                            <strong>PRODUCTOS</strong>
+                        </div>
+                        <div class="col text-center">
+                            <strong>PRECIO</strong>
+                        </div>
+                        <div class="col text-center">
+                            <strong>CANTIDAD</strong>
+                        </div>
+                        <div class="col text-center">
+                            <strong>SUB TOTAL</strong>
+                        </div>
+                    </div>
+                    <div class="row border-bottom mb-3">
+                        <div class="col text-center py-5">
+                            <div class="alert alert-info" role="alert"
+                                style="background-color:#ffa64d; border-color: #F56040; color: #000;">
+                                <h4 class="alert-heading">¡El carrito está vacío!</h4>
+                                <p>Por favor, agregue un producto para continuar con su compra.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-section">
+            <label for="promo-code">Código de Promoción</label>
+            <input type="text" id="promo-code" class="promo-input" placeholder="Introduce tu código">
+            <button class="btn btn-warning" onclick="applyPromo()">Aplicar</button>
+        </div>
+        <div class="total-section">
+            <p>SUB TOTAL: <span id="subtotal-amount">S/ 173.00</span></p>
+            <p>TOTAL: <span id="total-amount">S/ 173.00</span></p>
+        </div>
+        <div class="payment-methods">
+            <h3>Métodos de Pago</h3>
+            <a href="https://www.visa.com.pe/"><img src="img/visa.png" alt="Visa"></a>
+            <a href="https://www.mastercard.com.pe/es-pe.html"><img src="img/mastercard.png" alt="MasterCard"></a>
+            <a href="https://www.paypal.com/pe/home"><img src="img/paypal.png" alt="PayPal"></a>
+            <a href="https://www.yape.com.pe/"><img src="img/yape.png" alt="Yape"></a>
+            <a href="https://www.pagoefectivo.la/pe/"><img src="img/pagoefectivo.png" alt="Yape"></a>
+        </div>
+        <div class="cart-footer" style="background: white; padding: 10px; text-align: center;">
+            <a href="" class="btn btn-success">Finalizar Compra</a><a href="Tienda.html" class="btn btn-primary"
+                style="margin-left: 50px;">Seguir Comprando</a>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer text-md-left w-100">
+        <img src="img/imagenpiedepagina.png" alt="Background Image">
+        <div class="container col-12">
+            <div class="row">
+                <div class="col-9">
+                    <h5 style="font-size: 30px;">¿Tienes una consulta? <br> ¡¡Escribenos!!</h5>
+                </div>
+                <div class="col-3">
+                    <h5>Consultas</h5>
+                    <div class="social-icons">
+                        <a href="#" style="color: #000000;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row p-4" style="background-color: #f4921e; opacity: 0.9;">
+                <div class="col-3 text-center" style="justify-content: center;">
+                    <div class="col-9">
+                        <img src="img/xtremeai.png" alt="" style="width: 100%; height: auto; position: relative;">
+                    </div>
+                    <p style="text-align: justify;">Empresa Huantina que ofrece servicios de corte y grabado láser,
+                        personalización de productos, especialistas en maquilado para carpintería acrílica.</p>
+                </div>
+                <div class="col-2" style="font-size: 12px;">
+                    <h5>Menú</h5>
+                    <ul class="menu">
+                        <li><a href="Inicio.html" class="text-white">Inicio</a></li>
+                        <li><a href="Tienda.html" class="text-white">Tienda</a></li>
+                        <li><a href="Servicios.html" class="text-white">Servicios</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                    </ul>
+                </div>
+                <div class="col-3" style="font-size: 12px;">
+                    <h5>Servicios</h5>
+                    <ul class="services">
+                        <li><a href="#" class="text-white">Corte Láser</a></li>
+                        <li><a href="#" class="text-white">Grabado Láser</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                        <li><a href="#" class="text-white">Carpintería Acrílica</a></li>
+                        <li><a href="#" class="text-white">Promociones Empresariales</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 text-md-left">
+
+                    <div class="contact-info">
+                        <p><strong>Escríbenos o Llámanos</strong></p>
+                        <p style="align-items: center; display: flex;"><i class="fa-solid fa-square-phone"></i>+51 934
+                            717 131</p>
+                        <p style="text-align: justify;">Escríbenos y te asesoramos <br>inmediatamente!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+<script>
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.header').classList.toggle('dark-mode');
+    });
+</script>
+<script>
+    function updateSubtotal(element) {
+        const price = parseFloat(element.getAttribute('data-price'));
+        const quantity = parseInt(element.value);
+        const subtotal = price * quantity;
+        const row = element.parentElement.parentElement;
+        row.querySelector('.subtotal').innerText = `S/ ${subtotal.toFixed(2)}`;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        let total = 0;
+        document.querySelectorAll('.subtotal').forEach(subtotalElement => {
+            total += parseFloat(subtotalElement.innerText.replace('S/ ', ''));
+        });
+        document.getElementById('subtotal-amount').innerText = `S/ ${total.toFixed(2)}`;
+        document.getElementById('total-amount').innerText = `S/ ${total.toFixed(2)}`;
+    }
+
+    function applyPromo() {
+        const promoCode = document.getElementById('promo-code').value;
+        if (promoCode === 'NOTA20') {
+            let total = parseFloat(document.getElementById('total-amount').innerText.replace('S/ ', ''));
+            total = total * 0.9; // 10% discount
+            document.getElementById('total-amount').innerText = `S/ ${total.toFixed(2)}`;
+            alert('Código de promoción aplicado con éxito');
+        } else {
+            alert('Código de promoción no válido');
+        }
+    }
+</script>
+<!-- Bootstrap and JQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/34fad0bc74.js" crossorigin="anonymous"></script>
+</html>

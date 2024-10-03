@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deseados</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header.dark-mode {
+            background-color: #1f1f1f;
+            border-bottom: 1px solid #333;
+        }
+
+        .icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .navbar-custom-1 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-1 .nav-link {
+            color: #000;
+            background-color: #ffb56a;
+            border-radius: 8px;
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+
+        .navbar-custom-1 .nav-link:hover {
+            background-color: #ff9f3a;
+        }
+
+        .navbar-custom-2 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-2 .navbar-brand img {
+            max-height: 50px;
+        }
+
+        .navbar-custom-2 .navbar-text {
+            color: #000;
+        }
+
+        .navbar-custom-2 .social-icons a {
+            color: #000;
+            margin-right: 10px;
+        }
+
+        .navbar-custom-2 .social-icons a:hover {
+            color: #ff6347;
+        }
+
+        .navbar-custom-2 .search-bar input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .search-bar button {
+            background: none;
+            border: none;
+            color: #ff6347;
+            font-size: 20px;
+        }
+
+        .navbar-custom-2 .icon-text img {
+            max-height: 30px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .moon-icon {
+            font-size: 1.5rem;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo semi-transparente para el texto */
+            width: 100%;
+            height: 100%;
+            align-content: center;
+        }
+
+        /*CONTENIDO*/
+        .wishlist-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .wishlist-icon {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .wishlist-button {
+            display: inline-block;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        .wishlist-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .wishlist-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .wishlist-item img {
+            max-width: 100%;
+            height: 250px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .wishlist-item h5 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .wishlist-item p {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        .wishlist-item .btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .wishlist-item .btn:hover {
+            background-color: #c82333;
+        }
+
+        /*FOOTER*/
+        .footer {
+            position: relative;
+            color: white;
+        }
+
+        .footer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.7;
+            /* para oscurecer la imagen */
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+            margin: 0px;
+        }
+
+        .footer p,
+        .footer li {
+            color: white;
+        }
+
+        .footer .menu,
+        .footer .services {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .footer .menu li,
+        .footer .services li {
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-info {
+            margin-top: 10px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 50px;
+        }
+
+        .footer .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .footer .contact-info i {
+            margin-right: 10px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENU-->
+    <!-- Header 1 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"
+                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white; opacity: 0.8;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1" style="justify-content: space-around;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tienda.html">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cursos.html">Cursos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Deseados.html"><i class="fas fa-star"></i> Deseados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contactar.html"><i class="fas fa-comment-dots"></i> Contáctenos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header 2 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
+        <a href="Perfil.html" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
+            <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
+            <span class="navbar-text ms-2">Perfil</span>
+        </a>
+        <a class="navbar-brand mx-auto" href="#"><img src="img/xtremeai.png" alt="XTREME AI"
+                style="max-height: 50px; position: relative; width: 90%; justify-content: center;"></a>
+        <div class="d-flex search-bar col-6">
+            <button type="button"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Buscar..." class="col-11">
+        </div>
+        <div class="d-flex align-items-center ms-3 col-3" style="justify-content: space-around;">
+            <div class="social-icons" style="font-size: 20px;">
+                <a href="#" style="color: #4267B2;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span class="navbar-text ms-3">Atención 24/7</span>
+            <div>
+                <span class="icon" id="darkModeToggle">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="wishlist-section">
+            <div>
+                <h2>Deseados</h2>
+                <a href="Tienda.html" class="wishlist-button" style="text-decoration: none;">SEGUIR AGREGANDO</a>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="wishlist-item">
+                    <img src="img/camiongravado.png" alt="Producto 1">
+                    <h5>Camion de MDF con gravado</h5>
+                    <p>Este camión de MDF está diseñado con grabados detallados, ideal para decoración y como regalo
+                        personalizado.</p>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="wishlist-item">
+                    <img src="img/lamparaled.png" alt="Producto 2">
+                    <h5>Lampara con diseño de acrilico</h5>
+                    <p>Una elegante lámpara LED con un diseño de acrílico que proporciona una iluminación suave y
+                        agradable. Perfecta para cualquier habitación.</p>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="wishlist-item">
+                    <img src="img/reconocimientos personalizados.png" alt="Producto 3">
+                    <h5>Reconocimientos Personalizado</h5>
+                    <p>Estos reconocimientos personalizados son perfectos para premiar logros especiales. Hechos a
+                        medida según tus necesidades.</p>
+                    <a href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+    </script>
+    <!-- Footer -->
+    <footer class="footer text-md-left w-100">
+        <img src="img/imagenpiedepagina.png" alt="Background Image">
+        <div class="container col-12">
+            <div class="row">
+                <div class="col-9">
+                    <h5 style="font-size: 30px;">¿Tienes una consulta? <br> ¡¡Escribenos!!</h5>
+                </div>
+                <div class="col-3">
+                    <h5>Consultas</h5>
+                    <div class="social-icons">
+                        <a href="#" style="color: #000000;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row p-4" style="background-color: #f4921e; opacity: 0.9;">
+                <div class="col-3 text-center" style="justify-content: center;">
+                    <div class="col-9">
+                        <img src="img/xtremeai.png" alt="" style="width: 100%; height: auto; position: relative;">
+                    </div>
+                    <p style="text-align: justify;">Empresa Huantina que ofrece servicios de corte y grabado láser,
+                        personalización de productos, especialistas en maquilado para carpintería acrílica.</p>
+                </div>
+                <div class="col-2" style="font-size: 12px;">
+                    <h5>Menú</h5>
+                    <ul class="menu">
+                        <li><a href="Inicio.html" class="text-white">Inicio</a></li>
+                        <li><a href="Tienda.html" class="text-white">Tienda</a></li>
+                        <li><a href="Servicios.html" class="text-white">Servicios</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                    </ul>
+                </div>
+                <div class="col-3" style="font-size: 12px;">
+                    <h5>Servicios</h5>
+                    <ul class="services">
+                        <li><a href="#" class="text-white">Corte Láser</a></li>
+                        <li><a href="#" class="text-white">Grabado Láser</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                        <li><a href="#" class="text-white">Carpintería Acrílica</a></li>
+                        <li><a href="#" class="text-white">Promociones Empresariales</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 text-md-left">
+
+                    <div class="contact-info">
+                        <p><strong>Escríbenos o Llámanos</strong></p>
+                        <p style="align-items: center; display: flex;"><i class="fa-solid fa-square-phone"></i>+51 934
+                            717 131</p>
+                        <p style="text-align: justify;">Escríbenos y te asesoramos <br>inmediatamente!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<script>
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('.header').classList.toggle('dark-mode');
+    });
+</script>
+<!-- Bootstrap and JQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+<script src="https://kit.fontawesome.com/34fad0bc74.js" crossorigin="anonymous"></script>
+
+</html>

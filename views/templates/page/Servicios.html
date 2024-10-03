@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-custom-1 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-1 .nav-link {
+            color: #000;
+            background-color: #ffb56a;
+            border-radius: 8px;
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+
+        .navbar-custom-1 .nav-link:hover {
+            background-color: #ff9f3a;
+        }
+
+        .navbar-custom-2 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-2 .navbar-brand img {
+            max-height: 50px;
+        }
+
+        .navbar-custom-2 .navbar-text {
+            color: #000;
+        }
+
+        .navbar-custom-2 .social-icons a {
+            color: #000;
+            margin-right: 10px;
+        }
+
+        .navbar-custom-2 .social-icons a:hover {
+            color: #ff6347;
+        }
+
+        .navbar-custom-2 .search-bar input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .search-bar button {
+            background: none;
+            border: none;
+            color: #ff6347;
+            font-size: 20px;
+        }
+
+        .navbar-custom-2 .icon-text img {
+            max-height: 30px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .moon-icon {
+            font-size: 1.5rem;
+        }
+
+        /*CONTENIDO*/
+        .icon-section img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .cta-button {
+            background-color: #FFA500;
+            color: white;   
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .cta-button:hover {
+            background-color: #FF8C00;
+        }
+
+        .section-title {
+            color: #FFA500;
+        }
+
+        .bg-dark-custom {
+            background-color: #333;
+            color: white;
+        }
+
+        .bg-dark-custom h2 {
+            color: #FFA500;
+        }
+
+        /*FOOTER*/
+        .footer {
+            position: relative;
+            color: white;
+        }
+
+        .footer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.7;
+            /* para oscurecer la imagen */
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+            margin: 0px;
+        }
+
+        .footer p,
+        .footer li {
+            color: white;
+        }
+
+        .footer .menu,
+        .footer .services {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .footer .menu li,
+        .footer .services li {
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-info {
+            margin-top: 10px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 50px;
+        }
+
+        .footer .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .footer .contact-info i {
+            margin-right: 10px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENU-->
+    <!-- Header 1 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"
+                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white; opacity: 0.8;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1" style="justify-content: space-around;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tienda.html">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cursos.html">Cursos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Deseados.html"><i class="fas fa-star"></i> Deseados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contactar.html"><i class="fas fa-comment-dots"></i> Contáctenos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header 2 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
+        <a href="Perfil.html" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
+            <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
+            <span class="navbar-text ms-2">Perfil</span>
+        </a>
+        <a class="navbar-brand mx-auto" href="#"><img src="img/xtremeai.png" alt="XTREME AI"
+                style="max-height: 50px; position: relative; width: 90%; justify-content: center;"></a>
+        <div class="d-flex search-bar col-6">
+            <button type="button"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Buscar..." class="col-11">
+        </div>
+        <div class="d-flex align-items-center ms-3 col-3" style="justify-content: space-around;">
+            <div class="social-icons" style="font-size: 20px;">
+                <a href="#" style="color: #4267B2;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span class="navbar-text ms-3">Atención 24/7</span>
+            <i class="fas fa-moon ms-3 moon-icon"></i>
+        </div>
+    </nav>
+    <!-- Imagen encabezado -->
+    <div class="d-flex justify-content-center align-items-center position-relative text-center text-white"
+        style="height: 250px;">
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark" style="opacity: 0.8;"></div>
+        <img src="img/encabezadoservicios.png" class="img-fluid w-100 h-100" alt="Productos y servicios de corte láser"
+            style="object-fit: cover; opacity: 1;">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <h2 class="fw-bold">Servicios de Corte Láser</h2>
+        </div>
+    </div>
+
+    <div class="container py-4">
+        <!-- Icon Section -->
+        <div class="container">
+            <div class="row text-center icon-section" style="justify-content: space-around;">
+                <div class="col-md-2 col-sm-4 mb-3">
+                    <img src="img/imagenideas.png" alt="Envío de Idea" class="img-fluid mb-2"
+                        style="width: 200px; height: auto;">
+                    <h5 class="fw-bold text-warning">Envías tu idea</h5>
+                    <p>Mandanos una imagen, un bosquejo o tus vectores.</p>
+                </div>
+                <div class="col-md-2 col-sm-4 mb-3">
+                    <img src="img/imagencotizamos.png" alt="Cotizamos" class="img-fluid mb-2"
+                        style="width: 200px; height: auto;">
+                    <h5 class="fw-bold  text-warning">Cotizamos</h5>
+                    <p>Te enviamos el costo de tu proyecto.</p>
+                </div>
+                <div class="col-md-2 col-sm-4 mb-3">
+                    <img src="img/imagenpagar.png" alt="Pagas" class="img-fluid mb-2"
+                        style="width: 200px; height: auto;">
+                    <h5 class="fw-bold  text-warning">Pagas</h5>
+                    <p>Si el precio te conviene, haces el pago.</p>
+                </div>
+                <div class="col-md-2 col-sm-4 mb-3">
+                    <img src="img/imagenfabricamos.png" alt="Fabricamos" class="img-fluid mb-2"
+                        style="width: 200px; height: auto;">
+                    <h5 class="fw-bold  text-warning">Fabricamos</h5>
+                    <p>Procedemos al corte y fabricación de tu proyecto.</p>
+                </div>
+                <div class="col-md-2 col-sm-4 mb-3">
+                    <img src="img/imagenenviamos.png" alt="Enviamos" class="img-fluid mb-2"
+                        style="width: 200px; height: auto;">
+                    <h5 class="text-warning">Enviamos</h5>
+                    <p>Enviamos a todo el país.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Personalización de Productos Section -->
+        <div class="position-relative text-center">
+            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark text-white"
+                style="opacity: 0.9;">
+
+                <div class="col-md-6 col-8" style="text-align: left;">
+                    <h2>Personalización de Productos</h2>
+                    <p>Hemos creado una gama de productos que están listos para ser personalizados. Ideales para
+                        souvenirs empresariales y regalos conmemorativos de fiestas u ocasiones especiales.</p>
+                    <a href="Tienda.html" class="btn btn-warning">Ver Productos</a>
+                </div>
+                <div class="col-md-2 col-2 d-flex align-items-center justify-content-center">
+                    <img src="img/imagen1per.png" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-2 col-2 d-flex align-items-center justify-content-center">
+                    <img src="img/imagen2per.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <img src="img/infoper.png" alt="" class="img-fluid w-100">
+        </div>
+
+        <!-- Cotizar Mi Proyecto Section -->
+        <div class="row text-center" style="margin: 80px 0px 60px 0px;">
+            <div class="col-12">
+                <h2 class="section-title">Cotizar Mi Proyecto</h2>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row text-center">
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/imagen1cotizar.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-8 text-left">
+                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Corte de piezas a medida</a>
+                        </h5>
+                        <p>Ideal para ingenieros, estudiantes o aficionados que desean crear un proyecto. Cortamos
+                            plywood, plywood y acrílicos en medidas desde 1 milímetro hasta 5 milímetros.</p>
+                        <a href="Categoria1.html" class="btn btn-warning">Cotizar Cortes</a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/imagen2cotizar.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-8 text-left">
+                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Cajas en MDF o Acrílico</a>
+                        </h5>
+                        <p>Creación de cajas según las medidas del cliente. Servicios de corte y armado de cajas en MDF
+                            y acrílico en medidas desde 2.5 milímetros hasta 5 milímetros.</p>
+                        <a href="Categoria2.html" class="btn btn-warning">Cotizar Cajas</a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/imagen3cotizar.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-8 text-left">
+                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Grabado láser en superficies
+                                cilíndricas</a></h5>
+                        <p>Ideal para botellas, pachones, tazas o cualquier superficie cilíndrica que pueda ser
+                            trabajada en un grabador láser.</p>
+                        <a href="Categoria3.html" class="btn btn-warning">Cotizar Grabados</a>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 d-flex">
+                    <div class="col-4 d-flex justify-content-center align-items-center">
+                        <img src="img/imagen4cotizar.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-8 text-left">
+                        <h5><a href="#" class="text-warning" style="text-decoration: none;">Grabado láser en superficies
+                                planas</a></h5>
+                        <p>Grabados en cuero, madera, tablas, acrílicos y cualquier superficie plana que pueda ser
+                            trabajada con un grabador láser.</p>
+                        <a href="Categoria2.html" class="btn btn-warning">Cotizar Grabado Plano</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-md-left w-100">
+        <img src="img/imagenpiedepagina.png" alt="Background Image">
+        <div class="container col-12">
+            <div class="row">
+                <div class="col-9">
+                    <h5 style="font-size: 30px;">¿Tienes una consulta? <br> ¡¡Escribenos!!</h5>
+                </div>
+                <div class="col-3">
+                    <h5>Consultas</h5>
+                    <div class="social-icons">
+                        <a href="#" style="color: #000000;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row p-4" style="background-color: #f4921e; opacity: 0.9;">
+                <div class="col-3 text-center" style="justify-content: center;">
+                    <div class="col-9">
+                        <img src="img/xtremeai.png" alt="" style="width: 100%; height: auto; position: relative;">
+                    </div>
+                    <p style="text-align: justify;">Empresa Huantina que ofrece servicios de corte y grabado láser,
+                        personalización de productos, especialistas en maquilado para carpintería acrílica.</p>
+                </div>
+                <div class="col-2" style="font-size: 12px;">
+                    <h5>Menú</h5>
+                    <ul class="menu">
+                        <li><a href="Inicio.html" class="text-white">Inicio</a></li>
+                        <li><a href="Tienda.html" class="text-white">Tienda</a></li>
+                        <li><a href="Servicios.html" class="text-white">Servicios</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                    </ul>
+                </div>
+                <div class="col-3" style="font-size: 12px;">
+                    <h5>Servicios</h5>
+                    <ul class="services">
+                        <li><a href="#" class="text-white">Corte Láser</a></li>
+                        <li><a href="#" class="text-white">Grabado Láser</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                        <li><a href="#" class="text-white">Carpintería Acrílica</a></li>
+                        <li><a href="#" class="text-white">Promociones Empresariales</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 text-md-left">
+
+                    <div class="contact-info">
+                        <p><strong>Escríbenos o Llámanos</strong></p>
+                        <p style="align-items: center; display: flex;"><i class="fa-solid fa-square-phone"></i>+51 934
+                            717 131</p>
+                        <p style="text-align: justify;">Escríbenos y te asesoramos <br>inmediatamente!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<!-- Bootstrap and JQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+<script src="https://kit.fontawesome.com/34fad0bc74.js" crossorigin="anonymous"></script>
+
+</html>

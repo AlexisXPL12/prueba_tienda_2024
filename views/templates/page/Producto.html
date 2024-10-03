@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-custom-1 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-1 .nav-link {
+            color: #000;
+            background-color: #ffb56a;
+            border-radius: 8px;
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+
+        .navbar-custom-1 .nav-link:hover {
+            background-color: #ff9f3a;
+        }
+
+        .navbar-custom-2 {
+            background-color: #ffa64d;
+        }
+
+        .navbar-custom-2 .navbar-brand img {
+            max-height: 50px;
+        }
+
+        .navbar-custom-2 .navbar-text {
+            color: #000;
+        }
+
+        .navbar-custom-2 .social-icons a {
+            color: #000;
+            margin-right: 10px;
+        }
+
+        .navbar-custom-2 .social-icons a:hover {
+            color: #ff6347;
+        }
+
+        .navbar-custom-2 .search-bar input {
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .search-bar button {
+            background: none;
+            border: none;
+            color: #ff6347;
+            font-size: 20px;
+        }
+
+        .navbar-custom-2 .icon-text img {
+            max-height: 30px;
+            margin-right: 5px;
+        }
+
+        .navbar-custom-2 .moon-icon {
+            font-size: 1.5rem;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container .centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fondo semi-transparente para el texto */
+            width: 100%;
+            height: 100%;
+            align-content: center;
+        }
+
+        /*CONTENIDO*/
+        .product-section {
+            padding: 30px;
+            background-color: #f8f8f8;
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .thumbnail-img {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #FFA500;
+        }
+
+        .btn-custom {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF8C00;
+        }
+
+        .features-section img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .related-products img {
+            width: 100%;
+            height: auto;
+        }
+
+        /*FOOTER*/
+        .footer {
+            position: relative;
+            color: white;
+        }
+
+        .footer img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.7;
+            /* para oscurecer la imagen */
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+            margin: 0px;
+        }
+
+        .footer p,
+        .footer li {
+            color: white;
+        }
+
+        .footer .menu,
+        .footer .services {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .footer .menu li,
+        .footer .services li {
+            margin-bottom: 10px;
+        }
+
+        .footer .contact-info {
+            margin-top: 10px;
+        }
+
+        .footer .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 50px;
+        }
+
+        .footer .contact-info p {
+            margin-bottom: 5px;
+        }
+
+        .footer .contact-info i {
+            margin-right: 10px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- MENU-->
+    <!-- Header 1 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-1">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"
+                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"
+                style="background-color:white; opacity: 0.8;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1" style="justify-content: space-around;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Inicio.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tienda.html">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cursos.html">Cursos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Deseados.html"><i class="fas fa-star"></i> Deseados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contactar.html"><i class="fas fa-comment-dots"></i> Contáctenos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header 2 -->
+    <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
+        <a href="Perfil.html" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
+            <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
+            <span class="navbar-text ms-2">Perfil</span>
+        </a>
+        <a class="navbar-brand mx-auto" href="#"><img src="img/xtremeai.png" alt="XTREME AI"
+                style="max-height: 50px; position: relative; width: 90%; justify-content: center;"></a>
+        <div class="d-flex search-bar col-6">
+            <button type="button"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Buscar..." class="col-11">
+        </div>
+        <div class="d-flex align-items-center ms-3 col-3" style="justify-content: space-around;">
+            <div class="social-icons" style="font-size: 20px;">
+                <a href="#" style="color: #4267B2;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+            </div>
+            <span class="navbar-text ms-3">Atención 24/7</span>
+            <i class="fas fa-moon ms-3 moon-icon"></i>
+        </div>
+    </nav>
+    <div class="container product-section my-5">
+        <!-- DETALLE DE PRODUCTO -->
+        <div class="row">
+            <div class="col-md-6">
+                <img id="mainImage" src="img/img1.png" alt="Esfera Navideña" class="product-img"
+                    onclick="changeImage('img/img1.png')">
+                <div class="d-flex justify-content-center mt-3">
+                    <img src="img/img.png" alt="Thumbnail 1" class="thumbnail-img" onclick="changeImage('img/img.png')">
+                    <img src="img/img2.png" alt="Thumbnail 2" class="thumbnail-img"
+                        onclick="changeImage('img/img2.png')">
+                    <img src="img/img4.png" alt="Thumbnail 3" class="thumbnail-img"
+                        onclick="changeImage('img/img4.png')">
+                    <img src="img/img.png" alt="Thumbnail 4" class="thumbnail-img" onclick="changeImage('img/img.png')">
+                </div>
+            </div>
+            <div class="col-md-6" style="border: #ccc solid 1px;">
+                <div class="d-flex align-items-center mb-2">
+                    <h1 class="font-weight-bold m-0">Esferas Navideñas en MDF</h1>
+                    <button class="btn btn-outline-warning mr-2" data-toggle="modal" data-target="#shareModal">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="shareModalLabel">Compartir en redes sociales</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Comparte este contenido en:</p>
+                                    <div class="d-flex justify-content-around">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL"
+                                            class="btn btn-primary" target="_blank">
+                                            <i class="fab fa-facebook-f"></i> Facebook
+                                        </a>
+                                        <a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=YOUR_TEXT"
+                                            class="btn btn-info" target="_blank">
+                                            <i class="fa-brands fa-x-twitter"></i> Twitter
+                                        </a>
+                                        <a href="https://www.linkedin.com/shareArticle?url=YOUR_URL&title=YOUR_TITLE"
+                                            class="btn btn-primary" target="_blank">
+                                            <i class="fab fa-linkedin-in"></i> LinkedIn
+                                        </a>
+                                        <a href="mailto:?subject=YOUR_SUBJECT&body=YOUR_BODY" class="btn btn-danger">
+                                            <i class="fa-regular fa-envelope"></i> Email
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="Deseados1.html" class="btn btn-outline-warning mr-2">
+                        <i class="fas fa-star"></i>
+                    </a>
+                </div>
+                <p class="mb-3">Linda colección de esferas navideñas, fabricada en MDF de 3 milímetros. Precioso regalo
+                    para Navidad.</p>
+                <p><strong>Medidas:</strong> Alto 12 cms – Ancho 10 cms</p>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="bg-warning text-center py-3 mb-4 rounded">
+                            <p class="text-white font-weight-bold m-0" style="font-size: 1.5rem;">PEN 41.00</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="bg-warning text-center py-3 mb-4 rounded">
+                            <p class="text-white font-weight-bold m-0" style="font-size: 1.5rem;"><strong>-10%</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="justify-content: space-around; display: flex;">
+                    <button class="btn btn-outline-warning mb-2 col-5">Medidas</button>
+                    <button class="btn btn-outline-warning mb-2 col-5">Stock</button>
+                </div>
+                <a href="Carrito.html">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 text-center">
+                                <button class="btn btn-warning btn-lg">
+                                    <img src="img/iconoagregar.png" alt="Icono Carrito" class="mr-1"
+                                        style="max-width: 40px;">
+                                    <img src="img/iconocarritot.png" alt="Icono Carrito" class="mr-1"
+                                        style="max-width: 80px;">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Features Section -->
+        <div class="container">
+            <div class="row text-center mt-4 py-4 rounded">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <i class="far fa-clock fa-4x" style="color: #f4921e;"></i>
+                    <p class="mt-2 mb-0">Entrega en 24 Horas</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <i class="far fa-credit-card fa-4x" style="color: #f4921e;"></i>
+                    <p class="mt-2 mb-0">Paga con tarjeta de Crédito</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <i class="far fa-building fa-4x" style="color: #f4921e;"></i>
+                    <p class="mt-2 mb-0">Por Transferencia Bancaria</p>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <i class="fas fa-truck-fast fa-4x" style="color: #f4921e;"></i>
+                    <p class="mt-2 mb-0">Envíos a Todo el País</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <div class="mt-4">
+            <h3>Productos Relacionados</h3>
+            <div class="row related-products">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <img src="img/producto1r.png" alt="Producto Relacionado 1">
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <img src="img/producto2r.png" alt="Producto Relacionado 2">
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <img src="img/produto3r.png" alt="Producto Relacionado 3">
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <img src="img/producto4r.png" alt="Producto Relacionado 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+    </script>
+    <!-- Footer -->
+    <footer class="footer text-md-left w-100">
+        <img src="img/imagenpiedepagina.png" alt="Background Image">
+        <div class="container col-12">
+            <div class="row">
+                <div class="col-9">
+                    <h5 style="font-size: 30px;">¿Tienes una consulta? <br> ¡¡Escribenos!!</h5>
+                </div>
+                <div class="col-3">
+                    <h5>Consultas</h5>
+                    <div class="social-icons">
+                        <a href="#" style="color: #000000;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" style="color: #F56040"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row p-4" style="background-color: #f4921e; opacity: 0.9;">
+                <div class="col-3 text-center" style="justify-content: center;">
+                    <div class="col-9">
+                        <img src="img/xtremeai.png" alt="" style="width: 100%; height: auto; position: relative;">
+                    </div>
+                    <p style="text-align: justify;">Empresa Huantina que ofrece servicios de corte y grabado láser,
+                        personalización de productos, especialistas en maquilado para carpintería acrílica.</p>
+                </div>
+                <div class="col-2" style="font-size: 12px;">
+                    <h5>Menú</h5>
+                    <ul class="menu">
+                        <li><a href="Inicio.html" class="text-white">Inicio</a></li>
+                        <li><a href="Tienda.html" class="text-white">Tienda</a></li>
+                        <li><a href="Servicios.html" class="text-white">Servicios</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                    </ul>
+                </div>
+                <div class="col-3" style="font-size: 12px;">
+                    <h5>Servicios</h5>
+                    <ul class="services">
+                        <li><a href="#" class="text-white">Corte Láser</a></li>
+                        <li><a href="#" class="text-white">Grabado Láser</a></li>
+                        <li><a href="#" class="text-white">Personalización</a></li>
+                        <li><a href="#" class="text-white">Carpintería Acrílica</a></li>
+                        <li><a href="#" class="text-white">Promociones Empresariales</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 text-md-left">
+
+                    <div class="contact-info">
+                        <p><strong>Escríbenos o Llámanos</strong></p>
+                        <p style="align-items: center; display: flex;"><i class="fa-solid fa-square-phone"></i>+51 934
+                            717 131</p>
+                        <p style="text-align: justify;">Escríbenos y te asesoramos <br>inmediatamente!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+<!-- Bootstrap and JQuery scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/34fad0bc74.js" crossorigin="anonymous"></script>
+
+</html>
