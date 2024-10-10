@@ -1,6 +1,6 @@
 <?php
 
-require_once "./config/config.php";
+require_once "./config/config1.php";
 require_once "./models/vistas_model.php";
 
 class vistasControlador extends vistaModelo{
