@@ -709,7 +709,7 @@
 
     <!-- Header 2 -->
     <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
-        <a href="Perfil.html" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
+        <a href="<?php echo BD_URL ?>perfil" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
             <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
             <span class="navbar-text ms-2">Perfil</span>
         </a>

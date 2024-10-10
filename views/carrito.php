@@ -123,7 +123,7 @@
             <a href="https://www.pagoefectivo.la/pe/"><img src="img/pagoefectivo.png" alt="Yape"></a>
         </div>
         <div class="cart-footer" style="background: white; padding: 10px; text-align: center;">
-            <a href="Carrito0.html" class="btn btn-success">Finalizar Compra</a><a href="Tienda.html"
+            <a href="<?php echo BD_URL ?>carrito" class="btn btn-success">Finalizar Compra</a><a href="<?php echo BD_URL ?>tienda"
                 class="btn btn-primary" style="margin-left: 50px;">Seguir Comprando</a>
         </div>
     </div>

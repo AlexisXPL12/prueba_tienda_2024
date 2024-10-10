@@ -54,7 +54,7 @@
                     <h2>Personalización de Productos</h2>
                     <p>Hemos creado una gama de productos que están listos para ser personalizados. Ideales para
                         souvenirs empresariales y regalos conmemorativos de fiestas u ocasiones especiales.</p>
-                    <a href="Tienda.html" class="btn btn-warning">Ver Productos</a>
+                    <a href="<?php echo BD_URL ?>tienda" class="btn btn-warning">Ver Productos</a>
                 </div>
                 <div class="col-md-2 col-2 d-flex align-items-center justify-content-center">
                     <img src="img/imagen1per.png" alt="" class="img-fluid">
@@ -79,11 +79,11 @@
                         <img src="img/imagen1cotizar.png" alt="" class="img-fluid">
                     </div>
                     <div class="col-8 text-left">
-                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Corte de piezas a medida</a>
+                        <h5><a class="text-warning" style="text-decoration: none;" href="<?php echo BD_URL ?>categoria">Corte de piezas a medida</a>
                         </h5>
                         <p>Ideal para ingenieros, estudiantes o aficionados que desean crear un proyecto. Cortamos
                             plywood, plywood y acrílicos en medidas desde 1 milímetro hasta 5 milímetros.</p>
-                        <a href="Categoria1.html" class="btn btn-warning">Cotizar Cortes</a>
+                        <a href="<?php echo BD_URL ?>categoria" class="btn btn-warning">Cotizar Cortes</a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 d-flex">
@@ -91,11 +91,11 @@
                         <img src="img/imagen2cotizar.png" alt="" class="img-fluid">
                     </div>
                     <div class="col-8 text-left">
-                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Cajas en MDF o Acrílico</a>
+                        <h5><a class="text-warning" style="text-decoration: none;" href="<?php echo BD_URL ?>categoria">Cajas en MDF o Acrílico</a>
                         </h5>
                         <p>Creación de cajas según las medidas del cliente. Servicios de corte y armado de cajas en MDF
                             y acrílico en medidas desde 2.5 milímetros hasta 5 milímetros.</p>
-                        <a href="Categoria2.html" class="btn btn-warning">Cotizar Cajas</a>
+                        <a href="<?php echo BD_URL ?>categoria" class="btn btn-warning">Cotizar Cajas</a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 d-flex">
@@ -103,11 +103,11 @@
                         <img src="img/imagen3cotizar.png" alt="" class="img-fluid">
                     </div>
                     <div class="col-8 text-left">
-                        <h5><a class="text-warning" style="text-decoration: none;" href="#">Grabado láser en superficies
+                        <h5><a class="text-warning" style="text-decoration: none;" href="<?php echo BD_URL ?>categoria">Grabado láser en superficies
                                 cilíndricas</a></h5>
                         <p>Ideal para botellas, pachones, tazas o cualquier superficie cilíndrica que pueda ser
                             trabajada en un grabador láser.</p>
-                        <a href="Categoria3.html" class="btn btn-warning">Cotizar Grabados</a>
+                        <a href="<?php echo BD_URL ?>categoria" class="btn btn-warning">Cotizar Grabados</a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 d-flex">
@@ -115,11 +115,11 @@
                         <img src="img/imagen4cotizar.png" alt="" class="img-fluid">
                     </div>
                     <div class="col-8 text-left">
-                        <h5><a href="#" class="text-warning" style="text-decoration: none;">Grabado láser en superficies
+                        <h5><a href="<?php echo BD_URL ?>categoria" class="text-warning" style="text-decoration: none;">Grabado láser en superficies
                                 planas</a></h5>
                         <p>Grabados en cuero, madera, tablas, acrílicos y cualquier superficie plana que pueda ser
                             trabajada con un grabador láser.</p>
-                        <a href="Categoria2.html" class="btn btn-warning">Cotizar Grabado Plano</a>
+                        <a href="<?php echo BD_URL ?>categoria" class="btn btn-warning">Cotizar Grabado Plano</a>
                     </div>
                 </div>
             </div>

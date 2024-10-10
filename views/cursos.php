@@ -313,8 +313,8 @@
                 <h1>Curso de Grabado Láser</h1>
                 <p>Aprende en 2 horas todo lo relacionado al <br> grabado láser.</p>
                 <div class="container mt-5">
-                    <a class="btn btn-warning" id="inscribeteBtn" href="Tienda.html">INSCRÍBETE AHORA</a>
-                    <a href="Carrito.html" id="verCarritoLink" class="text-white ml-3" style="display: none;">Ver
+                    <a class="btn btn-warning" id="inscribeteBtn" href="<?php echo BD_URL ?>tienda">INSCRÍBETE AHORA</a>
+                    <a href="<?php echo BD_URL ?>carrito" id="verCarritoLink" class="text-white ml-3" style="display: none;">Ver
                         carrito</a>
                 </div>
             </div>
@@ -453,7 +453,7 @@
                     <li>✔️ Acceso a grabación</li>
                     <li>✔️ Cupo limitado</li>
                 </ul>
-                <a class="promo-button btn" href="Tienda.html">INSCRÍBETE AHORA</a>
+                <a class="promo-button btn" href="<?php echo BD_URL ?>tienda">INSCRÍBETE AHORA</a>
             </div>
         </div>
         <!-- EL NEGOCIO DEL GRAVADO LÁSER -->
@@ -472,7 +472,7 @@
                                     belleza y alto valor.</p>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <a class="cta-button btn" href="Tienda.html">
+                                <a class="cta-button btn" href="<?php echo BD_URL ?>tienda">
                                     INSCRIBETE AHORA
                                 </a>
                             </div>
@@ -598,7 +598,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <a class="enroll-btn btn" href="Tienda.html">INSCRÍBETE AHORA</a>
+                            <a class="enroll-btn btn" href="<?php echo BD_URL ?>tienda">INSCRÍBETE AHORA</a>
                         </div>
                     </div>
 
@@ -656,7 +656,7 @@
                     <li>✔️ Acceso a grabación</li>
                     <li>✔️ Cupo limitado</li>
                 </ul>
-                <a style="text-decoration: none; color: #f8f9fa;" href="Tienda.html" class="promo-button">INSCRÍBETE
+                <a style="text-decoration: none; color: #f8f9fa;" href="<?php echo BD_URL ?>tienda" class="promo-button">INSCRÍBETE
                     AHORA</a>
             </div>
         </div>

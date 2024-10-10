@@ -27,20 +27,20 @@
                     <div class="col-2" style="font-size: 12px;">
                         <h5>Menú</h5>
                         <ul class="menu">
-                            <li><a href="Inicio.html" class="text-white">Inicio</a></li>
-                            <li><a href="Tienda.html" class="text-white">Tienda</a></li>
-                            <li><a href="Servicios.html" class="text-white">Servicios</a></li>
-                            <li><a href="#" class="text-white">Personalización</a></li>
+                            <li><a href="<?php echo BD_URL ?>inicio" class="text-white">Inicio</a></li>
+                            <li><a href="<?php echo BD_URL ?>tienda" class="text-white">Tienda</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Servicios</a></li>
+                            <li><a href="<?php echo BD_URL ?>categoria" class="text-white">Personalización</a></li>
                         </ul>
                     </div>
                     <div class="col-3" style="font-size: 12px;">
                         <h5>Servicios</h5>
                         <ul class="services">
-                            <li><a href="#" class="text-white">Corte Láser</a></li>
-                            <li><a href="#" class="text-white">Grabado Láser</a></li>
-                            <li><a href="#" class="text-white">Personalización</a></li>
-                            <li><a href="#" class="text-white">Carpintería Acrílica</a></li>
-                            <li><a href="#" class="text-white">Promociones Empresariales</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Corte Láser</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Grabado Láser</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Personalización</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Carpintería Acrílica</a></li>
+                            <li><a href="<?php echo BD_URL ?>servicios" class="text-white">Promociones Empresariales</a></li>
                         </ul>
                     </div>
                     <div class="col-4 text-md-left">
