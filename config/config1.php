@@ -6,6 +6,6 @@
  const BD_PASSWORD = "";
 
  // ingresar link de proyecto
- const BD_URL = "";
+ const BD_URL = "https://alexis.importecsolutions.com/";
 
 ?>

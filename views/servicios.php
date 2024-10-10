@@ -12,7 +12,7 @@
     <div class="container py-4">
         <!-- Icon Section -->
         <div class="container">
-            <div class="row text-center icon-section" style="justify-content: space-around;">
+            <div class="row text-center icon-section-1" style="justify-content: space-around;">
                 <div class="col-md-2 col-sm-4 mb-3">
                     <img src="img/imagenideas.png" alt="Envío de Idea" class="img-fluid mb-2"
                         style="width: 200px; height: auto;">

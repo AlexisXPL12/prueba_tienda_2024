@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('view/img/fondoiniciodesesion.png') no-repeat center center fixed;
+            background: url('img/fondoiniciodesesion.png') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -161,7 +161,7 @@
                             <p>No soy un robot</p>
 
                         </label>
-                        <img src="view/img/recaptchalogo-1.png" alt="Imagen de verificación"
+                        <img src="img/recaptchalogo-1.png" alt="Imagen de verificación"
                             style="width: 50px; height: 50px;">
                     </div>
                 </div>
@@ -170,10 +170,10 @@
                         style="text-decoration: none; color: white;" href="<?php echo BD_URL ?>inicio">INICIAR SESIÓN</a></button>
             </div>
         </form>
-        <a href="<?php echo BD_URL ?>registro" class="register-link">Regístrate</a>
+        <a href="<?php echo BD_URL ?>registrarse" class="register-link">Regístrate</a>
         <a href="<?php echo BD_URL ?>inicio" class="btn btn-secondary w-100 guest-mode"
             style="text-decoration: none; color: white; border-radius: 5px;">MODO INVITADO</a>
-        <img src="view/img/xtremeai.png" alt="Logo" class="login-logo">
+        <img src="img/xtremeai.png" alt="Logo" class="login-logo">
     </div>
 
 </body>

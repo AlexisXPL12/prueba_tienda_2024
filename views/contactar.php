@@ -15,11 +15,11 @@
 
     <!--CONTENIDO-->
 
-    <div class="container mt-5">
+    <div class="container-2 mt-5">
         <div class="contact-card shadow p-3">
             <div class="contact-info">
                 <div>
-                    <div class="icon-container">
+                    <div class="icon-container-2">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="icon-container">
+                    <div class="icon-container-2">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="icon-container">
+                    <div class="icon-container-2">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div>
