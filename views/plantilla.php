@@ -7,7 +7,7 @@ $mostrar = new vistasControlador();
 
 $vista =  $mostrar->obtenerVistaControlador();
 
-if ($vista == "login" || $vista == "404" || $vista == "registrarse") {
+if ($vista == "login" || $vista == "404" || $vista == "registrate") {
     require_once  "./views/" . $vista . ".php";
 } else {
     include "./views/include/header.php";

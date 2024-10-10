@@ -170,7 +170,7 @@
                         style="text-decoration: none; color: white;" href="<?php echo BD_URL ?>inicio">INICIAR SESIÓN</a></button>
             </div>
         </form>
-        <a href="<?php echo BD_URL ?>registrarse" class="register-link">Regístrate</a>
+        <a href="<?php echo BD_URL ?>registrate" class="register-link">Regístrate</a>
         <a href="<?php echo BD_URL ?>inicio" class="btn btn-secondary w-100 guest-mode"
             style="text-decoration: none; color: white; border-radius: 5px;">MODO INVITADO</a>
         <img src="img/xtremeai.png" alt="Logo" class="login-logo">

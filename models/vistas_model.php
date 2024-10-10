@@ -12,7 +12,7 @@ class vistaModelo{
             } else {
                 $contenido = "404";
             }
-        } elseif ($vista == "login" || $vista == "index" || $vista == "registrarse") {
+        } elseif ($vista == "login" || $vista == "index" || $vista == "registrate") {
             $contenido = "login";
         } else {
             $contenido  = "404";
