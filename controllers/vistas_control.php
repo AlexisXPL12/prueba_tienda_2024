@@ -1,6 +1,5 @@
 <?php
 
-require_once "./config/config.php";
 require_once "./models/vistas_model.php";
 
 class vistasControlador extends vistaModelo{
@@ -14,7 +13,10 @@ class vistasControlador extends vistaModelo{
         }else {
             $respuesta = "login";
         }
+
         return $respuesta;
+
     }
+    
 }
 ?>

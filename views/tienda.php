@@ -14,20 +14,20 @@
     <h3 class="mt-3 text-center text-warning">Categorías</h3>
     <div class="container-t row ">
         <div class="col-md-3">
-            <a href="Categoria1.html"><img src="img/imagen1c.png" class="category-img"
+            <a href="<?php echo BD_URL ?>categoria"><img src="img/imagen1c.png" class="category-img"
                     alt="Servicio de corte láser"></a>
             <p class="text-center">Servicio de corte láser (2)</p>
         </div>
         <div class="col-md-3">
-            <a href="Categoria2.html"><img src="img/imagen2c.png" class="category-img" alt="Promocionales"></a>
+            <a href="<?php echo BD_URL ?>categoria"><img src="img/imagen2c.png" class="category-img" alt="Promocionales"></a>
             <p class="text-center">Promocionales (1)</p>
         </div>
         <div class="col-md-3">
-            <a href="Categoria3.html"><img src="img/imagen3c.png" class="category-img" alt="Navidad"></a>
+            <a href="<?php echo BD_URL ?>categoria"><img src="img/imagen3c.png" class="category-img" alt="Navidad"></a>
             <p class="text-center">Navidad (4)</p>
         </div>
         <div class="col-md-3">
-            <a href="Categoria1.html"><img src="img/imagen4c.png" class="category-img" alt="Materiales"></a>
+            <a href="<?php echo BD_URL ?>categoria"><img src="img/imagen4c.png" class="category-img" alt="Materiales"></a>
             <p class="text-center">Materiales (1)</p>
         </div>
     </div>

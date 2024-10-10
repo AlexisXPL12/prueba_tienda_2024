@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                        <a href="Deseados1.html" class="btn btn-outline-warning mr-2">
+                        <a href="<?php echo BD_URL ?>deseados" class="btn btn-outline-warning mr-2">
                             <i class="fas fa-star"></i>
                         </a>
                     </div>
