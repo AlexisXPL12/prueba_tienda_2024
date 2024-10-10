@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="footer text-md-left w-100">
             <img src="img/imagenpiedepagina.png" alt="Background Image">
-            <div class="container col-12">
+            <div class="container-f col-12">
                 <div class="row">
                     <div class="col-9">
                         <h5 style="font-size: 30px;">¿Tienes una consulta? <br> ¡¡Escribenos!!</h5>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-4 text-md-left">
 
-                        <div class="contact-info">
+                        <div class="contact-info-4">
                             <p><strong>Escríbenos o Llámanos</strong></p>
                             <p style="align-items: center; display: flex;"><i class="fa-solid fa-square-phone"></i>+51
                                 934

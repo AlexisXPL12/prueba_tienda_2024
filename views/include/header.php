@@ -151,23 +151,6 @@
             /* Alineación vertical */
         }
 
-         /*HEADER CARRITO*/
-
-        .category-img,
-        .product-img {
-            width: 100%;
-            height: 250px;
-            border-radius: 15px;
-        }
-
-        .container button {
-            margin-bottom: 10px;
-        }
-
-        .container p {
-            height: 40px;
-        }
-
         /*CONTENIDO INICIO*/
         
         .hero-section {
@@ -295,17 +278,17 @@
         /*CONTENIDO TIENDA*/
 
         .category-img,
-        .product-img {
+        .product-img-2 {
             width: 100%;
             height: 250px;
             border-radius: 15px;
         }
 
-        .container button {
+        .container-t button {
             margin-bottom: 10px;
         }
 
-        .container p {
+        .container-t p {
             height: 40px;
         }
 
@@ -353,8 +336,87 @@
             height: auto;
         }
 
+        /*CONTENIDO P-S*/
+        .product-image img {
+            max-width: 100%;
+        }
+
+        .product-image label {
+            display: block;
+            cursor: pointer;
+            border: 2px solid transparent;
+            padding: 5px;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .product-image input[type="radio"]:checked+img {
+            border: 2px solid #f39c12;
+            border-radius: 5px;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .price-range {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .product-section {
+            padding: 30px;
+            background-color: #f8f8f8;
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .thumbnail-img {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: #FFA500;
+        }
+
+        .btn-custom {
+            background-color: #FFA500;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .btn-custom:hover {
+            background-color: #FF8C00;
+        }
+
+        .features-section img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .related-products img {
+            width: 100%;
+            height: auto;
+        }
+
         /*CONTENIDO SERVICIOS*/
-        .icon-section img {
+
+        .icon-section-1 img {
             width: 50px;
             height: 50px;
         }
@@ -385,7 +447,7 @@
         }
 
         /*CONTENIDO CONTACTAR*/
-        .body {
+    .body {
             background-color: #f8b400;
             background-image: url('your-background-image.jpg');
             background-size: cover;
@@ -425,12 +487,12 @@
             border-radius: 25px;
         }
 
-        .icon-container {
+        .icon-container-2 {
             margin-right: 15px;
             /* Espacio a la derecha del contenedor de icono */
         }
 
-        .icon-container i {
+        .icon-container-2 svg {
             font-size: 24px;
             color: #f8b400;
             /* Color del icono */
@@ -535,7 +597,7 @@
             /* para oscurecer la imagen */
         }
 
-        .footer .container {
+        .footer .container-f {
             position: relative;
             z-index: 2;
             margin: 0px;
@@ -557,7 +619,7 @@
             margin-bottom: 10px;
         }
 
-        .footer .contact-info {
+        .footer .contact-info-4 {
             margin-top: 10px;
         }
 
@@ -567,11 +629,11 @@
             font-size: 50px;
         }
 
-        .footer .contact-info p {
+        .footer .contact-info-4 p {
             margin-bottom: 5px;
         }
 
-        .footer .contact-info i {
+        .footer .contact-info-4 i {
             margin-right: 10px;
             font-size: 40px;
         }
@@ -600,7 +662,7 @@
                         <a class="nav-link" href="<?php echo BD_URL ?>servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Cursos.html">Cursos</a>
+                        <a class="nav-link" href="<?php echo BD_URL ?>cursos">Cursos</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
