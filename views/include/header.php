@@ -7,6 +7,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        const base_url = '<?php echo BD_URL ?>';
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;

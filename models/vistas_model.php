@@ -5,7 +5,7 @@ class vistaModelo{
     {
         $palabras_permitidas = ['usuarios','usuario','usuario-modificar', 'productos','producto-modificar','producto','inicio','carrito',
                                 'tienda','contactar','tienda-producto','servicios','deseados','perfil','cursos','tienda-p-select',
-                                'categoria'];
+                                'categoria','newproducto'];
         if (in_array($vista, $palabras_permitidas)) {
             if (is_file("./views/" . $vista . ".php")) {
                 $contenido = "./views/" . $vista . ".php";
