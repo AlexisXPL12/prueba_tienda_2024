@@ -11,7 +11,7 @@ async function registrar_producto() {
     if (codigo == "" || nombre == "" || detalle == "" || 
         precio == "" || stock == "" || categoria == "" || 
         imagen === "" || proveedor == "") {
-        alert('Por favor, complete todos los campos.');
+        Swal.fire('Por favor, complete todos los campos.');
         return; 
     }
 
@@ -28,11 +28,11 @@ async function registrar_producto() {
 
         if (respuesta.ok) {
             const result = await respuesta.text();
-            console.log('Producto registrado con éxito:', result);
-            alert('Producto registrado con éxito');
+            Swal.fire('Producto registrado con éxito:', result);
+            sweetAlert('Producto registrado con éxito');
         } else {
             console.error('Error al registrar el producto:', respuesta.statusText);
-            alert('Error al registrar el producto');
+            Swal.fire('Error al registrar el producto');
         }
     } catch (error) {
         console.error("Oops, ocurrió un error: " + error);
