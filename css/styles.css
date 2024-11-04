@@ -3,7 +3,7 @@
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 60%;
     margin: 50px auto;
 }
 
@@ -13,15 +13,47 @@
     color: #333;
 }
 
+.contenedor-horizontal {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#formProducto .form-group {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+#formProducto .form-group label,
+#formProducto .form-group input {
+    margin-bottom: 10px;
+}
+
+#formProducto .form-group input {
+    width: 100%;
+}
+
 #formProducto .form-group label {
     color: #555;
     font-weight: bold;
+}
+
+/* Ancho personalizado para ciertos inputs */
+.nombre-input {
+    width: 80%; /* Mayor ancho para el input de nombre */
+}
+
+.imagen-input {
+    width: 100%;
 }
 
 #formProducto .form-control {
     border: 2px solid #ddd;
     border-radius: 8px;
     transition: border-color 0.3s ease-in-out;
+    padding: 5px;
 }
 
 #formProducto .form-control:focus {
@@ -29,23 +61,26 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-#formProducto .btn-primary {
-    background-color: #007bff;
+#formProducto .btn-warning {
+    background-color: #ff9900;
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
     transition: background-color 0.3s ease-in-out;
-}
-
-#formProducto .btn-primary:hover {
-    background-color: #0056b3;
-}
-
-#formProducto .form-group {
-    margin-bottom: 20px;
-}
-
-#formProducto .btn-primary {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+#formProducto .btn-warning:hover {
+    background-color: #b37400;
+}
+
+@media (max-width: 768px) {
+    .contenedor-horizontal {
+        flex-direction: column;
+    }
+
+    .nombre-input {
+        width: 100%;
+    }
 }

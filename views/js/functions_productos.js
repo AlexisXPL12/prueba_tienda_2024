@@ -17,27 +17,45 @@ async function registrar_producto() {
 
     try {
 
-        const datos = new FormData('formProducto'); 
+        const datos = new FormData(formProducto); 
 
-        let respuesta = await fetch(base_url + 'controllers/Controller_productos.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + '/controllers/Controller_productos.php?tipo=registrar', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
             body: datos
         });
 
-        if (respuesta.ok) {
-            const result = await respuesta.text();
-            Swal.fire('Producto registrado con éxito:', result);
-            sweetAlert('Producto registrado con éxito');
-        } else {
-            console.error('Error al registrar el producto:', respuesta.statusText);
-            Swal.fire('Error al registrar el producto');
-        }
+        json = await respuesta.json();
+        if (json.status) {
+            Swal.fire( "Registro exitoso", json.mensaje,"success");
+         }else{
+            Swal.fire( "Registro fallido", json.mensaje,"error");
+         }
     } catch (error) {
-        console.error("Oops, ocurrió un error: " + error);
+        console.error("Oops, ocurrió un error: " + error)
     }
 }
+
+async function listar_categoria() {
+    try {
+        let respuesta = await fetch(base_url + '/controllers/Controller_categorias.php?tipo=listar');
+        json = await respuesta.json();
+        if (json.status) {
+            let datos = json.contenido;
+            datos.forEach(element => {
+                 $('#categoria').append($('<option/>'),{
+                    text:`${element.nombre}`,
+                    value:`${element.id}`
+                 });
+            });
+        }
+        
+    } catch (error) {
+        console.error("Oops, ocurrió un error: " + error)
+    }
+}
+
 
 
 

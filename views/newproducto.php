@@ -1,4 +1,5 @@
 <form id="formProducto" action="">
+    <h2>Agregar Producto</h2>
     <div class="form-group">
         <label for="codigo">Código:</label>
         <input type="text" class="form-control" id="codigo" name="codigo" maxlength="20" required>
@@ -11,7 +12,7 @@
 
     <div class="form-group">
         <label for="detalle">Detalle:</label>
-        <input type="text" class="form-control" id="detalle" name="detalle" maxlength="100" rows="3" required></textarea>
+        <input type="text" class="form-control" id="detalle" name="detalle" maxlength="100" required>
     </div>
 
     <div class="form-group">
@@ -26,7 +27,10 @@
 
     <div class="form-group">
         <label for="categoria">Categoría</label>
-        <input type="number" class="form-control" id="categoria" name="categoria" required>
+        <select class="form-control" id="categoria" name="categoria" required>
+            <option value="">Seleccione una categoría</option>
+    
+        </select>
     </div>
 
     <div class="form-group">
@@ -39,7 +43,8 @@
         <input type="number" class="form-control" id="proveedor" name="proveedor" required>
     </div>
 
-    <button type="submit" class="btn btn-primary" onclick="registrar_producto()">Agregar Producto</button>
+    <button id="botonproducto" type="button" class="btn btn-warning" onclick="registrar_producto()">Agregar Producto</button>
 </form>
 
 <script src="<?php echo BD_URL ?>views/js/functions_productos.js"></script>
+<script>listar_categoria();</script>
