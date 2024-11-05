@@ -19,7 +19,7 @@ if ($tipo == "listar") {
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['contenido'] = $arrCategorias;
     }
-    echo json_encode($arrCategorias);
+    echo json_encode($arr_Respuesta);
 }
 
 ?>
