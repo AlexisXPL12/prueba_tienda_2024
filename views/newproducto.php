@@ -29,7 +29,6 @@
         <label for="categoria">Categoría</label>
         <select class="form-control" id="categoria" name="categoria" required>
             <option value="">Seleccione una categoría</option>
-    
         </select>
     </div>
 
