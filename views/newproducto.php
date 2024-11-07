@@ -33,17 +33,24 @@
     </div>
 
     <div class="form-group">
-        <label for="imagen">Imagen</label>
-        <input type="text" class="form-control" id="imagen" name="imagen" required>
+        <label for="imagen">Imagen del Producto</label>
+        <div class="file-upload-wrapper" id="file-upload-wrapper">
+            <input type="file" id="imagen" name="imagen" required>
+        </div>
     </div>
 
     <div class="form-group">
         <label for="proveedor">Proveedor</label>
-        <input type="number" class="form-control" id="proveedor" name="proveedor" required>
+        <select class="form-control" id="proveedor" name="proveedor" required>
+            <option value="">Seleccione un proveedor</option>
+        </select>
     </div>
 
     <button id="botonproducto" type="button" class="btn btn-warning" onclick="registrar_producto()">Agregar Producto</button>
 </form>
 
 <script src="<?php echo BD_URL ?>views/js/functions_productos.js"></script>
-<script>listar_categoria();</script>
+<script>
+    listar_categoria();
+    listar_proveedor();
+</script>

@@ -1,9 +1,9 @@
 #formProducto {
     background-color: #ffffff;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 60%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
     margin: 50px auto;
 }
 
@@ -11,52 +11,42 @@
     text-align: center;
     margin-bottom: 20px;
     color: #333;
+    font-size: 24px;
+    font-weight: 600;
 }
 
-.contenedor-horizontal {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+#formProducto .form-control:invalid{
+    border:black solid 1px !important;
 }
 
 #formProducto .form-group {
-    flex: 1 1 30%;
-    display: flex;
-    flex-direction: column;
-}
-
-#formProducto .form-group label,
-#formProducto .form-group input {
-    margin-bottom: 10px;
-}
-
-#formProducto .form-group input {
-    width: 100%;
+    margin-bottom: 20px;
 }
 
 #formProducto .form-group label {
     color: #555;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
-/* Ancho personalizado para ciertos inputs */
-.nombre-input {
-    width: 80%; /* Mayor ancho para el input de nombre */
-}
-
-.imagen-input {
+#formProducto .form-group input[type="file"] {
     width: 100%;
-}
-
-#formProducto .form-control {
+    padding: 12px;
     border: 2px solid #ddd;
     border-radius: 8px;
-    transition: border-color 0.3s ease-in-out;
-    padding: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 16px;
+    color: #555;
+    transition: background-color 0.3s, border-color 0.3s ease-in-out;
 }
 
-#formProducto .form-control:focus {
+#formProducto .form-group input[type="file"]:hover {
+    background-color: #e9ecef;
+}
+
+#formProducto .form-group input[type="file"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
@@ -65,22 +55,24 @@
     background-color: #ff9900;
     border: none;
     border-radius: 20px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease-in-out;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: white;
+    transition: background-color 0.3s;
     width: 100%;
     margin-top: 20px;
 }
 
 #formProducto .btn-warning:hover {
-    background-color: #b37400;
+    background-color: #e68a00;
 }
 
 @media (max-width: 768px) {
-    .contenedor-horizontal {
-        flex-direction: column;
+    #formProducto {
+        max-width: 90%;
+        padding: 20px;
     }
-
-    .nombre-input {
-        width: 100%;
+    #formProducto h2 {
+        font-size: 20px;
     }
 }
