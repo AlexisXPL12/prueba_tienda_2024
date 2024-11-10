@@ -4,7 +4,30 @@ $tipo  = $_REQUEST['tipo'];
 
 $objCategoria = new CategoriaModel();
 
-if ($tipo == "listar") {
+if ($tipo == "registrar") {
+    // print_r($_POST);
+    
+    if ($_POST) {
+        $nombre = $_POST['nombre'];
+        $detalle = $_POST['detalle'];
+
+        if ($nombre == "" || $detalle == "") {
+            $arr_Respuesta = array('status'=> false,'mensaje'=>'Error campos vacios');
+        }else{
+            $arrCategoria = $objCategoria->registrarCategoria($nombre,$detalle);
+            
+            if ($arrCategoria->id>0) {
+                $arr_Respuesta = array('status'=> true,'mensaje'=>'Registro exitoso');
+            }else{
+                $arr_Respuesta = array('status'=> false,'mensaje'=>'Error al registrar categoria');
+            }
+            echo json_encode($arr_Respuesta);
+        }
+    }
+
+}
+
+else if ($tipo == "listar") {
     $arr_Respuesta = array('status' => false, 'contenido' =>'');
     $arrCategorias = $objCategoria->obtenerCategorias();
 

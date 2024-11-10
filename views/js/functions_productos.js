@@ -35,6 +35,7 @@ async function registrar_producto() {
          }
     } catch (error) {
         console.error("Oops, ocurrió un error: " + error)
+        
     }
 }
 

@@ -1,4 +1,4 @@
-#formProducto {
+#formProducto,#formCategoria, #formPersona {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -7,30 +7,30 @@
     margin: 50px auto;
 }
 
-#formProducto h2 {
-    text-align: center;
+#formProducto, #formCategoria, #formPersona h2 {
+    text-align:left;
     margin-bottom: 20px;
     color: #333;
     font-size: 24px;
     font-weight: 600;
 }
 
-#formProducto .form-control:invalid{
+#formProducto, #formCategoria, #formPersona .form-control:invalid{
     border:black solid 1px !important;
 }
 
-#formProducto .form-group {
+#formProducto, #formCategoria, #formPersona .form-group {
     margin-bottom: 20px;
 }
 
-#formProducto .form-group label {
+#formProducto, #formCategoria, #formPersona .form-group label {
     color: #555;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-#formProducto .form-group input[type="file"] {
+#formProducto, #formCategoria, #formPersona .form-group input[type="file"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
@@ -42,16 +42,16 @@
     transition: background-color 0.3s, border-color 0.3s ease-in-out;
 }
 
-#formProducto .form-group input[type="file"]:hover {
+#formProducto, #formCategoria, #formPersona .form-group input[type="file"]:hover {
     background-color: #e9ecef;
 }
 
-#formProducto .form-group input[type="file"]:focus {
+#formProducto, #formCategoria, #formPersona .form-group input[type="file"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-#formProducto .btn-warning {
+#formProducto, #formCategoria, #formPersona .btn-warning {
     background-color: #ff9900;
     border: none;
     border-radius: 20px;
@@ -63,16 +63,16 @@
     margin-top: 20px;
 }
 
-#formProducto .btn-warning:hover {
+#formProducto, #formCategoria, #formPersona .btn-warning:hover {
     background-color: #e68a00;
 }
 
 @media (max-width: 768px) {
-    #formProducto {
+    #formProducto, #formCategoria, #formPersona {
         max-width: 90%;
         padding: 20px;
     }
-    #formProducto h2 {
+    #formProducto, #formCategoria, #formPersona h2 {
         font-size: 20px;
     }
 }
