@@ -2,7 +2,7 @@
      <h2>Agregar Persona</h2>
 
      <div class="form-group">
-         <label for="codigo">Número de DNI:</label>
+         <label for="codigo">Número de identidad:</label>
          <input type="text" class="form-control" id="codigo" name="codigo" maxlength="20" required>
      </div>
 
@@ -12,13 +12,13 @@
      </div>
 
      <div class="form-group">
-         <label for="detalle">Teléfono:</label>
-         <input type="text" class="form-control" id="detalle" name="detalle" maxlength="100" required>
+         <label for="telefono">Teléfono:</label>
+         <input type="text" class="form-control" id="telefono" name="telefono" maxlength="100" required>
      </div>
 
      <div class="form-group">
-         <label for="precio">Correo:</label>
-         <input type="email" class="form-control" id="precio" name="precio" maxlength="100" required>
+         <label for="correo">Correo:</label>
+         <input type="email" class="form-control" id="correo" name="correo" maxlength="100" required>
      </div>
 
      <div class="form-group">
@@ -35,15 +35,25 @@
          <label for="distrito">Distrito:</label>
          <input type="text" class="form-control" id="distrito" name="distrito" maxlength="50" required>
      </div>
-
+     <div class="form-group">
+         <label for="codigo_postal">Codigo Postal:</label>
+         <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" maxlength="50" required>
+     </div>
      <div class="form-group">
          <label for="direccion">Dirección:</label>
-         <input type="text" class="form-control" id="direccion" name="direccion" maxlength="200" required>
+         <input type="text" class="form-control" id="direccion" name="direccion" maxlength="20" required>
      </div>
 
      <div class="form-group">
          <label for="rol">Rol:</label>
-         <input type="text" class="form-control" id="rol" name="rol" maxlength="50" required>
+         <select name="rol" id="rol" class="form-control">
+            <option value="no definido">Selecciona un rol</option>
+            <option value="administrador">administrador</option>
+            <option value="trabajador">trabajador</option>
+            <option value="proveedor">proveedor</option>
+            <option value="cliente">cliente</option>
+
+         </select>
      </div>
 
      <div class="form-group">

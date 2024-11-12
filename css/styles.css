@@ -1,4 +1,4 @@
-#formProducto,#formCategoria, #formPersona {
+#formProducto,#formCategoria, #formPersona, #formCompra{
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -7,7 +7,7 @@
     margin: 50px auto;
 }
 
-#formProducto, #formCategoria, #formPersona h2 {
+#formProducto, #formCategoria, #formPersona, #formCompra h2 {
     text-align:left;
     margin-bottom: 20px;
     color: #333;
@@ -15,22 +15,22 @@
     font-weight: 600;
 }
 
-#formProducto, #formCategoria, #formPersona .form-control:invalid{
+#formProducto, #formCategoria, #formPersona, #formCompra .form-control:invalid{
     border:black solid 1px !important;
 }
 
-#formProducto, #formCategoria, #formPersona .form-group {
+#formProducto, #formCategoria, #formPersona, #formCompra .form-group {
     margin-bottom: 20px;
 }
 
-#formProducto, #formCategoria, #formPersona .form-group label {
+#formProducto, #formCategoria, #formPersona, #formCompra .form-group label {
     color: #555;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-#formProducto, #formCategoria, #formPersona .form-group input[type="file"] {
+#formProducto, #formCategoria, #formPersona, #formCompra .form-group input[type="file"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
@@ -42,16 +42,16 @@
     transition: background-color 0.3s, border-color 0.3s ease-in-out;
 }
 
-#formProducto, #formCategoria, #formPersona .form-group input[type="file"]:hover {
+#formProducto, #formCategoria, #formPersona, #formCompra .form-group input[type="file"]:hover {
     background-color: #e9ecef;
 }
 
-#formProducto, #formCategoria, #formPersona .form-group input[type="file"]:focus {
+#formProducto, #formCategoria, #formPersona, #formCompra .form-group input[type="file"]:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-#formProducto, #formCategoria, #formPersona .btn-warning {
+#formProducto, #formCategoria, #formPersona, #formCompra .btn-warning {
     background-color: #ff9900;
     border: none;
     border-radius: 20px;
@@ -63,16 +63,16 @@
     margin-top: 20px;
 }
 
-#formProducto, #formCategoria, #formPersona .btn-warning:hover {
+#formProducto, #formCategoria, #formPersona, #formCompra .btn-warning:hover {
     background-color: #e68a00;
 }
 
 @media (max-width: 768px) {
-    #formProducto, #formCategoria, #formPersona {
+    #formProducto, #formCategoria, #formPersona, #formCompra {
         max-width: 90%;
         padding: 20px;
     }
-    #formProducto, #formCategoria, #formPersona h2 {
+    #formProducto, #formCategoria, #formPersona, #formCompra h2 {
         font-size: 20px;
     }
 }
