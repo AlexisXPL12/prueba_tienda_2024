@@ -341,7 +341,7 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id`, `nombre`, `detalle`) VALUES
 (1, 'polos', 'fdfxasxhabsc'),
-(2, 'L\'Oréal Paris Elvive', '1'),
+(2, 'L\Oréal Paris Elvive', '1'),
 (3, 'zapatos', '1');
 
 -- --------------------------------------------------------
