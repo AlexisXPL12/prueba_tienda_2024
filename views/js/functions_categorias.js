@@ -17,8 +17,10 @@ async function registrar_categoria() {
         });
 
         json = await respuesta.json();
+        
         if (json.status) {
             Swal.fire('Categoría registrada correctamente', json.mensaje, "success");
+            document.getElementById('formCategoria').reset();
         } else {
             Swal.fire('Error al registrar la categoría', json.mensaje, "error");
         }

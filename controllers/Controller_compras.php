@@ -9,7 +9,7 @@ if ($tipo == "registrar") {
         $producto = $_POST['producto'];
         $cantidad = $_POST['cantidad'];
         $precio = $_POST['precio'];
-        $id_trabajador = $_POST['trabajador'];
+        $trabajador = $_POST['trabajador'];
 
         if ($producto == "" || $cantidad == "" || $precio == "" || $trabajador == "") {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: Campos vacíos');

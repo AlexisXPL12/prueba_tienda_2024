@@ -1,10 +1,10 @@
 async function registrar_compra() {
-    let id_producto = document.getElementById('id_producto').value;
+    let producto = document.getElementById('producto').value;
     let cantidad = document.getElementById('cantidad').value;
     let precio = document.getElementById('precio').value;
-    let id_trabajador = document.getElementById('id_trabajador').value;
+    let trabajador = document.getElementById('trabajador').value;
 
-    if (id_producto === "" || cantidad === "" || precio === "" || id_trabajador === "") {
+    if (producto === "" || cantidad === "" || precio === "" || trabajador === "") {
         Swal.fire('Por favor, complete todos los campos.');
         return;
     }
@@ -23,6 +23,7 @@ async function registrar_compra() {
 
         if (json.status) {
             Swal.fire("Registro exitoso", json.mensaje, "success");
+            document.getElementById('formCompra').reset();
         } else {
             Swal.fire("Registro fallido", json.mensaje, "error");
         }
