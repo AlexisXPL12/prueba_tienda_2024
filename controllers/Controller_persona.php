@@ -37,7 +37,7 @@ if ($tipo == "listar") {
         $codigo_postal = $_POST['codigo_postal'];
         $direccion = $_POST['direccion'];
         $rol = $_POST['rol'];
-        $password = $_POST['password'];
+        $password = password_hash($_POST['codigo'], PASSWORD_DEFAULT);
 
         if (
             $codigo == "" || $nombre == "" || $telefono == "" || $correo == "" ||

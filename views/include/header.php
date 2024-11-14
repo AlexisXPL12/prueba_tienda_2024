@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/styles.css">
     <script>
         const base_url = '<?php echo BD_URL ?>';
     </script>
@@ -779,7 +779,7 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="<?php echo BD_URL ?>perfil">Mi cuenta</a>
                         <a class="dropdown-item" href="<?php echo BD_URL ?>admin/paneladmin">Panel del administrador</a>
-                        <a class="dropdown-item" href="<?php echo BD_URL ?>login">Cerrar sesión</a>
+                        <button class="dropdown-item" onclick="cerrarSesion()">Cerrar sesión</button>
                     </div>
                 </div>
                 <!-- Menú principal alineado a la izquierda -->

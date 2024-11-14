@@ -1,6 +1,5 @@
 <form id="formPersona" action="">
     <h2>Agregar Usuario</h2>
-
     <div class="form-group">
         <label for="codigo">Número de identidad:</label>
         <input type="text" class="form-control" id="codigo" name="codigo" maxlength="20" required>
@@ -55,11 +54,10 @@
 
         </select>
     </div>
-
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="password">Contraseña:</label>
         <input type="password" class="form-control" id="password" name="password" maxlength="200" required>
-    </div>
+    </div> -->
     <br>
     <button type="button" class="btn btn-warning" onclick="registrar_persona()">Agregar Persona</button>
 </form>

@@ -9,7 +9,7 @@ async function registrar_persona() {
     let codigo_postal = document.getElementById('codigo_postal').value
     let direccion = document.getElementById('direccion').value;
     let rol = document.getElementById('rol').value;
-    let password = document.getElementById('password').value;
+    let password = document.getElementById('codigo').value;
 
     // Verificar que todos los campos estén completos
     if (

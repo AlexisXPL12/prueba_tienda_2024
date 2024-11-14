@@ -11,7 +11,7 @@
 <!-- CSS Personalizado -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href=".../css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const base_url = '<?php echo BD_URL ?>';

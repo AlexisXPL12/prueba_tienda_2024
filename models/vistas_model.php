@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class vistaModelo
 {
@@ -23,6 +24,10 @@ class vistaModelo
             'tienda-p-select',
             'categoria',
         ];
+
+        if(isset($_SESSION['session_vetas2024_id'])){
+            return "login";
+        }
 
         if (in_array($vista, $palabras_permitidas)) {
             if (is_file("./views/" . $vista . ".php")) {
@@ -69,6 +74,9 @@ class vistaModelo
             'newcategoria',
             'newproducto'
         ];
+        if(isset($_SESSION['session_vetas2024_id'])){
+            return "login";
+        }
         if (in_array($vista, $palabras_permitidas)) {
             if (is_file("./admin/" . $vista . ".php")) {
                 $contenido = "./admin/" . $vista . ".php";
