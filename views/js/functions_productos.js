@@ -17,7 +17,6 @@ async function registrar_producto() {
     }
 
     try {
-
         const datos = new FormData(formProducto); 
 
         let respuesta = await fetch(base_url + '/controllers/Controller_productos.php?tipo=registrar', {
@@ -30,9 +29,9 @@ async function registrar_producto() {
         json = await respuesta.json();
         if (json.status) {
             Swal.fire( "Registro exitoso", json.mensaje,"success");
-        }else{
+         }else{
             Swal.fire( "Registro fallido", json.mensaje,"error");
-        }
+         }
     } catch (error) {
         console.error("Oops, ocurrió un error: " + error)
         

@@ -28,18 +28,18 @@ if ($tipo == "registrar") {
         ) {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error campos vacíos');
         } else {
-            $arrProducto = $objProducto->registrarProducto($codigo, $nombre, $detalle, $precio, $stock, $categoria, $imagen, $proveedor);
+            //cargar archivo
+            $archivo = $_FILES['imagen']['tmp_name'];
+            $destino = '../assets/img_productos/';
+            $tipoArchivo = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+            $arrProducto = $objProducto->registrarProducto($codigo, $nombre, $detalle, $precio, $stock, $categoria, $imagen, $proveedor,$tipoArchivo);
 
-            if ($arrProducto->id > 0) {
+            if ($arrProducto->id_n > 0) {
+                $newid = $arrProducto->id_n;
                 $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro exitoso');
-                //cargar archivo
-                $archivo = $_FILES['imagen']['tmp_name'];
-                $destino = './assets/img_productos/);';
-                $tipoArchivo = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-                $nombre = $arrProducto->id . "." . $tipoArchivo;
+                $nombre = $arrProducto->id_n . "." . $tipoArchivo;
 
                 if (move_uploaded_file($archivo, $destino . $nombre)) {
-                    $arr_imagen = $objProducto->actualizar_imagen($id, $nombre);
                 } else {
                     $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro Exitoso, Error al subir imagen');
                 }
@@ -67,7 +67,7 @@ if ($tipo == "registrar") {
             $imagen = $arrProductos[$i]->img;
 
             $opciones = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
-            $arrProductos[$i]->options = $opciones;
+            $arrProductos [$i] -> options = $opciones;
         }
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['contenido'] = $arrProductos;

@@ -45,6 +45,7 @@
             <option value="">Seleccione un proveedor</option>
         </select>
     </div>
+    <br>
 
     <button id="botonproducto" type="button" class="btn btn-warning" onclick="registrar_producto()">Agregar Producto</button>
 </form>

@@ -307,20 +307,32 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_venta` (IN `p_codigo_venta
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProducto` (IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN 
-DECLARE existe_producto INT;
-DECLARE id INT;
-set existe_producto = (SELECT COUNT(*) FROM producto WHERE codigo = p_codigo);
-IF existe_producto = 0 THEN
-	 INSERT INTO producto (codigo, nombre, detalle, precio, stock, id_categoria, img, id_proveedor) 
-        VALUES (p_codigo, p_nombre, p_detalle, p_precio, p_stock, p_id_categoria, p_img, p_id_proveedor);
-        SET id = LAST_INSERT_ID();
-    ELSE
-    SET id= 0;
-END IF;
-SELECT id;
-END$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProducto`(IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11), IN `tipo_archivo` VARCHAR(10))
+BEGIN
+    DECLARE existe_producto INT;
+    DECLARE id_n INT;
 
+    -- Verificar si el producto ya existe
+    SET existe_producto = (SELECT COUNT(*) FROM producto WHERE codigo = p_codigo);
+
+    IF existe_producto = 0 THEN
+        -- Insertar el nuevo producto
+        INSERT INTO producto (codigo, nombre, detalle, precio, stock, id_categoria, img, id_proveedor, tipo_archivo)
+        VALUES (p_codigo, p_nombre, p_detalle, p_precio, p_stock, p_id_categoria, p_img, p_id_proveedor, tipo_archivo);
+        
+        -- Obtener el ID del último producto insertado
+        SET id_n = LAST_INSERT_ID();
+
+        -- Actualizar el campo 'img' usando CONCAT para asignar el nombre del archivo
+        UPDATE producto SET img = CONCAT(id_n, '.', tipo_archivo) WHERE id = id_n;
+    ELSE
+        -- Si el producto ya existe, establecer el ID en 0
+        SET id_n = 0;
+    END IF;
+
+    -- Retornar el ID del producto insertado o 0 si ya existe
+    SELECT id_n;
+END$$
 DELIMITER ;
 
 -- --------------------------------------------------------
