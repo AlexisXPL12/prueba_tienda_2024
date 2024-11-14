@@ -11,7 +11,7 @@ class PersonaModel
         $this->conexion = $this->conexion->connect();
     }
 
-    public function registrarPersona($codigo, $nombre, $telefono, $correo, $departamento, $provincia, $distrito,$direccion,$rol,$codigo_postal, $password)
+    public function registrarPersona($codigo, $nombre, $telefono, $correo, $departamento, $provincia, $distrito, $direccion, $rol, $codigo_postal, $password)
     {
         // Ejecutar el procedimiento almacenado insertPersona
         $sql = $this->conexion->query("CALL insertar_persona('{$codigo}', '{$nombre}', '{$telefono}', '{$correo}', '{$departamento}', '{$provincia}', '{$distrito}','{$codigo_postal}', '{$direccion}','{$rol}', '{$password}')");

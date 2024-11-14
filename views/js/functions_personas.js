@@ -1,5 +1,5 @@
 async function registrar_persona() {
-    let codigo = document.getElementById('codigo').value; 
+    let codigo = document.getElementById('codigo').value;
     let nombre = document.getElementById('nombre').value;
     let detalle = document.getElementById('telefono').value;
     let precio = document.getElementById('correo').value;
@@ -18,7 +18,7 @@ async function registrar_persona() {
         direccion === "" || rol === "" || password === ""
     ) {
         Swal.fire('Por favor, complete todos los campos.');
-        return; 
+        return;
     }
 
     try {

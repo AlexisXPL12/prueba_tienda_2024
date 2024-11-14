@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,8 +53,8 @@
             color: #000;
             background-color: #ffb56a;
             border-radius: 8px;
-            margin: 0 5px;
-            padding: 5px 10px;
+            margin: 0 15px;
+            padding: 15px 20px;
         }
 
         .navbar-custom-1 .nav-link:hover {
@@ -102,6 +103,95 @@
 
         .navbar-custom-2 .moon-icon {
             font-size: 1.5rem;
+        }
+
+        /* Mejorando el estilo del botón de usuario en el dropdown */
+        .btn-custom {
+            background-color: #007bff;
+            /* Color de fondo */
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            padding: 0;
+            font-size: 24px;
+            /* Tamaño del icono */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            /* Transición suave para el color de fondo */
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            /* Color al pasar el mouse */
+        }
+
+        /* Mejorando el menú desplegable */
+        .dropdown-menu {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            /* Ancho mínimo para que los elementos se vean bien */
+        }
+
+        .dropdown-menu a {
+            color: #333;
+            /* Color de los enlaces */
+            padding: 10px 15px;
+            font-size: 16px;
+            text-decoration: none;
+            /* Quita el subrayado */
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+            /* Fondo suave al pasar el mouse */
+            color: #007bff;
+            /* Color de texto al pasar el mouse */
+        }
+
+        /* Estilos para el menú de navegación */
+        .navbar-nav {
+            margin-left: auto;
+            align-items: center;
+            justify-items: center;
+            /* Alineación hacia la derecha */
+        }
+
+        .navbar-nav .nav-item {
+            margin-left: 20px;
+            /* Espaciado entre elementos */
+        }
+
+        /* Mejorando la barra de navegación en dispositivos grandes */
+        .navbar-light .navbar-nav .nav-link {
+            color: #007bff;
+            /* Color por defecto de los enlaces */
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #0056b3;
+            /* Color cuando se pasa el mouse */
+        }
+
+        /* Ajustes de responsividad */
+        @media (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-left: 0;
+                margin-top: 10px;
+                /* Espaciado superior en dispositivos pequeños */
+            }
         }
 
         .image-container {
@@ -157,7 +247,7 @@
         }
 
         /*CONTENIDO INICIO*/
-        
+
         .hero-section {
             background-image: url('img/imagenencabezado1.png');
             background-size: cover;
@@ -322,7 +412,7 @@
             align-content: center;
         }
 
-        
+
 
         /*CONTENIDO PRODUCTO*/
         .product-section {
@@ -479,7 +569,7 @@
         }
 
         /*CONTENIDO CONTACTAR*/
-    .body {
+        .body {
             background-color: #f8b400;
             background-image: url('your-background-image.jpg');
             background-size: cover;
@@ -678,12 +768,23 @@
     <nav class="navbar navbar-expand-lg navbar-custom-1">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"
-                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"
-                style="background-color:white; opacity: 0.8;">
+                aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation" style="background-color:white; opacity: 0.8;">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbar1" style="justify-content: space-around;">
+            <div class="collapse navbar-collapse" id="navbar1">
+                <div>
+                    <button class="btn btn-custom dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="<?php echo BD_URL ?>perfil">Mi cuenta</a>
+                        <a class="dropdown-item" href="<?php echo BD_URL ?>admin/paneladmin">Panel del administrador</a>
+                        <a class="dropdown-item" href="<?php echo BD_URL ?>login">Cerrar sesión</a>
+                    </div>
+                </div>
+                <!-- Menú principal alineado a la izquierda -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo BD_URL ?>inicio">Inicio</a>
                     </li>
@@ -697,7 +798,9 @@
                         <a class="nav-link" href="<?php echo BD_URL ?>cursos">Cursos</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-row">
+
+                <!-- Menú secundario alineado a la derecha -->
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo BD_URL ?>carrito"><i class="fas fa-shopping-cart"></i> Carrito</a>
                     </li>
@@ -714,10 +817,6 @@
 
     <!-- Header 2 -->
     <nav class="navbar navbar-expand-lg navbar-custom-2 col-12">
-        <a href="<?php echo BD_URL ?>perfil" class="d-flex align-items-center col-1" style="display: block; text-decoration: none;">
-            <img src="img/logoperfil.png" alt="Perfil" style="max-height: 70px; position: relative; width: 80%;">
-            <span class="navbar-text ms-2">Perfil</span>
-        </a>
         <a class="navbar-brand mx-auto" href="#"><img src="img/xtremeai.png" alt="XTREME AI"
                 style="max-height: 50px; position: relative; width: 90%; justify-content: center;"></a>
         <div class="d-flex search-bar col-6">

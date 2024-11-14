@@ -118,8 +118,8 @@
             </div>
             <button type="submit" class="btn btn-primary w-100"
                 style="width:100%; padding: 10px; margin: 5px; border-radius: 10px; text-align: center;"><a
-                    style="text-decoration: none; color: white;" href="Inicio.html">REGISTRARSE</a></button>
-            <a href="../index.html" class="login-link">¿Ya tienes una cuenta? Iniciar sesión</a>
+                    style="text-decoration: none; color: white;" href="<?php echo BD_URL ?>inicio">REGISTRARSE</a></button>
+            <a href="<?php echo BD_URL ?>login" class="login-link">¿Ya tienes una cuenta? Iniciar sesión</a>
         </form>
         <img src="img/xtremeai.png" alt="Logo" class="register-logo">
     </div>
@@ -127,7 +127,7 @@
 
 </body>
 <script>
-    document.getElementById('togglePassword').addEventListener('click', function () {
+    document.getElementById('togglePassword').addEventListener('click', function() {
         const password = document.getElementById('password');
         const icon = document.getElementById('toggleIcon');
         if (password.type === 'password') {

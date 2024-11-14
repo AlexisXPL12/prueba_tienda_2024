@@ -4,6 +4,21 @@ $tipo  = $_REQUEST['tipo'];
 
 $objCompra = new CompraModel();
 
+if ($tipo == "obtener_precio") {
+    $productoId = $_GET['producto_id'] ?? null;
+    if ($productoId) {
+        $arrPrecio = $objCompra->ObtenerPrecioProducto($productoId);
+        if ($arrPrecio !== null) {
+            $arr_Respuesta = array('status' => true, 'precio' => $arrPrecio);
+        } else {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: Producto no encontrado');
+        }
+    } else {
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: Falta el producto_id');
+    }
+    echo json_encode($arr_Respuesta);
+}
+
 if ($tipo == "registrar") {
     if ($_POST) {
         $producto = $_POST['producto'];
@@ -16,10 +31,10 @@ if ($tipo == "registrar") {
         } else {
             $arrCompra = $objCompra->registrarCompra($producto, $cantidad, $precio, $trabajador);
 
-            if ($arrCompra->id > 0) {
-                $arr_Respuesta = array('status' => true, 'mensaje' => 'Compra registrada exitosamente');
+            if ($arrCompra->status) {
+                $arr_Respuesta = array('status' => true, 'mensaje' => $arrCompra->mensaje);
             } else {
-                $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al registrar la compra');
+                $arr_Respuesta = array('status' => false, 'mensaje' => $arrCompra->mensaje);
             }
         }
         echo json_encode($arr_Respuesta);

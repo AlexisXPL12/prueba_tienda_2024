@@ -67,7 +67,7 @@ if ($tipo == "registrar") {
             $imagen = $arrProductos[$i]->img;
 
             $opciones = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
-            $arrProductos [$i] -> options = $opciones;
+            $arrProductos[$i]->options = $opciones;
         }
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['contenido'] = $arrProductos;

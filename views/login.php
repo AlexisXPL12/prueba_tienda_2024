@@ -178,7 +178,7 @@
 
 </body>
 <script>
-    document.getElementById('togglePassword').addEventListener('click', function () {
+    document.getElementById('togglePassword').addEventListener('click', function() {
         const password = document.getElementById('password');
         const icon = document.getElementById('toggleIcon');
         if (password.type === 'password') {

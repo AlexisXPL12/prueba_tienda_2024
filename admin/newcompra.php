@@ -4,7 +4,7 @@
     <div class="form-group">
 
         <label for="producto">Producto:</label>
-        <select class="form-control" id="producto" name="producto" required>
+        <select class="form-control" id="producto" name="producto" onchange="obtenerPrecioUnitario()" required>
             <option value="">Selecciona un producto</option>
         </select>
     </div>
@@ -25,6 +25,7 @@
             <option value="">Selecciona un trabajador</option>
         </select>
     </div>
+    <br>
 
     <button type="button" class="btn btn-warning" onclick="registrar_compra()">Agregar Compra</button>
 </form>

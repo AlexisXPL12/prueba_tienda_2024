@@ -16,17 +16,16 @@ if ($tipo == "listar") {
         $arr_Respuesta['contenido'] = $arrProveedores;
     }
     echo json_encode($arr_Respuesta);
-}else if($tipo == 'listarTrabajadores'){
+} else if ($tipo == 'listarTrabajadores') {
     $arr_Respuesta = array('status' => false, 'contenido' => '');
     $arrTrabajadores = $objPersona->obtenerTrabajadores();
-        for ($i = 0; $i < count($arrTrabajadores); $i++) {
-            $arrTrabajadores[$i]->options = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
-        }
-        $arr_Respuesta['status'] = true;
-        $arr_Respuesta['contenido'] = $arrTrabajadores;
-        echo json_encode($arr_Respuesta);
-} 
-else if ($tipo == "registrar") {
+    for ($i = 0; $i < count($arrTrabajadores); $i++) {
+        $arrTrabajadores[$i]->options = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+    }
+    $arr_Respuesta['status'] = true;
+    $arr_Respuesta['contenido'] = $arrTrabajadores;
+    echo json_encode($arr_Respuesta);
+} else if ($tipo == "registrar") {
     if ($_POST) {
         $codigo = $_POST['codigo'];
         $nombre = $_POST['nombre'];
