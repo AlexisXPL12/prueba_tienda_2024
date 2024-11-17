@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const base_url = '<?php echo BD_URL ?>';
@@ -18,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('./img/fondoiniciodesesion.png') no-repeat center center fixed;
+            background: url('<?php echo BD_URL ?>img/fondoiniciodesesion.png') no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -116,12 +117,12 @@
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </form>
         <a href="<?php echo BD_URL ?>registrate" class="register-link">¿No tienes cuenta? Regístrate</a>
-        <img src="img/xtremeai.png" alt="Logo" class="login-logo">
+        <img src="<?php echo BD_URL ?>img/xtremeai.png" alt="Logo" class="login-logo">
     </div>
 
 
     <script src="<?php echo BD_URL ?>views/js/functions_login.js"></script>
-    <!-- Toggle Password Script --
+    <!-- Toggle Password Script -->
     
 
 <!-- Bootstrap and JQuery scripts -->

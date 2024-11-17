@@ -24,15 +24,18 @@ async function iniciar_Sesion() {
         const datos = new FormData(document.getElementById('form_iniciarSesion'));
         let respuesta = await fetch(base_url + '/controllers/Controller_login.php?tipo=iniciar_sesion', {
             method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
             body: datos
         });
-        let resultado = await respuesta.json();
-        if (resultado.error) {
-            Swal.fire('Error', resultado.mensaje, 'error');
+        json = await respuesta.json();
+        if (json.status) {
+            location.replace(base_url + "inicio");
         } else {
             //Swal.fire('Éxito', 'Has iniciado sesión correctamente','success');
-            location.replace(base_url + "inicio");
+            Swal.fire('Error', json.mensaje, 'error');
         }
+        console.log(json);
     } catch (error) {
         console.error('Oops, ocurrió un error:', error);
         Swal.fire('Error', 'Ocurrió un error al iniciar sesión', 'error');
@@ -49,7 +52,7 @@ if (document.getElementById('form_iniciarSesion')){
 
 async function cerrarSesion(){
     try {
-        let respuesta = await fetch(base_url + 'controllers/Controller_login.php?tipo = cerrar_sesion',{
+        let respuesta = await fetch(base_url + 'controllers/Controller_login.php?tipo=cerrar_sesion',{
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'

@@ -11,7 +11,7 @@
 <!-- CSS Personalizado -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href=".../css/style.css">
+<link rel="stylesheet" href="<?php echo BD_URL ?>admin/css/admin.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     const base_url = '<?php echo BD_URL ?>';
@@ -30,7 +30,7 @@
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/paneladmin" class="nav-link text-white"><i class="bi bi-house-door"></i> Panel</a></li>
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newpersona" class="nav-link text-white"><i class="bi bi-people"></i> Usuarios</a></li>
-                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newproducto" class="nav-link text-white"><i class="bi bi-file-earmark"></i> Productos</a></li>
+                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/productos" class="nav-link text-white"><i class="bi bi-file-earmark"></i> Productos</a></li>
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newcategoria" class="nav-link text-white"><i class="bi bi-tags"></i> Categorías</a></li>
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newcompra" class="nav-link text-white"><i class="bi bi-basket"></i> Compras</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check"></i> Reportes</a></li>

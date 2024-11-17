@@ -1,5 +1,10 @@
+<div class="d-flex justify-content-between align-items-center my-4">
+    <a href="<?php echo BD_URL ?>admin/productos" class="btn btn-warning">
+        <i class="bi bi-arrow-left-circle"></i> Regresar
+    </a>
+    <h2 class="text-center m-0">Agregar Producto</h2>
+</div>
 <form id="formProducto" action="">
-    <h2>Agregar Producto</h2>
     <div class="form-group">
         <label for="codigo">Código:</label>
         <input type="text" class="form-control" id="codigo" name="codigo" maxlength="20" required>

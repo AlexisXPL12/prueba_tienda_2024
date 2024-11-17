@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2024 a las 01:01:25
+-- Tiempo de generación: 17-11-2024 a las 05:58:11
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -231,6 +231,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_categoria` (IN `p_nombre` 
         INSERT INTO categoria (nombre, detalle) 
         VALUES (p_nombre, p_detalle);
         SET id = LAST_INSERT_ID();
+        
     ELSE
         SET id = 0;
     END IF;
@@ -307,8 +308,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_venta` (IN `p_codigo_venta
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProducto`(IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11), IN `tipo_archivo` VARCHAR(10))
-BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProducto` (IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11), IN `tipo_archivo` VARCHAR(10))   BEGIN
     DECLARE existe_producto INT;
     DECLARE id_n INT;
 
@@ -333,6 +333,7 @@ BEGIN
     -- Retornar el ID del producto insertado o 0 si ya existe
     SELECT id_n;
 END$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -353,8 +354,10 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id`, `nombre`, `detalle`) VALUES
 (1, 'polos', 'fdfxasxhabsc'),
-(2, 'L\Oréal Paris Elvive', '1'),
-(3, 'zapatos', '1');
+(3, 'zapatos', '1'),
+(4, 'pantalones', 'pantalones xtreme'),
+(5, 'corbata', 'cortaba xtreme'),
+(6, 'chalina', 'chalina xtreme');
 
 -- --------------------------------------------------------
 
@@ -434,9 +437,9 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id`, `nro_identidad`, `razon_social`, `telefono`, `correo`, `departamento`, `provincia`, `distrito`, `codigo_postal`, `direccion`, `rol`, `password`, `estado`, `fecha_reg`) VALUES
-(1, '71422955', 'hascansjic', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '123456', 1, '2024-09-19 12:18:28'),
-(6, '223434', 'fesefesf', 'fsef', 'fsefsef', 'fsefsef', 'fesfse', 'fsefsef', 98779, 'wadawdawdwa', 'trabajador', 'adse', 1, '2024-11-11 17:50:13'),
-(15, '125623', 'Gabriel', '969161684', 'dfawfnawuonfoiaw@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5431, 'Av. San Martin 886', 'trabajador', 'alexis', 1, '2024-11-11 18:58:13');
+(1, '71422955', 'Julian', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '$2y$10$wZmQdqUcPCTXMuQ57KQp2.8eWVx8jLcIU62lOOpJRewjxX4tgsUci', 1, '2024-09-19 12:18:28'),
+(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 0, 'admin', 'administrador', '$2y$10$wZmQdqUcPCTXMuQ57KQp2.8eWVx8jLcIU62lOOpJRewjxX4tgsUci', 1, '2024-11-16 21:36:16'),
+(17, '71816086', 'Alexis', '960074740', 'valdivia@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5291, 'Av. San Martin 886', 'trabajador', '$2y$10$HrQwR5qHQ4kkHxKP0R721OUklYhQM6yeMnnExXn5yUT4a04BqeYy.', 1, '2024-11-16 23:33:45');
 
 -- --------------------------------------------------------
 
@@ -453,16 +456,25 @@ CREATE TABLE `producto` (
   `stock` int(5) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `img` varchar(16) NOT NULL,
-  `id_proveedor` int(11) NOT NULL
+  `id_proveedor` int(11) NOT NULL,
+  `tipo_archivo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `codigo`, `nombre`, `detalle`, `precio`, `stock`, `id_categoria`, `img`, `id_proveedor`) VALUES
-(3, '123454', 'polo', 'polo rojo', 60.99, 100, 1, 'imagen', 1),
-(4, '1', '1', '1', 1.00, 1, 1, 'imagen', 1);
+INSERT INTO `producto` (`id`, `codigo`, `nombre`, `detalle`, `precio`, `stock`, `id_categoria`, `img`, `id_proveedor`, `tipo_archivo`) VALUES
+(3, '123454', 'polo', 'polo rojo', 60.99, 44, 1, 'imagen', 1, '0'),
+(4, '1', '1', '1', 1.00, 1, 1, 'imagen', 1, '0'),
+(5, '2', '2', '2', 2.00, 2, 5, 'imagen', 1, '0'),
+(6, '4', '4', '4', 4.00, 4, 4, '', 1, '0'),
+(7, '5', '5', '5', 5.00, 5, 3, '', 1, '0'),
+(8, '6', '6', '6', 6.00, 6, 1, 'imagen', 1, 'png'),
+(9, '7', '7', '7', 7.00, 7, 5, 'imagen', 1, 'png'),
+(10, '8', '8', '8', 8.00, 8, 5, 'imagen', 1, 'png'),
+(11, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png'),
+(12, '10', '10', '10', 10.00, 10, 5, '12.png', 1, 'png');
 
 -- --------------------------------------------------------
 
@@ -571,13 +583,13 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `det_venta`
@@ -595,13 +607,13 @@ ALTER TABLE `pagos`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `sesiones`

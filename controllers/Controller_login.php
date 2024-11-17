@@ -1,9 +1,8 @@
 <?php
 require_once('../models/Model_persona.php');
 
-$tipo = $_GET['tipo'];
-
 $objPersona = new PersonaModel();
+$tipo = $_GET['tipo'];
 
 if ($tipo == 'iniciar_sesion') {
     // print_r($_POST);
@@ -11,6 +10,7 @@ if ($tipo == 'iniciar_sesion') {
     $password = trim($_POST['password']);
 
     $arr_Respuesta = array('status' => false, 'mensaje' => '');
+
     $arr_Persona = $objPersona->BuscarPersonaDNI($usuario);
     if (empty($arr_Persona)) {
         $arr_Respuesta['mensaje'] = 'Error: Usuario no encontrado';
@@ -28,7 +28,7 @@ if ($tipo == 'iniciar_sesion') {
         }
     }
     echo json_encode($arr_Respuesta);  
-}elseif($tipo == 'cerrar_session') {
+}elseif($tipo == 'cerrar_sesion') {
         session_start();
         session_unset();
         session_destroy();

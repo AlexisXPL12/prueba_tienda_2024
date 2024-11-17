@@ -6,11 +6,6 @@ class vistaModelo
     protected static function obtener_vistas($vista)
     {
         $palabras_permitidas = [
-            'usuarios',
-            'usuario',
-            'usuario-modificar',
-            'productos',
-            'producto-modificar',
             'producto',
             'inicio',
             'carrito',
@@ -25,7 +20,7 @@ class vistaModelo
             'categoria',
         ];
 
-        if(isset($_SESSION['session_vetas2024_id'])){
+        if(!isset($_SESSION['sesion_ventas2024_id'])){
             return "login";
         }
 
@@ -74,7 +69,7 @@ class vistaModelo
             'newcategoria',
             'newproducto'
         ];
-        if(isset($_SESSION['session_vetas2024_id'])){
+        if(!isset($_SESSION['sesion_ventas2024_id'])){
             return "login";
         }
         if (in_array($vista, $palabras_permitidas)) {
