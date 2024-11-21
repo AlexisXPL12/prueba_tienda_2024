@@ -27,4 +27,11 @@ class CategoriaModel
         }
         return $arrRespuesta;
     }
+    public function obtenerCategoriasPorId($id){
+        $id = $this->conexion->real_escape_string($id);
+        $sql = $this->conexion->query("SELECT * FROM categoria WHERE id = '{$id}'");
+        $sql = $sql->fetch_object();
+        return $sql;
+    }
+
 }

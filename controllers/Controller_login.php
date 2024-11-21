@@ -36,4 +36,6 @@ if ($tipo == 'iniciar_sesion') {
         echo json_encode($arr_Respuesta);
 }
 
+die;
+
 ?>

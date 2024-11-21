@@ -1,9 +1,20 @@
 <?php
+//incluir model productos
 require_once('../models/Model_productos.php');
+//incluir model categoria
+require_once('../models/Model_categorias.php');
+//incluir model personas
+require_once('../models/Model_persona.php');
+
 $tipo  = $_REQUEST['tipo'];
 
 //instancio la clase modeloproducto
 $objProducto = new ProductoModel();
+//instancio la clase modelcategoria
+$objCategorias = new CategoriaModel();
+//instancio la clase modelopersona
+$objPersona = new PersonaModel();
+
 
 if ($tipo == "registrar") {
     // print_r($_POST);
@@ -56,17 +67,33 @@ if ($tipo == "registrar") {
 
     if (!empty($arrProductos)) {
         for ($i = 0; $i < count($arrProductos); $i++) {
+
             $id_producto = $arrProductos[$i]->id;
             $codigo = $arrProductos[$i]->codigo;
             $nombre_producto = $arrProductos[$i]->nombre;
             $detalle = $arrProductos[$i]->detalle;
             $precio = $arrProductos[$i]->precio;
             $stock = $arrProductos[$i]->stock;
-            $id_categoria = $arrProductos[$i]->id_categoria;
-            $id_proveedor = $arrProductos[$i]->id_proveedor;
+
+            //llamar a el metodo obtenerCategoriasPorId para identificar mejor la categoria de producto
+            $id_categoria = $arrProductos[$i] -> id_categoria;
+            $r_categoria = $objCategorias->obtenerCategoriasPorId($id_categoria);
+            $arrProductos[$i] -> categoria = $r_categoria;
+
+            //llamar a el metodo obtenerPersonaPorId para identificar mejor el proveedor de producto
+            $id_proveedor = $arrProductos[$i] -> id_proveedor;
+            $r_proveedor = $objPersona->obtenerPersonaPorId($id_proveedor);
+            $arrProductos[$i] -> proveedor = $r_proveedor;
+
+
             $imagen = $arrProductos[$i]->img;
 
-            $opciones = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_producto(${element.id})">
+                        <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto(${element.id})">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>';
             $arrProductos [$i] -> options = $opciones;
         }
         $arr_Respuesta['status'] = true;
