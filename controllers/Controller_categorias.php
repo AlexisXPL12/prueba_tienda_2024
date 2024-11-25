@@ -33,7 +33,13 @@ if ($tipo == "registrar") {
         for ($i = 0; $i < count($arrCategorias); $i++) {
             $id_categoria = $arrCategorias[$i]->id;
             $nombre_categoria = $arrCategorias[$i]->nombre;
-            $opciones = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+            $detalle = $arrCategorias[$i]->detalle;
+            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_categoria(${element.id})">
+                        <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_categoria(${element.id})">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>';
             $arrCategorias[$i]->options = $opciones;
         }
         $arr_Respuesta['status'] = true;

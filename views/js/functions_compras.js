@@ -1,3 +1,39 @@
+async function listar_compras() {
+    try {
+        let respuesta = await fetch(base_url + '/controllers/Controller_compras.php?tipo=listar');
+        let json = await respuesta.json();
+
+        if (json.status) {
+            let datos = json.contenido;
+            let cont = 0;
+
+            datos.forEach(element => {
+                let fila = document.createElement("tr");
+                cont += 1;
+                fila.innerHTML = `
+                                <th scope="row" class="text-center">${cont}</th>
+                                <td class="text-center">${element.producto.nombre}</td>
+                                <td class="text-center">${element.cantidad}</td>
+                                <td class="text-center">${element.precio_total}</td>
+                                <td class="text-center">${element.fecha_compra}</td>
+                                <td class="text-center">${element.trabajador.razon_social}</td>
+                                <td class="text-center">${element.options}</td>
+                `;
+                document.getElementById('tabla_compras').appendChild(fila);
+            });
+        } else {
+            Swal.fire('No se encontraron compras.');
+        }
+        console.log(json);
+
+        if (document.getElementById('tablaCompras')) {
+        }
+
+    } catch (error) {
+        console.error("Oops, ocurrió un error: " + error);
+        Swal.fire('Error al listar compras.', 'Ocurrió un error al procesar la solicitud.', 'error');
+    }
+}
 async function registrar_compra() {
     let producto = document.getElementById('producto').value;
     let cantidad = document.getElementById('cantidad').value;

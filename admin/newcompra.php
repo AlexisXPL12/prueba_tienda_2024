@@ -1,8 +1,12 @@
+<main class="main-content col-lg-8 col-md-12">
+<div class="d-flex justify-content-between align-items-center my-4">
+    <a href="<?php echo BD_URL ?>admin/compras" class="btn btn-warning">
+        <i class="bi bi-arrow-left-circle"></i> Regresar
+    </a>
+    <h2 class="text-center m-0">Agregar Compra</h2>
+</div>
 <form id="formCompra" action="">
-    <h2>Agregar Compra</h2>
-
     <div class="form-group">
-
         <label for="producto">Producto:</label>
         <select class="form-control" id="producto" name="producto" onchange="obtenerPrecioUnitario()" required>
             <option value="">Selecciona un producto</option>
@@ -27,7 +31,7 @@
     </div>
     <br>
 
-    <button type="button" class="btn btn-warning" onclick="registrar_compra()">Agregar Compra</button>
+    <button type="button" class="btn btn-success" onclick="registrar_compra()">Agregar Compra</button>
 </form>
 
 <script src="<?php echo BD_URL ?>views/js/functions_compras.js"></script>

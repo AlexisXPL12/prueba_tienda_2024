@@ -21,6 +21,15 @@ class PersonaModel
         return $sql;
     }
 
+    public function obtenerPersonas(){
+        $arrRespuesta = [];
+        $sql = $this->conexion->query("SELECT * FROM persona");
+        while ($fila = $sql->fetch_object()) {
+            array_push($arrRespuesta, $fila);
+        }
+        return $arrRespuesta;
+    }
+
     public function obtenerPersonaPorId($id){
         $id = $this->conexion->real_escape_string($id);
         $sql = $this->conexion->query("SELECT * FROM persona WHERE id = '{$id}'");

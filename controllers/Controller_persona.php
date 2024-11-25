@@ -4,19 +4,54 @@ $tipo = $_REQUEST['tipo'];
 
 $objPersona = new PersonaModel();
 
-if ($tipo == "listar") {
+if ($tipo == 'listar') {
+    $arr_Respuesta = array('status' => false, 'contenido' => '');
+    $arrPersonas = $objPersona->obtenerPersonas();
+
+    if (!empty($arrPersonas)) {
+        for ($i = 0; $i < count($arrPersonas); $i++) {
+            $id_persona = $arrPersonas[$i]->id;
+            $nro_identidad = $arrPersonas[$i]->nro_identidad;
+            $razon_social = $arrPersonas[$i]->razon_social;
+            $telefono = $arrPersonas[$i]->telefono;
+            $correo = $arrPersonas[$i]->correo;
+            $departamento = $arrPersonas[$i]->departamento;
+            $provincia = $arrPersonas[$i]->provincia;
+            $distrito = $arrPersonas[$i]->distrito;
+            $codigo_postal = $arrPersonas[$i]->codigo_postal;
+            $direccion = $arrPersonas[$i]->direccion;
+            $rol = $arrPersonas[$i]->rol;
+            $password = $arrPersonas[$i]->password;
+            $estado = $arrPersonas[$i]->estado;
+            $fecha_reg = $arrPersonas[$i]->fecha_reg;
+            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_persona(${element.id})">
+                                        <i class="fas fa-edit"></i> Editar
+                                        </button>
+                                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_persona(${element.id})">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                        </button>';
+            $arrPersonas[$i]->options = $opciones;
+        }
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['contenido'] = $arrPersonas;
+    }
+    echo json_encode($arr_Respuesta);
+}
+if ($tipo == "listar_proveedor") {
     $arr_Respuesta = array('status' => false, 'contenido' => '');
     $arrProveedores = $objPersona->obtenerProveedores();
 
     if (!empty($arrProveedores)) {
         for ($i = 0; $i < count($arrProveedores); $i++) {
+
             $arrProveedores[$i]->options = '<a href="" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
         }
         $arr_Respuesta['status'] = true;
         $arr_Respuesta['contenido'] = $arrProveedores;
     }
     echo json_encode($arr_Respuesta);
-} else if ($tipo == 'listarTrabajadores') {
+}
+if ($tipo == 'listarTrabajadores') {
     $arr_Respuesta = array('status' => false, 'contenido' => '');
     $arrTrabajadores = $objPersona->obtenerTrabajadores();
     for ($i = 0; $i < count($arrTrabajadores); $i++) {
@@ -25,7 +60,8 @@ if ($tipo == "listar") {
     $arr_Respuesta['status'] = true;
     $arr_Respuesta['contenido'] = $arrTrabajadores;
     echo json_encode($arr_Respuesta);
-} else if ($tipo == "registrar") {
+}
+if ($tipo == "registrar") {
     if ($_POST) {
         $codigo = $_POST['codigo'];
         $nombre = $_POST['nombre'];

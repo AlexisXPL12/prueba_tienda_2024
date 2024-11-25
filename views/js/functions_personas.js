@@ -1,3 +1,45 @@
+async function listar_personas(){
+    try {
+        let respuesta = await fetch(base_url + '/controllers/Controller_persona.php?tipo=listar');
+        let json = await respuesta.json();
+        
+        if (json.status) {
+            let datos = json.contenido;
+            let cont = 0;
+            
+            datos.forEach(element => {
+                let fila = document.createElement("tr");
+                cont += 1;
+                fila.innerHTML = `
+                            <th scope="row" class="text-center">${cont}</th>
+                            <td class="text-center">${element.nro_identidad}</td>
+                            <td class="text-center">${element.razon_social}</td>
+                            <td class="text-center">${element.telefono}</td>
+                            <td class="text-center">${element.correo}</td>
+                            <td class="text-center">${element.departamento}</td> 
+                            <td class="text-center">${element.provincia}</td>
+                            <td class="text-center">${element.distrito}</td>
+                            <td class="text-center">${element.codigo_postal}</td>
+                            <td class="text-center">${element.direccion}</td>
+                            <td class="text-center">${element.rol}</td>
+                            <td class="text-center">${element.estado}</td>
+                            <td class="text-center">${element.fecha_reg}</td>
+                            <td class="text-center">${element.options}</td>
+                            `;
+                document.getElementById("tabla_personas").appendChild(fila);
+            });
+        } else{
+            Swal.fire('No se encontraron personas.');
+        }
+        console.log(json);
+
+        if (document.getElementById("tabla_personas")) {
+        }
+    } catch (error) {
+        console.error("Oops, ocurrió un error: " + error);
+        Swal.fire('Oops, ocurrió un error al listar personas.');
+}
+}
 async function registrar_persona() {
     let codigo = document.getElementById('codigo').value;
     let nombre = document.getElementById('nombre').value;

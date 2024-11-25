@@ -1,3 +1,4 @@
+<main class="main-content col-lg-8 col-md-12">
 <div class="d-flex justify-content-between align-items-center my-4">
     <a href="<?php echo BD_URL ?>admin/productos" class="btn btn-warning">
         <i class="bi bi-arrow-left-circle"></i> Regresar
@@ -54,6 +55,7 @@
 
     <button id="botonproducto" type="button" class="btn btn-warning" onclick="registrar_producto()">Agregar Producto</button>
 </form>
+</main>
 
 <script src="<?php echo BD_URL ?>views/js/functions_productos.js"></script>
 <script>

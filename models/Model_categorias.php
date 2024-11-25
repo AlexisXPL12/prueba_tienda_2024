@@ -18,8 +18,7 @@ class CategoriaModel
         $result = $sql->fetch_object();
         return $result;
     }
-    public function obtenerCategorias()
-    {
+    public function obtenerCategorias(){
         $arrRespuesta = [];
         $sql = $this->conexion->query("SELECT * FROM categoria");
         while ($fila = $sql->fetch_object()) {

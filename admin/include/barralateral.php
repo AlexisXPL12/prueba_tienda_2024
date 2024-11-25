@@ -29,10 +29,10 @@
                 <h3 class="text-center py-2">Panel de Administrador</h3>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/paneladmin" class="nav-link text-white"><i class="bi bi-house-door"></i> Panel</a></li>
-                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newpersona" class="nav-link text-white"><i class="bi bi-people"></i> Usuarios</a></li>
+                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/usuarios" class="nav-link text-white"><i class="bi bi-people"></i> Usuarios</a></li>
                     <li class="nav-item"><a href="<?php echo BD_URL ?>admin/productos" class="nav-link text-white"><i class="bi bi-file-earmark"></i> Productos</a></li>
-                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newcategoria" class="nav-link text-white"><i class="bi bi-tags"></i> Categorías</a></li>
-                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/newcompra" class="nav-link text-white"><i class="bi bi-basket"></i> Compras</a></li>
+                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/categorias" class="nav-link text-white"><i class="bi bi-tags"></i> Categorías</a></li>
+                    <li class="nav-item"><a href="<?php echo BD_URL ?>admin/compras" class="nav-link text-white"><i class="bi bi-basket"></i> Compras</a></li>
                     <li class="nav-item"><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check"></i> Reportes</a></li>
                 </ul>
                 <footer class="text-center mt-auto">

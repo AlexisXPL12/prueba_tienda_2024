@@ -1,8 +1,6 @@
 async function listar_productos() {
   try {
-    let respuesta = await fetch(
-      base_url + "/controllers/Controller_productos.php?tipo=listar"
-    );
+    let respuesta = await fetch(base_url + "/controllers/Controller_productos.php?tipo=listar");
     let json = await respuesta.json();
 
     if (json.status) {
@@ -129,7 +127,7 @@ async function listar_categoria() {
 async function listar_proveedor() {
   try {
     let respuesta = await fetch(
-      base_url + "/controllers/Controller_persona.php?tipo=listar"
+      base_url + "/controllers/Controller_persona.php?tipo=listar_proveedor"
     );
     let json = await respuesta.json();
 

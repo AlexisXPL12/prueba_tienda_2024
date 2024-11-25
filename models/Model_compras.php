@@ -10,6 +10,14 @@ class CompraModel
         $this->conexion = new Conexion();
         $this->conexion = $this->conexion->connect();
     }
+    public function obtenerCompras(){
+        $arrRespuesta = [];
+        $sql = $this->conexion->query("SELECT * FROM compras");
+        while ($fila = $sql->fetch_object()) {
+            array_push($arrRespuesta, $fila);
+        }
+        return $arrRespuesta;
+    }
 
     public function registrarCompra($producto, $cantidad, $precio, $trabajador)
     {

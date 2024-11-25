@@ -1,3 +1,10 @@
+<main class="main-content col-lg-8 col-md-12">
+<div class="d-flex justify-content-between align-items-center my-4">
+    <a href="<?php echo BD_URL ?>admin/usuarios" class="btn btn-warning">
+        <i class="bi bi-arrow-left-circle"></i> Regresar
+    </a>
+    <h2 class="text-center m-0">Agregar Usuario</h2>
+</div>
 <form id="formPersona" action="">
     <h2>Agregar Usuario</h2>
     <div class="form-group">
@@ -59,7 +66,8 @@
         <input type="password" class="form-control" id="password" name="password" maxlength="200" required>
     </div> -->
     <br>
-    <button type="button" class="btn btn-warning" onclick="registrar_persona()">Agregar Persona</button>
+    <button type="button" class="btn btn-success" onclick="registrar_persona()">Agregar Persona</button>
 </form>
+</main>
 
 <script src="<?php echo BD_URL ?>views/js/functions_personas.js"></script>

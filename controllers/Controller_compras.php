@@ -1,8 +1,20 @@
 <?php
+//incluir model compras
 require_once('../models/Model_compras.php');
+//incluir model producto
+require_once('../models/Model_productos.php');
+//incluir model personas
+require_once('../models/Model_persona.php');
+
 $tipo  = $_REQUEST['tipo'];
 
+//instancio la clase modelo compra
 $objCompra = new CompraModel();
+//instancio la clase modelo producto
+$objProducto = new ProductoModel();
+//instancio la clase modelo persona
+$objPersona = new PersonaModel();
+
 
 if ($tipo == "obtener_precio") {
     $productoId = $_GET['producto_id'] ?? null;
@@ -39,4 +51,39 @@ if ($tipo == "registrar") {
         }
         echo json_encode($arr_Respuesta);
     }
+}
+if($tipo == "listar"){
+    $arr_Respuesta = array('status' => false, 'contenido' => '');
+    $arrCompras = $objCompra->obtenerCompras();
+    if(!empty($arrCompras)){
+        for($i=0; $i<count($arrCompras); $i++){
+            $id_compra = $arrCompras[$i]->id;
+            $id_producto = $arrCompras[$i]->id_producto;
+            $cantidad = $arrCompras[$i]->cantidad;
+            $precio = $arrCompras[$i]->precio;
+            $fecha_compra = $arrCompras[$i]->fecha_compra;
+            $id_trabajador = $arrCompras[$i]->id_trabajador;
+
+            //llamar a el metodo ObtenerProductoPorId para identificar mejor el nombre del producto
+            $id_producto = $arrCompras[$i]->id_producto;
+            $r_producto = $objProducto->ObtenerProductoPorId($id_producto);
+            $arrCompras[$i]->producto = $r_producto;
+
+            //llamar a el metodo ObtenerTrabajadorPorId para identificar mejor el nombre del trabajador
+            $id_trabajador = $arrCompras[$i]->id_trabajador;
+            $r_trabajador = $objPersona->ObtenerPersonaPorId($id_trabajador);
+            $arrCompras[$i]->trabajador = $r_trabajador;
+
+            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_producto(${element.id})">
+                        <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto(${element.id})">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>';
+            $arrCompras [$i] -> options = $opciones;
+}
+        $arr_Respuesta['status'] = true;
+        $arr_Respuesta['contenido'] = $arrCompras;
+    }
+    echo json_encode($arr_Respuesta);
 }
