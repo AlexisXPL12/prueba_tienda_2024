@@ -5,80 +5,50 @@ class vistaModelo
 {
     protected static function obtener_vistas($vista)
     {
+        // Lista de vistas permitidas
         $palabras_permitidas = [
-            'producto',
-            'inicio',
-            'carrito',
-            'tienda',
-            'contactar',
-            'tienda-producto',
-            'servicios',
-            'deseados',
-            'perfil',
-            'cursos',
-            'tienda-p-select',
-            'categoria',
+            'producto', 'inicio', 'carrito', 'tienda', 'contactar', 'tienda-producto', 
+            'servicios', 'deseados', 'perfil', 'cursos', 'tienda-p-select', 'categoria',
+            'admin/paneladmin', 'admin/usuarios', 'admin/usuario-nuevo', 'admin/usuarios-editar', 
+            'admin/usuarios-eliminar', 'admin/categorias', 'admin/categorias-nueva', 'admin/categorias-editar', 
+            'admin/categorias-eliminar', 'admin/productos', 'admin/producto-nuevo', 'admin/producto-editar', 
+            'admin/producto-eliminar', 'admin/compras', 'admin/compras-nueva', 'admin/compras-editar', 
+            'admin/compras-eliminar', 'admin/newcompra', 'admin/newpersona', 'admin/newcategoria', 'admin/newproducto'
         ];
 
-        // if(!isset($_SESSION['sesion_ventas2024_id'])){
-        //     return "login";
-        // }
-
-        if (in_array($vista, $palabras_permitidas)) {
-            if (is_file("./views/" . $vista . ".php")) {
-                $contenido = "./views/" . $vista . ".php";
-            } else {
-                $contenido = "404";
-            }
-        } elseif ($vista == "login" || $vista == "index") {
-            $contenido = "login";
-        } elseif ($vista == "registrate") {
-            $contenido = "registrate";
-        } else {
-            $contenido  = "404";
+        // Si no hay sesión activa, redirigir al login, excepto para la vista de registro
+        if (!isset($_SESSION['sesion_ventas2024_id']) && $vista != 'registrate') {
+            return "login"; // Redirige a login si no hay sesión activa y no es 'registrate'
         }
-        return $contenido;
-    }
 
-    protected static function obtener_vistaAdmin($vista)
-    {
-        $palabras_permitidas = [
-            'paneladmin',
-            'usuarios',
-            'usuario-nuevo',
-            'usuarios-editar',
-            'usuarios-eliminar',
-            'categorias',
-            'categorias-nueva',
-            'categorias-editar',
-            'categorias-eliminar',
-            'productos',
-            'producto-nuevo',
-            'producto-editar',
-            'producto-eliminar',
-            'compras',
-            'compras-nueva',
-            'compras-editar',
-            'compras-eliminar',
-            'newcompra',
-            'newpersona',
-            'newcategoria',
-            'newproducto'
-        ];
-        // if(!isset($_SESSION['sesion_ventas2024_id'])){
-        //     return "login";
-        // }
-        if (in_array($vista, $palabras_permitidas)) {
-            if (is_file("./admin/" . $vista . ".php")) {
-                $contenido = "./admin/" . $vista . ".php";
-            } else {
-                $contenido = "404";
-            }
-        } elseif ($vista == "configuracionAdmin") {
-            $contenido = "configuracionAdmin";
-        } else {
-            $contenido = "404";
+        // Comprobaciones de vistas específicas
+        if ($vista == "login" || $vista == "index") {
+            return "login";
         }
-        return $contenido;
+        if ($vista == "registrate") {
+            return "registrate";
+        }
+        if ($vista == "configuracionAdmin") {
+            return "configuracionAdmin";
+        }
+
+        // Verificar si la vista está permitida
+        if (in_array($vista, $palabras_permitidas)) {
+            // Verificar si es una vista de "admin"
+            if (str_starts_with($vista, "admin/")) {
+                $ruta = "./views/" . $vista . ".php";
+            } else {
+                $ruta = "./views/" . $vista . ".php";
+            }
+
+            // Comprobar si el archivo existe
+            if (is_file($ruta)) {
+                return $ruta;
+            }
+        }
+
+        // Si no coincide ninguna condición, devolver 404
+        return "404";
     }
 }
+?>

@@ -779,7 +779,7 @@
                         <a class="dropdown-item" href="<?php echo BD_URL ?>perfil">
                             <?php echo isset($_SESSION['sesion_ventas2024_nombres']) ? $_SESSION['sesion_ventas2024_nombres'] : 'Usuario'; ?>
                         </a>
-                        <a class="dropdown-item" href="<?php echo BD_URL ?>admin/paneladmin">Panel del administrador</a>
+                        <a class="dropdown-item" href="<?php echo BD_URL ?>?admin=paneladmin">Panel del administrador</a>
                         <button class="dropdown-item" onclick="cerrarSesion()">Cerrar sesión</button>
                     </div>
                 </div>
