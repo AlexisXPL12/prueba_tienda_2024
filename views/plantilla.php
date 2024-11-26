@@ -12,6 +12,7 @@ if (isset($_GET['views'])) {
     $vista = $mostrar->obtenerVistaAdmin();
 } else {
     $vista = "login";
+    
 }
 
 
