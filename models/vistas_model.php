@@ -17,9 +17,9 @@ class vistaModelo
         ];
 
         // Si no hay sesión activa, redirigir al login, excepto para la vista de registro
-        if (!isset($_SESSION['sesion_ventas2024_id']) && $vista != 'registrate') {
-            return "login"; // Redirige a login si no hay sesión activa y no es 'registrate'
-        }
+        // if (!isset($_SESSION['sesion_ventas2024_id']) && $vista != 'registrate') {
+        //     return "login"; // Redirige a login si no hay sesión activa y no es 'registrate'
+        // }
 
         // Comprobaciones de vistas específicas
         if ($vista == "login" || $vista == "index") {
