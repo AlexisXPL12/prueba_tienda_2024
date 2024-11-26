@@ -32,11 +32,7 @@ if ($tipo == "registrar") {
         $imagen = 'imagen';
         $proveedor = $_POST['proveedor'];
 
-        if (
-            $codigo == "" || $nombre == "" || $detalle == "" ||
-            $precio == "" || $stock == "" || $categoria == "" ||
-            $imagen === "" || $proveedor == ""
-        ) {
+        if ($codigo == "" || $nombre == "" || $detalle == "" || $precio == "" || $stock == "" || $categoria == "" || $imagen === "" || $proveedor == "") {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error campos vacíos');
         } else {
             //cargar archivo

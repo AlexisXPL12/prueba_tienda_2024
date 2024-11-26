@@ -14,7 +14,7 @@ async function listar_compras() {
                                 <th scope="row" class="text-center">${cont}</th>
                                 <td class="text-center">${element.producto.nombre}</td>
                                 <td class="text-center">${element.cantidad}</td>
-                                <td class="text-center">${element.precio_total}</td>
+                                <td class="text-center">${element.precio}</td>
                                 <td class="text-center">${element.fecha_compra}</td>
                                 <td class="text-center">${element.trabajador.razon_social}</td>
                                 <td class="text-center">${element.options}</td>
