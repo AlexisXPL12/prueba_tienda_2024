@@ -1,6 +1,6 @@
 <main class="main-content col-lg-12 col-md-12 ">
     <div class="text-center mt-4">
-        <a href="<?php echo BD_URL ?>admin/newpersona" class="btn btn-warning">
+        <a href="<?php echo BD_URL ?>?admin=newpersona" class="btn btn-warning">
             <i class="bi bi-plus-circle"></i> Agregar Usuario
         </a>
     </div>

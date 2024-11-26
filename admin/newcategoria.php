@@ -2,7 +2,7 @@
     <div class="container py-4">
         <!-- Encabezado con botón de regresar -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="<?php echo BD_URL ?>admin/categorias" class="btn btn-warning">
+            <a href="<?php echo BD_URL ?>?admin=productos" class="btn btn-warning">
                 <i class="bi bi-arrow-left-circle"></i> Regresar
             </a>
             <h2 class="text-center">Agregar Categoría</h2>

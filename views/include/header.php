@@ -8,6 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel=icon href='img/logo-icon.png' sizes="32x32" type="<?php echo BD_URL ?>img/xtreme.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const base_url = '<?php echo BD_URL ?>';
@@ -779,7 +780,7 @@
                         <a class="dropdown-item" href="<?php echo BD_URL ?>perfil">
                             <?php echo isset($_SESSION['sesion_ventas2024_nombres']) ? $_SESSION['sesion_ventas2024_nombres'] : 'Usuario'; ?>
                         </a>
-                        <a class="dropdown-item" href="<?php echo BD_URL ?>admin/paneladmin">Panel del administrador</a>
+                        <a class="dropdown-item" href="<?php echo BD_URL ?>?admin=paneladmin">Panel del administrador</a>
                         <button class="dropdown-item" onclick="cerrarSesion()">Cerrar sesión</button>
                     </div>
                 </div>
