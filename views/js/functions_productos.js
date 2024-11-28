@@ -1,3 +1,34 @@
+async function verProducto(id_p) {
+  const formData = new FormData();
+  formData.append("idProducto", id_p);
+  try {
+      let respuesta = await fetch(base_url + 'controllers/Controller_productos.php?tipo=ver_producto',{
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: formData
+      });
+      json = await respuesta.json();
+      if (json.status) {
+        let producto = json.contenido;
+        document.getElementById('codigo').value = json.contenido.codigo;
+        document.getElementById('nombre').value = producto.nombre;
+        document.getElementById('detalle').value = producto.detalle;
+        document.getElementById('precio').value = producto.precio;
+        document.getElementById('stock').value = producto.stock;
+        document.getElementById('id_categoria').value = producto.categoria_id;
+        document.getElementById('imagen').value = producto.imagen;
+        document.getElementById('id_proveedor').value = producto.proveedor_id;
+      } else {
+        window.location.base_url = "/admin/productos";
+        Swal.fire("Error", "No se encontró el producto.", "error");
+      }
+      console.log(json);
+  } catch (error) {
+    console.error("Opps, ocurrió un error:"+ error);
+    Swal.fire("Error", "Ocurrió un error al ver el producto.", "error");
+  }
+}
 async function listar_productos() {
   try {
     let respuesta = await fetch(base_url + "/controllers/Controller_productos.php?tipo=listar");

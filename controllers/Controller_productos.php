@@ -15,12 +15,9 @@ $objCategorias = new CategoriaModel();
 //instancio la clase modelopersona
 $objPersona = new PersonaModel();
 
-
 if ($tipo == "registrar") {
     // print_r($_POST);
     // echo $_FILES['imagen']['name'];
-
-
 
     if ($_POST) {
         $codigo = $_POST['codigo'];
@@ -84,10 +81,10 @@ if ($tipo == "registrar") {
 
             $imagen = $arrProductos[$i]->img;
 
-            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_producto(${element.id})">
+            $opciones = '<a class="btn btn-warning btn-sm m-2" href="'.BD_URL.'?admin=producto-editar&id_p='.$id_producto.'"">
                         <i class="fas fa-edit"></i> Editar
-                        </button>
-                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto(${element.id})">
+                        </a>
+                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto('.$id_producto.');">
                         <i class="fas fa-trash-alt"></i> Eliminar
                         </button>';
             $arrProductos [$i] -> options = $opciones;
@@ -98,3 +95,21 @@ if ($tipo == "registrar") {
 
     echo json_encode($arr_Respuesta);
 }
+
+if($tipo == 'ver_producto') {
+    $id_producto = $GET['idProducto'];
+    $arr_Respuesta = $objProducto->verProducto($id_producto);
+    if(empty($arr_Respuesta)){
+        $response = array('status' => false,'mensaje' => 'No se encontro el producto');
+    }else{
+        $response = array('status' => true,'mensaje' => 'Producto encontrado','datos' => $arr_Respuesta);
+    }
+    echo json_encode($response);
+}
+
+if ($tipo == "editar") {
+}
+
+if ($tipo == "eliminar") {
+}
+

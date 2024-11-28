@@ -21,6 +21,13 @@ class ProductoModel{
         return $arrRespuesta;
     }
 
+    public function verProducto($id){
+        $id = $this->conexion->real_escape_string($id);
+        $sql = $this->conexion->query("SELECT * FROM producto WHERE id = '{$id}'");
+        $sql = $sql->fetch_object();
+        return $sql;
+    }
+
     public function ObtenerProductoPorId($id){
         $id = $this->conexion->real_escape_string($id);
         $sql = $this->conexion->query("SELECT * FROM producto WHERE id = '{$id}'");
