@@ -2,36 +2,60 @@ async function verProducto(id_p) {
   const formData = new FormData();
   formData.append("idProducto", id_p);
   try {
-      let respuesta = await fetch(base_url + 'controllers/Controller_productos.php?tipo=ver_producto',{
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: formData
-      });
-      json = await respuesta.json();
-      if (json.status) {
-        let producto = json.contenido;
-        document.getElementById('codigo').value = json.contenido.codigo;
-        document.getElementById('nombre').value = producto.nombre;
-        document.getElementById('detalle').value = producto.detalle;
-        document.getElementById('precio').value = producto.precio;
-        document.getElementById('stock').value = producto.stock;
-        document.getElementById('id_categoria').value = producto.categoria_id;
-        document.getElementById('imagen').value = producto.imagen;
-        document.getElementById('id_proveedor').value = producto.proveedor_id;
-      } else {
-        window.location.base_url = "/admin/productos";
-        Swal.fire("Error", "No se encontró el producto.", "error");
+    let respuesta = await fetch(
+      base_url + "controllers/Controller_productos.php?tipo=ver_producto",
+      {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        body: formData,
       }
-      console.log(json);
+    );
+    json = await respuesta.json();
+    if (json.status) {
+      let producto = json.datos;
+      document.getElementById("id_producto").value = producto.id;
+      document.getElementById("img").value = producto.img;
+      document.getElementById("codigo").value = producto.codigo;
+      document.getElementById("nombre").value = producto.nombre;
+      document.getElementById("detalle").value = producto.detalle;
+      document.getElementById("precio").value = producto.precio;
+      document.getElementById("stock").value = producto.stock;
+      document.getElementById("categoria").value = producto.id_categoria;
+      document.getElementById("proveedor").value = producto.id_proveedor;  
+      // Mostrar imagen actual del producto
+      const imgVistaPrevia = document.getElementById("vista-previa");
+      imgVistaPrevia.src = `${base_url}assets/img_productos/${producto.img}`;
+      imgVistaPrevia.style.display = "block";
+    } else {
+      window.location.base_url = "/admin/productos";
+      Swal.fire("Error", "Producto no encontrado: " + json.mensaje, "error");
+    }
+    console.log(json);
   } catch (error) {
-    console.error("Opps, ocurrió un error:"+ error);
+    console.error("Opps, ocurrió un error:" + error);
     Swal.fire("Error", "Ocurrió un error al ver el producto.", "error");
+  }
+}
+// Vista previa de la nueva imagen seleccionada
+function vistaPreviaImagen(event) {
+  const input = event.target;
+  const imgVistaPrevia = document.getElementById("vista-previa");
+
+  if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+          imgVistaPrevia.src = e.target.result;
+          imgVistaPrevia.style.display = "block";
+      };
+      reader.readAsDataURL(input.files[0]);
   }
 }
 async function listar_productos() {
   try {
-    let respuesta = await fetch(base_url + "/controllers/Controller_productos.php?tipo=listar");
+    let respuesta = await fetch(
+      base_url + "/controllers/Controller_productos.php?tipo=listar"
+    );
     let json = await respuesta.json();
 
     if (json.status) {
@@ -199,3 +223,28 @@ async function listar_proveedor() {
 //         console.error("Oops, ocurrió un error: " + error)
 //     }
 // }
+async function actualizar_producto() {
+  const datos = new FormData(formActualizar);
+  try {
+    let respuesta = await fetch(
+      base_url + "/controllers/Controller_productos.php?tipo=editar",
+      {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        body: datos,
+      }
+    );
+    json = await respuesta.json();
+    if (json.status) {
+      Swal.fire("Actualización exitosa", json.mensaje, "success");
+      location.href = "productos";
+    } else {
+      Swal.fire("Actualización fallida", json.mensaje, "error");
+    }
+    
+  } catch (error) {
+    console.error("Oops, ocurrió un error: " + error);
+    Swal.fire("Error", "Ocurrió un error al actualizar el producto.", "error");
+  }
+}
