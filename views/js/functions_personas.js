@@ -126,7 +126,19 @@ async function registrar_persona() {
 
         // Mostrar alerta de éxito o error
         if (json.status) {
-            Swal.fire("Registro exitoso", json.mensaje, "success");
+            Swal.fire({
+                title: "Usuario registrado correctamente",
+                text: json.mensaje,
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+            }).then(() => {
+                // Redirige a la página de usuarios
+                window.location.href = `${base_url}?admin=usuarios`;
+            });
+            // Resetea el formulario después de mostrar la alerta
+            document.getElementById('formPersona').reset();
         } else {
             Swal.fire("Registro fallido", json.mensaje, "error");
         }

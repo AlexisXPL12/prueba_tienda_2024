@@ -130,7 +130,19 @@ async function registrar_producto() {
 
     json = await respuesta.json();
     if (json.status) {
-      Swal.fire("Registro exitoso", json.mensaje, "success");
+      Swal.fire({
+        title: "Producto registrado correctamente",
+        text: json.mensaje,
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+    }).then(() => {
+        // Redirige a la página de productos
+        window.location.href = `${base_url}?admin=productos`;
+    });
+    // Resetea el formulario después de mostrar la alerta
+    document.getElementById('formProducto').reset();
     } else {
       Swal.fire("Registro fallido", json.mensaje, "error");
     }

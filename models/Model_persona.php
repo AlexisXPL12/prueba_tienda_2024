@@ -90,19 +90,15 @@ class PersonaModel
     public function hayPersonasAsociadas($id) {
         $id = $this->conexion->real_escape_string($id);
         $sql = $this->conexion->query("
-            SELECT COUNT(*) as count
-            FROM venta
-            WHERE id_cliente = '{$id}' OR id_vendedor = '{$id}'
-            UNION ALL
-            SELECT COUNT(*) as count
-            FROM compras
-            WHERE id_trabajador = '{$id}'
+            SELECT 
+                (SELECT COUNT(*) FROM venta WHERE id_cliente = '{$id}' OR id_vendedor = '{$id}') +
+                (SELECT COUNT(*) FROM compras WHERE id_trabajador = '{$id}') AS total
         ");
         if (!$sql) {
-            die("Error en la ejecución: " . $this->conexion->error);
+            die("Error en la consulta SQL: " . $this->conexion->error);
         }
         $result = $sql->fetch_object();
-        return $result->count > 0;
+        return $result->total > 0;
     }
 }
 

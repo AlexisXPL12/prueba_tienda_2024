@@ -104,10 +104,17 @@ async function registrar_compra() {
 
     if (json.status) {
       Swal.fire({
-        title: "Registro exitoso",
+        title: "Compra registrada correctamente",
         text: json.mensaje,
         icon: "success",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+      }).then(() => {
+        // Redirige a la página de compras
+        window.location.href = `${base_url}?admin=compras`;
       });
+      // Resetea el formulario después de mostrar la alerta
       document.getElementById("formCompra").reset();
     } else {
       Swal.fire(
