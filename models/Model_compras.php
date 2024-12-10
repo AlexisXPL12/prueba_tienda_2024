@@ -71,10 +71,4 @@ class CompraModel
         }
         return false;
     }
-    public function hayComprasAsociadas($id)
-    {
-        $sql = $this->conexion->query("SELECT COUNT(*) as count FROM compras WHERE id_compras = '{$id}'");
-        $result = $sql->fetch_object();
-        return $result->count > 0;
-    }
 }

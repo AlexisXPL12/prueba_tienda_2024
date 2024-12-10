@@ -122,15 +122,11 @@ if ($tipo == "editar") {
 
 if ($tipo == "eliminar") {
     $id_compra = $_POST['id'];
-    if($objCompra ->hayComprasAsociadas($id_compra)){
-        $arr_Respuesta = array('status' => false, 'mensaje' => 'No se puede eliminar la compra, ya hay compras asociadas');
-    }else{
     $resultado = $objCompra->eliminarCompra($id_compra);
     if ($resultado) {
         $arr_Respuesta = array('status' => true, 'mensaje' => 'Compra eliminada exitosamente');
     } else {
         $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al eliminar la compra');
-    }
     }
     echo json_encode($arr_Respuesta);
 }
