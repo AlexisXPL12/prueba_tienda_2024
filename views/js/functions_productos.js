@@ -294,7 +294,6 @@ async function eliminar_producto(id) {
                   timer: 1000,
                   timerProgressBar: true,
               }).then(() => {
-                  // Redirige a la página de productos al cerrar la alerta
                   window.location.href = `${base_url}?admin=productos`;
               });
           } else {

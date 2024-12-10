@@ -77,7 +77,7 @@ if($tipo == "listar"){
             $opciones = '<a class="btn btn-warning btn-sm m-2" href="' . BD_URL . '?admin=compras-editar&id_compra=' . $id_compra . '"">
                         <i class="fas fa-edit"></i> Editar
                         </a>
-                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto(${element.id})">
+                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_compra('.$id_compra.')">
                         <i class="fas fa-trash-alt"></i> Eliminar
                         </button>';
             $arrCompras [$i] -> options = $opciones;
@@ -118,4 +118,19 @@ if ($tipo == "editar") {
             echo json_encode($arr_Respuesta);
         }
     }
+}
+
+if ($tipo == "eliminar") {
+    $id_compra = $_POST['id'];
+    if($objCompra ->hayComprasAsociadas($id_compra)){
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'No se puede eliminar la compra, ya hay compras asociadas');
+    }else{
+    $resultado = $objCompra->eliminarCompra($id_compra);
+    if ($resultado) {
+        $arr_Respuesta = array('status' => true, 'mensaje' => 'Compra eliminada exitosamente');
+    } else {
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al eliminar la compra');
+    }
+    }
+    echo json_encode($arr_Respuesta);
 }

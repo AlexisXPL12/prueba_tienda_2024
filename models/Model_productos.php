@@ -62,7 +62,7 @@ class ProductoModel{
     }
     public function eliminarProducto($id){
         $id = $this->conexion->real_escape_string($id);
-        $sql = $this->conexion->query("CALL eliminar_categoria('{$id}')");
+        $sql = $this->conexion->query("CALL eliminarproducto('{$id}')");
         if (!$sql) {
             die("Error en la ejecución: " . $this->conexion->error);
         }
