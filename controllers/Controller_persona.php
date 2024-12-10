@@ -24,10 +24,10 @@ if ($tipo == 'listar') {
             $password = $arrPersonas[$i]->password;
             $estado = $arrPersonas[$i]->estado;
             $fecha_reg = $arrPersonas[$i]->fecha_reg;
-            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_persona(${element.id})">
+            $opciones = '<a class="btn btn-warning btn-sm m-2" href="' . BD_URL . '?admin=usuarios-editar&id_u=' . $id_persona . '"">
                                         <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_persona(${element.id})">
+                                        </a>
+                                        <button class="btn btn-danger btn-sm m-2" onclick="eliminar_persona('.$id_persona.');">
                                         <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>';
             $arrPersonas[$i]->options = $opciones;
@@ -93,4 +93,58 @@ if ($tipo == "registrar") {
             echo json_encode($arr_Respuesta);
         }
     }
+}
+if ($tipo == 'ver_persona') {
+    $id_persona = $_POST['idPersona'];
+    $arr_Respuesta = $objPersona->verPersona($id_persona);
+    if (empty($arr_Respuesta)){
+        $response = array('status' => false, 'mensaje' => 'Usuario no encontrado');
+    }else{
+        $response = array('status' => true, 'mesaje' => 'Usuario encontrado', 'datos' => $arr_Respuesta);
+    }
+    echo json_encode($response);
+}
+if ($tipo == "editar") {
+    if ($_POST) {
+        $id = $_POST['id_persona'];
+        $codigo = $_POST['codigo'];
+        $nombre = $_POST['nombre'];
+        $telefono = $_POST['telefono'];
+        $correo = $_POST['correo'];
+        $departamento = $_POST['departamento'];
+        $provincia = $_POST['provincia'];
+        $distrito = $_POST['distrito'];
+        $codigo_postal = $_POST['codigo_postal'];
+        $direccion = $_POST['direccion'];
+        $rol = $_POST['rol'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $estado = $_POST['estado'];
+
+        if ($id == "" || $codigo == "" || $nombre == "" || $telefono == "" || $correo == "" || $departamento == "" || $provincia == "" || $distrito == "" || $codigo_postal == "" || $direccion == "" || $rol == "" || $estado == "") {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: campos vacíos');
+        } else {
+            $arrPersona = $objPersona->editarPersona($id, $codigo, $nombre, $telefono, $correo, $departamento, $provincia, $distrito, $codigo_postal, $direccion, $rol,$password, $estado);
+            if ($arrPersona->p_id > 0) {
+                $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa');
+            } else {
+                $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar la persona');
+            }
+            echo json_encode($arr_Respuesta);
+        }
+    }
+}
+
+if ($tipo == 'eliminar') {
+    $id_persona = $_POST['id'];
+    if($objPersona->hayPersonasAsociadas($id_persona)){
+        $arr_Respuesta = array('status' => false,'mensaje' => 'No se puede eliminar la persona, posee personas asociadas.');
+    }else{
+        $resultado = $objPersona->eliminarPersona($id_persona);
+        if ($resultado) {
+            $arr_Respuesta = array('status' => true,'mensaje' => 'Persona eliminada correctamente');
+        } else {
+            $arr_Respuesta = array('status' => false,'mensaje' => 'Error al eliminar la persona');
+        }
+    }
+    echo json_encode($arr_Respuesta);
 }

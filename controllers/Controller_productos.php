@@ -126,17 +126,25 @@ if ($tipo == "editar") {
         } else {
             $arrProducto = $objProducto->editarProducto($id, $nombre, $detalle, $precio, $stock, $categoria, $proveedor);
             if ($arrProducto->p_id > 0) {
-                $arr_Respuesta = array('status' => true, 'mensaje' => 'Actulización exitosa');
+                $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa');
 
-            if ($_FILES['imagen']['tmp_name'] != "") {
-                    unlink('../assets/img_productos/' . $img);
+                if ($_FILES['imagen']['tmp_name'] != "") {
+                    if (file_exists('../assets/img_productos/' . $img)) {
+                        unlink('../assets/img_productos/' . $img);
+                        $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa, se eliminó la imagen anterior');
+                    } else {
+                        $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa, imagen anterior no encontrada');
+                    }
+                }                
                 //cargar archivo
                 $archivo = $_FILES['imagen']['tmp_name'];
                 $destino = '../assets/img_productos/';
                 $tipoArchivo = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
                 if (move_uploaded_file($archivo, $destino . $id.'.'. $tipoArchivo)) {
+                    //mesaje de imagen
+                    $arr_Respuesta= array('status' => true, 'mensaje' =>'Imagen actualizada');
                 } else {
-                    $arr_Respuesta = array('status' => true, 'mensaje' => 'Registro Exitoso, Error al subir imagen');
+                    $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualizacion Exitosa, No se actualizo la imagen');
                 }
             } else {
                 $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar producto');
@@ -145,7 +153,18 @@ if ($tipo == "editar") {
         }
     }
 }
-}
 
 if ($tipo == "eliminar") {
+    $id_producto = $_POST['id'];
+    if ($objProducto->hayDependencias($id_producto)) {
+        $arr_Respuesta = array('status' => false, 'mensaje' => 'No se puede eliminar el producto esta asociado');
+    } else {
+        $resultado = $objProducto->eliminarProducto($id_producto);
+        if ($resultado) {
+            $arr_Respuesta = array('status' => true, 'mensaje' => 'Producto eliminado exitosamente');
+        } else {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al eliminar el producto');
+        }
+    }
+    echo json_encode($arr_Respuesta);
 }

@@ -40,3 +40,8 @@
 <script>
     listar_personas();
 </script>
+<script>
+    function getEstadoTexto(estado) {
+    return estado == 1 ? 'Habilitado' : 'Deshabilitado';
+}
+</script>

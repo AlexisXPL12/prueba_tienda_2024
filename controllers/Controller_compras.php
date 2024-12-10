@@ -74,9 +74,9 @@ if($tipo == "listar"){
             $r_trabajador = $objPersona->ObtenerPersonaPorId($id_trabajador);
             $arrCompras[$i]->trabajador = $r_trabajador;
 
-            $opciones = '<button class="btn btn-warning btn-sm m-2" onclick="editar_producto(${element.id})">
+            $opciones = '<a class="btn btn-warning btn-sm m-2" href="' . BD_URL . '?admin=compras-editar&id_compra=' . $id_compra . '"">
                         <i class="fas fa-edit"></i> Editar
-                        </button>
+                        </a>
                         <button class="btn btn-danger btn-sm m-2" onclick="eliminar_producto(${element.id})">
                         <i class="fas fa-trash-alt"></i> Eliminar
                         </button>';
@@ -86,4 +86,36 @@ if($tipo == "listar"){
         $arr_Respuesta['contenido'] = $arrCompras;
     }
     echo json_encode($arr_Respuesta);
+}
+if ($tipo == "ver_compra") {
+    $id_compra = $_POST['idCompra'];
+    $arr_Respuesta = $objCompra->verCompra($id_compra);
+    if (empty($arr_Respuesta)){
+        $response = array('status' => false, 'mensaje' => 'Compra no encontrada');
+    } else {
+        $response = array('status' => true, 'mensaje' => 'Compra encontrada', 'datos' => $arr_Respuesta);
+    }
+    echo json_encode($response);
+}
+
+if ($tipo == "editar") {
+    if ($_POST) {
+        $id = $_POST['id_compra'];
+        $producto_id = $_POST['producto'];
+        $cantidad = $_POST['cantidad'];
+        $precio_unitario = $_POST['precio'];
+        $trabajador_id = $_POST['trabajador'];
+
+        if ($id == "" || $producto_id == "" || $cantidad == "" || $precio_unitario == "" || $trabajador_id == "") {
+            $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: campos vacíos');
+        } else {
+            $arrCompra = $objCompra->editarCompra($id, $producto_id, $cantidad, $precio_unitario, $trabajador_id);
+            if ($arrCompra->p_id > 0) {
+                $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa');
+            } else {
+                $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar la compra');
+            }
+            echo json_encode($arr_Respuesta);
+        }
+    }
 }

@@ -5,11 +5,14 @@
             <a href="<?php echo BD_URL ?>?admin=categorias" class="btn btn-warning">
                 <i class="bi bi-arrow-left-circle"></i> Regresar
             </a>
-            <h2 class="text-center">Agregar Categoría</h2>
+            <h2 class="text-center">Actualizar Categoría</h2>
         </div>
 
         <!-- Formulario para agregar categoría -->
-        <form id="formCategoria">
+        <form id="formUploadCategoria">
+            <div class="form-group mb-3">
+                <input type="hidden" class="form-control" id="id_categoria" name="id_categoria" required>
+            </div>
             <div class="form-group mb-3">
                 <label for="nombre" class="form-label">Nombre de la Categoría:</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" maxlength="20" required>
@@ -21,8 +24,8 @@
             </div>
 
             <div class="text-center">
-                <button id="botonproducto" type="button" class="btn btn-success" onclick="registrar_categoria()">
-                    <i class="bi bi-plus-circle"></i> Agregar Categoría
+                <button id="botonproducto" type="button" class="btn btn-success" onclick="actualizar_categoria()">
+                    <i class="bi bi-plus-circle"></i> Actualizar Categoría
                 </button>
             </div>
         </form>
@@ -31,3 +34,7 @@
 
 <!-- Script -->
 <script src="<?php echo BD_URL ?>views/js/functions_categorias.js"></script>
+<script>
+    const id_c = <?php echo $_GET['id_c']; ?>;
+    verCategoria(id_c);
+</script>

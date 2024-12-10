@@ -1,3 +1,34 @@
+async function verCompra(id_compra) {
+    const formData = new FormData();
+    formData.append("idCompra", id_compra);
+    try {
+        let respuesta = await fetch(
+            `${base_url}controllers/Controller_compras.php?tipo=ver_compra&t=${new Date().getTime()}`,
+            {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: formData,
+            }
+        );
+        let json = await respuesta.json();
+        if (json.status) {
+            let compra = json.datos;
+            document.getElementById("id_compra").value = compra.id;
+            document.getElementById("producto").value = compra.id_producto;
+            document.getElementById("cantidad").value = compra.cantidad;
+            document.getElementById("precio").value = compra.precio;
+            document.getElementById("trabajador").value = compra.id_trabajador;
+        } else {
+            window.location.base_url = "/views/admin/compras.php";
+            Swal.fire('Error', "Compra no encontrada: " + json.mensaje, 'error');
+        }
+        console.log(json);
+    } catch (error) {
+        console.error("Oops, ocurrió un error:", error);
+        Swal.fire('Error', 'Ocurrió un error al ver la compra.', 'error');
+    }
+}
 async function listar_compras() {
     try {
         let respuesta = await fetch(base_url + '/controllers/Controller_compras.php?tipo=listar');
@@ -72,7 +103,8 @@ async function registrar_compra() {
 
 async function listar_productos() {
     try {
-        let respuesta = await fetch(base_url + '/controllers/Controller_productos.php?tipo=listar');
+        let respuesta = await fetch(
+            `${base_url}controllers/Controller_productos.php?tipo=listar&t=${new Date().getTime()}`);
         let json = await respuesta.json();
 
         if (json.status) {
@@ -111,7 +143,7 @@ async function obtenerPrecioUnitario() {
 
 async function listar_trabajadores() {
     try {
-        let respuesta = await fetch(base_url + '/controllers/Controller_persona.php?tipo=listarTrabajadores');
+        let respuesta = await fetch(`${base_url}controllers/Controller_persona.php?tipo=listarTrabajadores&t=${new Date().getTime()}`);
         let json = await respuesta.json();
 
         if (json.status) {
@@ -127,5 +159,40 @@ async function listar_trabajadores() {
 
     } catch (error) {
         console.error("Oops, ocurrió un error al listar trabajadores: " + error);
+    }
+}
+
+async function actualizar_compra() {
+    const datos = new FormData(document.getElementById('formCompra'));
+    try {
+        let respuesta = await fetch(
+            `${base_url}controllers/Controller_compras.php?tipo=editar&t=${new Date().getTime()}`,
+            {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: datos
+            }
+        );
+        let json = await respuesta.json();
+        console.log(json);
+        if (json.status) {
+            Swal.fire({
+                title: "Actualización exitosa",
+                text: json.mensaje,
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+            }).then(() => {
+                // Redirige a la página de compras al cerrar la alerta
+                window.location.href = `${base_url}?admin=compras`;
+            });
+        } else {
+            Swal.fire("Error", "No se pudo actualizar la compra: " + json.mensaje, "error");
+        }
+    } catch (error) {
+        console.error("Oops, ocurrió un error: " + error);
+        Swal.fire("Error", "Ocurrió un error al actualizar la compra.", "error");
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2024 a las 05:58:11
+-- Tiempo de generación: 10-12-2024 a las 02:59:43
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -30,18 +30,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_categoria` (IN `p_id` IN
     SET nombre = p_nombre, 
         detalle = p_detalle
     WHERE id = p_id;
-    SELECT id;
+    SELECT p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_compra` (IN `p_id` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_fecha_compra` DATETIME, IN `p_id_trabajador` INT(11))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_compra` (IN `p_id` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_id_trabajador` INT(11))   BEGIN
     UPDATE compras 
     SET id_producto = p_id_producto,
         cantidad = p_cantidad, 
-        precio = p_precio, 
-        fecha_compra = p_fecha_compra,
+        precio = p_precio,
         id_trabajador = p_id_trabajador
     WHERE id = p_id;
-    SELECT id;
+    SELECT p_id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_detalle_venta` (IN `p_id` INT(11), IN `p_id_venta` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5))   BEGIN
@@ -65,34 +64,52 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_pago` (IN `p_id` INT(11)
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_persona` (IN `p_id` INT(11), IN `p_nro_identidad` VARCHAR(11), IN `p_razon_social` VARCHAR(123), IN `p_telefono` VARCHAR(13), IN `p_correo` VARCHAR(100), IN `p_departamento` VARCHAR(20), IN `p_provincia` VARCHAR(30), IN `p_distrito` VARCHAR(50), IN `p_codigo_postal` INT(5), IN `p_direccion` VARCHAR(100), IN `p_rol` VARCHAR(15), IN `p_password` VARCHAR(500), IN `p_estado` INT(1))   BEGIN
-    UPDATE persona 
-    SET nro_identidad = p_nro_identidad, 
-        razon_social = p_razon_social, 
-        telefono = p_telefono, 
-        correo = p_correo, 
-        departamento = p_departamento, 
-        provincia = p_provincia, 
-        distrito = p_distrito, 
-        codigo_postal = p_codigo_postal, 
-        direccion = p_direccion, 
-        rol = p_rol, 
-        password = p_password, 
-        estado = p_estado
-    WHERE id = p_id;
-    SELECT id;
+    IF p_password IS NOT NULL AND p_password != '' THEN
+        UPDATE persona
+        SET
+            nro_identidad = p_nro_identidad,
+            razon_social = p_razon_social,
+            telefono = p_telefono,
+            correo = p_correo,
+            departamento = p_departamento,
+            provincia = p_provincia,
+            distrito = p_distrito,
+            codigo_postal = p_codigo_postal,
+            direccion = p_direccion,
+            rol = p_rol,
+            password = p_password,
+            estado = p_estado
+        WHERE id = p_id;
+    ELSE
+        UPDATE persona
+        SET
+            nro_identidad = p_nro_identidad,
+            razon_social = p_razon_social,
+            telefono = p_telefono,
+            correo = p_correo,
+            departamento = p_departamento,
+            provincia = p_provincia,
+            distrito = p_distrito,
+            codigo_postal = p_codigo_postal,
+            direccion = p_direccion,
+            rol = p_rol,
+            estado = p_estado
+        WHERE id = p_id;
+    END IF;
+    SELECT p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_producto` (IN `p_id` INT(11), IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN
-        UPDATE producto 
-        SET codigo = p_codigo,
-            nombre = p_nombre,
-            detalle = p_detalle,
-            precio = p_precio,
-            id_categoria = p_id_categoria,
-            img = p_img,
-            id_proveedor = p_id_proveedor
-        WHERE id = p_id;
-   SELECT id;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_producto` (IN `p_id` INT(11), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_id_proveedor` INT(11))   BEGIN
+    UPDATE producto 
+    SET nombre = p_nombre,
+        detalle = p_detalle,
+        precio = p_precio,
+        stock = p_stock, 
+        id_categoria = p_id_categoria,
+        id_proveedor = p_id_proveedor
+    WHERE id = p_id;
+
+    SELECT p_id;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_sesion` (IN `p_id` INT(11), IN `p_id_persona` INT(11), IN `p_fecha_hora_inicio` DATETIME, IN `p_fecha_hora_fin` DATETIME, IN `p_token` VARCHAR(30), IN `p_ip` VARCHAR(20))   BEGIN
@@ -192,14 +209,17 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarproducto` (IN `p_id` INT(11))   BEGIN
   DELETE FROM producto WHERE id = p_id;
+  SELECT ROW_COUNT() AS filas_afectadas;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_categoria` (IN `p_id` INT(11))   BEGIN
     DELETE FROM categoria WHERE id = p_id;
+    SELECT ROW_COUNT() AS filas_afectadas;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_compra` (IN `p_id` INT(11))   BEGIN
     DELETE FROM compras WHERE id = p_id;
+    SELECT ROW_COUNT() AS filas_afectadas;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_detalle_venta` (IN `p_id` INT(11))   BEGIN
@@ -212,6 +232,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_persona` (IN `p_id` INT(11))   BEGIN
     DELETE FROM persona WHERE id = p_id;
+    SELECT ROW_COUNT() AS filas_afectadas;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_sesion` (IN `p_id` INT(11))   BEGIN
@@ -353,8 +374,8 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `nombre`, `detalle`) VALUES
-(1, 'polos', 'fdfxasxhabsc'),
-(3, 'zapatos', '1'),
+(1, 'polos', 'xtreme polos'),
+(3, 'zapatos', 'xtreme zapatos'),
 (4, 'pantalones', 'pantalones xtreme'),
 (5, 'corbata', 'cortaba xtreme'),
 (6, 'chalina', 'chalina xtreme');
@@ -373,6 +394,15 @@ CREATE TABLE `compras` (
   `fecha_compra` datetime NOT NULL DEFAULT current_timestamp(),
   `id_trabajador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `id_producto`, `cantidad`, `precio`, `fecha_compra`, `id_trabajador`) VALUES
+(33, 3, 1, 60.99, '2024-11-24 23:15:08', 17),
+(34, 5, 1, 2.00, '2024-11-24 23:15:18', 17),
+(35, 12, 1, 10.00, '2024-11-24 23:15:28', 17);
 
 -- --------------------------------------------------------
 
@@ -437,8 +467,8 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id`, `nro_identidad`, `razon_social`, `telefono`, `correo`, `departamento`, `provincia`, `distrito`, `codigo_postal`, `direccion`, `rol`, `password`, `estado`, `fecha_reg`) VALUES
-(1, '71422955', 'Julian', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '$2y$10$wZmQdqUcPCTXMuQ57KQp2.8eWVx8jLcIU62lOOpJRewjxX4tgsUci', 1, '2024-09-19 12:18:28'),
-(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 0, 'admin', 'administrador', '$2y$10$wZmQdqUcPCTXMuQ57KQp2.8eWVx8jLcIU62lOOpJRewjxX4tgsUci', 1, '2024-11-16 21:36:16'),
+(1, '71422955', 'Julian', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '$2y$10$6Wjj/KapS0JtVRCsHLILieFF7k.IadwnVNGqvRZzSns4lGPUBzP4e', 0, '2024-09-19 12:18:28'),
+(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 10, 'admin', 'administrador', '$2y$10$KKnVdGPHcixgUHRd/NwS2OFxtdXNI0b3oOO7q7./rqKcFthj2.WuK', 1, '2024-11-16 21:36:16'),
 (17, '71816086', 'Alexis', '960074740', 'valdivia@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5291, 'Av. San Martin 886', 'trabajador', '$2y$10$HrQwR5qHQ4kkHxKP0R721OUklYhQM6yeMnnExXn5yUT4a04BqeYy.', 1, '2024-11-16 23:33:45');
 
 -- --------------------------------------------------------
@@ -465,16 +495,17 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `codigo`, `nombre`, `detalle`, `precio`, `stock`, `id_categoria`, `img`, `id_proveedor`, `tipo_archivo`) VALUES
-(3, '123454', 'polo', 'polo rojo', 60.99, 44, 1, 'imagen', 1, '0'),
+(3, '123454', 'polo', 'polo rojo', 60.99, 43, 1, 'imagen', 1, '0'),
 (4, '1', '1', '1', 1.00, 1, 1, 'imagen', 1, '0'),
-(5, '2', '2', '2', 2.00, 2, 5, 'imagen', 1, '0'),
+(5, '2', '2', '2', 2.00, 1, 5, 'imagen', 1, '0'),
 (6, '4', '4', '4', 4.00, 4, 4, '', 1, '0'),
 (7, '5', '5', '5', 5.00, 5, 3, '', 1, '0'),
 (8, '6', '6', '6', 6.00, 6, 1, 'imagen', 1, 'png'),
 (9, '7', '7', '7', 7.00, 7, 5, 'imagen', 1, 'png'),
 (10, '8', '8', '8', 8.00, 8, 5, 'imagen', 1, 'png'),
 (11, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png'),
-(12, '10', '10', '10', 10.00, 10, 5, '12.png', 1, 'png');
+(12, '10', 'ODOPA', '10', 10.00, 99, 6, '12.png', 1, 'png'),
+(13, '21283134', 'Alexisas', 'adwdawwwwwgfeawd', 15.90, 69, 1, '13.png', 1, 'png');
 
 -- --------------------------------------------------------
 
@@ -583,13 +614,13 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `det_venta`
@@ -613,7 +644,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `sesiones`

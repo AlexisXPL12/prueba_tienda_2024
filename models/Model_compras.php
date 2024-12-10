@@ -38,6 +38,12 @@ class CompraModel
 
         return (object) ['status' => true, 'id' => $this->conexion->insert_id, 'mensaje' => 'Compra registrada exitosamente y stock actualizado'];
     }
+    public function verCompra($id) {
+        $id = $this->conexion->real_escape_string($id);
+        $sql = $this->conexion->query("SELECT * FROM compras WHERE id = '{$id}'");
+        $sql = $sql->fetch_object();
+        return $sql;
+    }
     public function ObtenerPrecioProducto($ProductoId)
     {
         $sql = "SELECT precio FROM producto WHERE id='{$ProductoId}'";
@@ -47,5 +53,10 @@ class CompraModel
             return $row['precio'];
         }
         return null;
+    }
+    public function editarCompra($id, $producto_id, $cantidad, $precio_unitario, $trabajador_id) {
+        $sql = $this->conexion->query("CALL actualizar_compra('{$id}', '{$producto_id}', '{$cantidad}', '{$precio_unitario}', '{$trabajador_id}')");
+        $result = $sql->fetch_object();
+        return $result;
     }
 }

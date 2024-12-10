@@ -3,7 +3,7 @@ async function verProducto(id_p) {
   formData.append("idProducto", id_p);
   try {
     let respuesta = await fetch(
-      base_url + "controllers/Controller_productos.php?tipo=ver_producto",
+      `${base_url}controllers/Controller_productos.php?tipo=ver_producto&t=${new Date().getTime()}`,
       {
         method: "POST",
         mode: "cors",
@@ -25,10 +25,10 @@ async function verProducto(id_p) {
       document.getElementById("proveedor").value = producto.id_proveedor;  
       // Mostrar imagen actual del producto
       const imgVistaPrevia = document.getElementById("vista-previa");
-      imgVistaPrevia.src = `${base_url}assets/img_productos/${producto.img}`;
+      imgVistaPrevia.src = `${base_url}assets/img_productos/${producto.img}?t=${new Date().getTime()}`;
       imgVistaPrevia.style.display = "block";
     } else {
-      window.location.base_url = "/admin/productos";
+      window.location.base_url = "/views/admin/productos.php";
       Swal.fire("Error", "Producto no encontrado: " + json.mensaje, "error");
     }
     console.log(json);
@@ -142,7 +142,7 @@ async function registrar_producto() {
 async function listar_categoria() {
   try {
     let respuesta = await fetch(
-      base_url + "/controllers/Controller_categorias.php?tipo=listar"
+      `${base_url}controllers/Controller_categorias.php?tipo=listar&t=${new Date().getTime()}`
     );
     json = await respuesta.json();
     if (json.status) {
@@ -182,7 +182,7 @@ async function listar_categoria() {
 async function listar_proveedor() {
   try {
     let respuesta = await fetch(
-      base_url + "/controllers/Controller_persona.php?tipo=listar_proveedor"
+      `${base_url}controllers/Controller_persona.php?tipo=listar_proveedor&t=${new Date().getTime()}`
     );
     let json = await respuesta.json();
 
@@ -236,9 +236,19 @@ async function actualizar_producto() {
       }
     );
     json = await respuesta.json();
+    console.log(json);
     if (json.status) {
-      Swal.fire("Actualización exitosa", json.mensaje, "success");
-      location.href = "productos";
+      Swal.fire({
+        title: "Actualización exitosa",
+        text: json.mensaje,
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      }).then(() => {
+        // Redirige a la página de productos al cerrar la alerta
+        window.location.href = `${base_url}?admin=productos`;
+      });
     } else {
       Swal.fire("Actualización fallida", json.mensaje, "error");
     }
@@ -246,5 +256,55 @@ async function actualizar_producto() {
   } catch (error) {
     console.error("Oops, ocurrió un error: " + error);
     Swal.fire("Error", "Ocurrió un error al actualizar el producto.", "error");
+  }
+}
+async function eliminar_producto(id) {
+  const confirmacion = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+  });
+  if(confirmacion.isConfirmed){
+      try {
+          let respuesta = await fetch(
+              `${base_url}/controllers/Controller_productos.php?tipo=eliminar&id=${id}&t=${new Date().getTime()}`,
+              {
+                  method: "POST",
+                  mode: "cors",
+                  cache: "no-cache",
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                  },
+                  body: `id=${id}`
+              }
+          );
+          let json = await respuesta.json();
+          console.log(json);
+          if (json.status) {
+              Swal.fire({
+                  title: "Eliminación exitosa",
+                  text: json.mensaje,
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1000,
+                  timerProgressBar: true,
+              }).then(() => {
+                  // Redirige a la página de productos al cerrar la alerta
+                  window.location.href = `${base_url}?admin=productos`;
+              });
+          } else {
+              Swal.fire("Error", "No se pudo eliminar el producto: " + json.mensaje, "error");
+          }
+      } catch (error) {
+          console.error("Oops, ocurrió un error: " + error);
+          Swal.fire("Error", "Ocurrió un error al eliminar el producto.", "error");
+      }
+  }else{
+    Swal.fire("Cancelado", "La eliminación del producto ha sido cancelada.", "info");
   }
 }

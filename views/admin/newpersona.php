@@ -6,7 +6,6 @@
     <h2 class="text-center m-0">Agregar Usuario</h2>
 </div>
 <form id="formPersona" action="">
-    <h2>Agregar Usuario</h2>
     <div class="form-group">
         <label for="codigo">Número de identidad:</label>
         <input type="text" class="form-control" id="codigo" name="codigo" maxlength="20" required>

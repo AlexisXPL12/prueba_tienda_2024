@@ -54,6 +54,24 @@ class ProductoModel{
         $sql = $sql->fetch_object();
         return $sql;
     }
+    public function hayDependencias($id){
+        $id = $this->conexion->real_escape_string($id);
+        $sql = $this->conexion->query("SELECT COUNT(*) as count FROM producto WHERE id_categoria = '{$id}'");
+        $result = $sql->fetch_object();
+        return $result->count > 0;
+    }
+    public function eliminarProducto($id){
+        $id = $this->conexion->real_escape_string($id);
+        $sql = $this->conexion->query("CALL eliminar_categoria('{$id}')");
+        if (!$sql) {
+            die("Error en la ejecución: " . $this->conexion->error);
+        }
+        $resultado = $sql->fetch_object();
+        if ($resultado && $resultado->filas_afectadas > 0) {
+            return true;
+        }
+        return false;
+    }
     
 }
 

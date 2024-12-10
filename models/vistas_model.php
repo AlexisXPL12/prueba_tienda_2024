@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 class vistaModelo
 {
     protected static function obtener_vistas($vista)
@@ -29,9 +27,6 @@ class vistaModelo
         }
         if ($vista == "registrate") {
             return "registrate";
-        }
-        if ($vista == "configuracionAdmin") {
-            return "configuracionAdmin";
         }
 
         // Verificar si la vista está permitida
