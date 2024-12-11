@@ -34,7 +34,7 @@
 
         <div class="form-group">
             <label for="stock">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" min="0" max="99999" required>
+            <input type="number" class="form-control" id="stock" name="stock" min="0" max="99999" disabled>
         </div>
 
         <div class="form-group">

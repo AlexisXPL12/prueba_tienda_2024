@@ -29,7 +29,7 @@ class CompraModel
             throw new Exception("Error al registrar la compra: " . $this->conexion->error);
         }
 
-        $sqlUpdateStock = "UPDATE producto SET stock = stock - {$cantidad} WHERE id = '{$producto}'";
+        $sqlUpdateStock = "UPDATE producto SET stock = stock + {$cantidad} WHERE id = '{$producto}'";
         if (!$this->conexion->query($sqlUpdateStock)) {
             throw new Exception("Error al actualizar el stock: " . $this->conexion->error);
         }

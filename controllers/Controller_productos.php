@@ -117,14 +117,13 @@ if ($tipo == "editar") {
         $nombre = $_POST['nombre'];
         $detalle = $_POST['detalle'];
         $precio = $_POST['precio'];
-        $stock = $_POST['stock'];
         $categoria = $_POST['categoria'];
         $proveedor = $_POST['proveedor'];
 
-        if ($id == "" || $nombre == "" || $detalle == "" || $precio == "" || $stock == "" || $categoria == "" || $proveedor == "") {
+        if ($id == "" || $nombre == "" || $detalle == "" || $precio == "" || $categoria == "" || $proveedor == "") {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error campos vacíos');
         } else {
-            $arrProducto = $objProducto->editarProducto($id, $nombre, $detalle, $precio, $stock, $categoria, $proveedor);
+            $arrProducto = $objProducto->editarProducto($id, $nombre, $detalle, $precio, $categoria, $proveedor);
             if ($arrProducto->p_id > 0) {
                 $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa');
 
