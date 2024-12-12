@@ -374,9 +374,9 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id`, `nombre`, `detalle`) VALUES
 (1, 'polos', 'xtreme polos'),
-(4, 'pantalones', 'pantalones xtreme'),
-(5, 'corbata', 'cortaba xtreme'),
-(6, 'chalina', 'chalina xtreme');
+(2, 'pantalones', 'pantalones xtreme'),
+(3, 'corbata', 'cortaba xtreme'),
+(4, 'chalina', 'chalina xtreme');
 
 -- --------------------------------------------------------
 
@@ -398,8 +398,8 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id`, `id_producto`, `cantidad`, `precio`, `fecha_compra`, `id_trabajador`) VALUES
-(37, 4, 20, 9.00, '2024-12-11 16:38:10', 17),
-(39, 5, 24, 2.00, '2024-12-11 19:07:44', 17);
+(1, 4, 20, 9.00, '2024-12-11 16:38:10', 17),
+(2, 5, 24, 2.00, '2024-12-11 19:07:44', 17);
 
 -- --------------------------------------------------------
 
@@ -465,8 +465,8 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`id`, `nro_identidad`, `razon_social`, `telefono`, `correo`, `departamento`, `provincia`, `distrito`, `codigo_postal`, `direccion`, `rol`, `password`, `estado`, `fecha_reg`) VALUES
 (1, '71422955', 'Julian', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '$2y$10$6Wjj/KapS0JtVRCsHLILieFF7k.IadwnVNGqvRZzSns4lGPUBzP4e', 0, '2024-09-19 12:18:28'),
-(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 3272, 'admin', 'administrador', '$2y$10$0zmSc8.R7RZIlIJ5gvffFOpuCZjC6IPE214MW53I0Rtv.bj.mniFa', 1, '2024-11-16 21:36:16'),
-(17, '71816086', 'Alexis', '960074740', 'valdivia@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5291, 'Av. San Martin 886', 'trabajador', '$2y$10$HrQwR5qHQ4kkHxKP0R721OUklYhQM6yeMnnExXn5yUT4a04BqeYy.', 1, '2024-11-16 23:33:45');
+(2, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 3272, 'admin', 'administrador', '$2y$10$0zmSc8.R7RZIlIJ5gvffFOpuCZjC6IPE214MW53I0Rtv.bj.mniFa', 1, '2024-11-16 21:36:16'),
+(3, '71816086', 'Alexis', '960074740', 'valdivia@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5291, 'Av. San Martin 886', 'trabajador', '$2y$10$HrQwR5qHQ4kkHxKP0R721OUklYhQM6yeMnnExXn5yUT4a04BqeYy.', 1, '2024-11-16 23:33:45');
 
 -- --------------------------------------------------------
 
@@ -492,13 +492,13 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `codigo`, `nombre`, `detalle`, `precio`, `stock`, `id_categoria`, `img`, `id_proveedor`, `tipo_archivo`) VALUES
-(4, '1', '1', '1', 1.00, 20, 1, 'imagen', 1, '0'),
-(5, '2', '2', '2', 2.00, 12, 5, 'imagen', 1, '0'),
-(6, '4', '4', '4', 4.00, 4, 4, '', 1, '0'),
-(8, '6', '6', '6', 6.00, 6, 1, 'imagen', 1, 'png'),
-(9, '7', '7', '7', 7.00, 7, 5, 'imagen', 1, 'png'),
-(10, '8', '8', '8', 8.00, 8, 5, 'imagen', 1, 'png'),
-(11, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png');
+(1, '1', '1', '1', 1.00, 20, 1, 'imagen', 1, '0'),
+(2, '2', '2', '2', 2.00, 12, 5, 'imagen', 1, '0'),
+(3, '4', '4', '4', 4.00, 4, 4, '', 1, '0'),
+(4, '6', '6', '6', 6.00, 6, 1, 'imagen', 1, 'png'),
+(5, '7', '7', '7', 7.00, 7, 5, 'imagen', 1, 'png'),
+(6, '8', '8', '8', 8.00, 8, 5, 'imagen', 1, 'png'),
+(7, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png');
 
 -- --------------------------------------------------------
 
