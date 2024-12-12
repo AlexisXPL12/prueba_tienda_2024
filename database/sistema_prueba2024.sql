@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2024 a las 23:05:33
+-- Tiempo de generación: 12-12-2024 a las 04:30:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,9 +34,9 @@ CREATE  PROCEDURE `actualizar_categoria` (IN `p_id` INT(11), IN `p_nombre` VARCH
 END$$
 
 CREATE  PROCEDURE `actualizar_compra` (IN `p_id` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_id_trabajador` INT(11))   BEGIN
-    UPDATE compras 
+    UPDATE compras
     SET id_producto = p_id_producto,
-        cantidad = p_cantidad, 
+        cantidad = p_cantidad,
         precio = p_precio,
         id_trabajador = p_id_trabajador
     WHERE id = p_id;
@@ -374,7 +374,6 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`id`, `nombre`, `detalle`) VALUES
 (1, 'polos', 'xtreme polos'),
-(3, 'zapatos', 'xtreme zapatos'),
 (4, 'pantalones', 'pantalones xtreme'),
 (5, 'corbata', 'cortaba xtreme'),
 (6, 'chalina', 'chalina xtreme');
@@ -399,8 +398,8 @@ CREATE TABLE `compras` (
 --
 
 INSERT INTO `compras` (`id`, `id_producto`, `cantidad`, `precio`, `fecha_compra`, `id_trabajador`) VALUES
-(34, 5, 1, 2.00, '2024-11-24 23:15:18', 17),
-(37, 4, 19, 1.00, '2024-12-11 16:38:10', 17);
+(37, 4, 20, 9.00, '2024-12-11 16:38:10', 17),
+(39, 5, 24, 2.00, '2024-12-11 19:07:44', 17);
 
 -- --------------------------------------------------------
 
@@ -466,7 +465,7 @@ CREATE TABLE `persona` (
 
 INSERT INTO `persona` (`id`, `nro_identidad`, `razon_social`, `telefono`, `correo`, `departamento`, `provincia`, `distrito`, `codigo_postal`, `direccion`, `rol`, `password`, `estado`, `fecha_reg`) VALUES
 (1, '71422955', 'Julian', '982120236', 'julianore79@gmail.com', 'ayacucho', 'huanta', 'luricocha', 6165661, 'pichiurara', 'proveedor', '$2y$10$6Wjj/KapS0JtVRCsHLILieFF7k.IadwnVNGqvRZzSns4lGPUBzP4e', 0, '2024-09-19 12:18:28'),
-(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 10, 'admin', 'administrador', '$2y$10$KKnVdGPHcixgUHRd/NwS2OFxtdXNI0b3oOO7q7./rqKcFthj2.WuK', 1, '2024-11-16 21:36:16'),
+(16, 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 3272, 'admin', 'administrador', '$2y$10$0zmSc8.R7RZIlIJ5gvffFOpuCZjC6IPE214MW53I0Rtv.bj.mniFa', 1, '2024-11-16 21:36:16'),
 (17, '71816086', 'Alexis', '960074740', 'valdivia@gmail.com', 'Ayacucho', 'Huanta', 'Huanta', 5291, 'Av. San Martin 886', 'trabajador', '$2y$10$HrQwR5qHQ4kkHxKP0R721OUklYhQM6yeMnnExXn5yUT4a04BqeYy.', 1, '2024-11-16 23:33:45');
 
 -- --------------------------------------------------------
@@ -494,14 +493,12 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`id`, `codigo`, `nombre`, `detalle`, `precio`, `stock`, `id_categoria`, `img`, `id_proveedor`, `tipo_archivo`) VALUES
 (4, '1', '1', '1', 1.00, 20, 1, 'imagen', 1, '0'),
-(5, '2', '2', '2', 2.00, 1, 5, 'imagen', 1, '0'),
+(5, '2', '2', '2', 2.00, 12, 5, 'imagen', 1, '0'),
 (6, '4', '4', '4', 4.00, 4, 4, '', 1, '0'),
 (8, '6', '6', '6', 6.00, 6, 1, 'imagen', 1, 'png'),
 (9, '7', '7', '7', 7.00, 7, 5, 'imagen', 1, 'png'),
 (10, '8', '8', '8', 8.00, 8, 5, 'imagen', 1, 'png'),
-(11, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png'),
-(12, '10', 'ODOPA', '10', 10.00, 99, 6, '12.png', 1, 'png'),
-(13, '21283134', 'Alexisas', 'adwdawwwwwgfeawd', 15.90, 69, 1, '13.png', 1, 'png');
+(11, '9', '9', '9', 9.00, 9, 6, '11.png', 1, 'png');
 
 -- --------------------------------------------------------
 
@@ -610,13 +607,13 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `det_venta`

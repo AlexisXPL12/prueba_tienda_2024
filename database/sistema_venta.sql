@@ -25,7 +25,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_categoria` (IN `p_id` INT(11), IN `p_nombre` VARCHAR(20), IN `p_detalle` VARCHAR(100))   BEGIN
+CREATE  PROCEDURE `actualizar_categoria` (IN `p_id` INT(11), IN `p_nombre` VARCHAR(20), IN `p_detalle` VARCHAR(100))   BEGIN
     UPDATE categoria 
     SET nombre = p_nombre, 
         detalle = p_detalle
@@ -33,7 +33,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_categoria` (IN `p_id` IN
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_compra` (IN `p_id` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_fecha_compra` DATETIME, IN `p_id_trabajador` INT(11))   BEGIN
+CREATE  PROCEDURE `actualizar_compra` (IN `p_id` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_fecha_compra` DATETIME, IN `p_id_trabajador` INT(11))   BEGIN
     UPDATE compras 
     SET id_producto = p_id_producto,
         cantidad = p_cantidad, 
@@ -44,7 +44,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_compra` (IN `p_id` INT(1
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_detalle_venta` (IN `p_id` INT(11), IN `p_id_venta` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5))   BEGIN
+CREATE  PROCEDURE `actualizar_detalle_venta` (IN `p_id` INT(11), IN `p_id_venta` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5))   BEGIN
     UPDATE det_venta 
     SET id_venta = p_id_venta, 
         id_producto = p_id_producto, 
@@ -53,7 +53,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_detalle_venta` (IN `p_id
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_pago` (IN `p_id` INT(11), IN `p_id_venta` INT(11), IN `p_fecha` DATETIME, IN `p_monto` DECIMAL(6,2), IN `p_metodo_pago` VARCHAR(20), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `actualizar_pago` (IN `p_id` INT(11), IN `p_id_venta` INT(11), IN `p_fecha` DATETIME, IN `p_monto` DECIMAL(6,2), IN `p_metodo_pago` VARCHAR(20), IN `p_estado` INT(1))   BEGIN
     UPDATE pagos 
     SET id_venta = p_id_venta, 
         fecha = p_fecha, 
@@ -64,7 +64,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_pago` (IN `p_id` INT(11)
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_persona` (IN `p_id` INT(11), IN `p_nro_identidad` VARCHAR(11), IN `p_razon_social` VARCHAR(123), IN `p_telefono` VARCHAR(13), IN `p_correo` VARCHAR(100), IN `p_departamento` VARCHAR(20), IN `p_provincia` VARCHAR(30), IN `p_distrito` VARCHAR(50), IN `p_codigo_postal` INT(5), IN `p_direccion` VARCHAR(100), IN `p_rol` VARCHAR(15), IN `p_password` VARCHAR(500), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `actualizar_persona` (IN `p_id` INT(11), IN `p_nro_identidad` VARCHAR(11), IN `p_razon_social` VARCHAR(123), IN `p_telefono` VARCHAR(13), IN `p_correo` VARCHAR(100), IN `p_departamento` VARCHAR(20), IN `p_provincia` VARCHAR(30), IN `p_distrito` VARCHAR(50), IN `p_codigo_postal` INT(5), IN `p_direccion` VARCHAR(100), IN `p_rol` VARCHAR(15), IN `p_password` VARCHAR(500), IN `p_estado` INT(1))   BEGIN
     UPDATE persona 
     SET nro_identidad = p_nro_identidad, 
         razon_social = p_razon_social, 
@@ -82,7 +82,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_persona` (IN `p_id` INT(
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_producto` (IN `p_id` INT(11), IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN
+CREATE  PROCEDURE `actualizar_producto` (IN `p_id` INT(11), IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN
         UPDATE producto 
         SET codigo = p_codigo,
             nombre = p_nombre,
@@ -95,7 +95,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_producto` (IN `p_id` INT
    SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_sesion` (IN `p_id` INT(11), IN `p_id_persona` INT(11), IN `p_fecha_hora_inicio` DATETIME, IN `p_fecha_hora_fin` DATETIME, IN `p_token` VARCHAR(30), IN `p_ip` VARCHAR(20))   BEGIN
+CREATE  PROCEDURE `actualizar_sesion` (IN `p_id` INT(11), IN `p_id_persona` INT(11), IN `p_fecha_hora_inicio` DATETIME, IN `p_fecha_hora_fin` DATETIME, IN `p_token` VARCHAR(30), IN `p_ip` VARCHAR(20))   BEGIN
     UPDATE sesiones 
     SET id_persona = p_id_persona, 
         fecha_hora_inicio = p_fecha_hora_inicio, 
@@ -106,7 +106,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_sesion` (IN `p_id` INT(1
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_venta` (IN `p_id` INT(11), IN `p_codigo_venta` VARCHAR(20), IN `p_fecha_hora` DATETIME, IN `p_id_cliente` INT(11), IN `p_id_vendedor` INT(11), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `actualizar_venta` (IN `p_id` INT(11), IN `p_codigo_venta` VARCHAR(20), IN `p_fecha_hora` DATETIME, IN `p_id_cliente` INT(11), IN `p_id_vendedor` INT(11), IN `p_estado` INT(1))   BEGIN
     UPDATE venta 
     SET codigo_venta = p_codigo_venta, 
         fecha_hora = p_fecha_hora, 
@@ -117,112 +117,112 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_venta` (IN `p_id` INT(11
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_categoria_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_categoria_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM categoria
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_compra_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_compra_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM compras
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_detalle_venta_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_detalle_venta_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM det_venta
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_pago_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_pago_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM pagos
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_persona_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_persona_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM persona
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_producto_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_producto_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM producto
     WHERE id= p_id;
     
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_sesion_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_sesion_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM sesiones
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todas_compras` ()   BEGIN
+CREATE  PROCEDURE `buscar_todas_compras` ()   BEGIN
     SELECT * FROM compras;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todas_personas` ()   BEGIN
+CREATE  PROCEDURE `buscar_todas_personas` ()   BEGIN
     SELECT * FROM persona;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todas_sesiones` ()   BEGIN
+CREATE  PROCEDURE `buscar_todas_sesiones` ()   BEGIN
     SELECT * FROM sesiones;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todas_ventas` ()   BEGIN
+CREATE  PROCEDURE `buscar_todas_ventas` ()   BEGIN
     SELECT * FROM venta;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todos_categorias` ()   BEGIN
+CREATE  PROCEDURE `buscar_todos_categorias` ()   BEGIN
     SELECT * FROM categoria;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todos_detalles_venta` ()   BEGIN
+CREATE  PROCEDURE `buscar_todos_detalles_venta` ()   BEGIN
     SELECT * FROM det_venta;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todos_pagos` ()   BEGIN
+CREATE  PROCEDURE `buscar_todos_pagos` ()   BEGIN
     SELECT * FROM pagos;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_todos_productos` ()   BEGIN
+CREATE  PROCEDURE `buscar_todos_productos` ()   BEGIN
     SELECT * FROM producto;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buscar_venta_por_id` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `buscar_venta_por_id` (IN `p_id` INT(11))   BEGIN
     SELECT * FROM venta
     WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminarproducto` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminarproducto` (IN `p_id` INT(11))   BEGIN
   DELETE FROM producto WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_categoria` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_categoria` (IN `p_id` INT(11))   BEGIN
     DELETE FROM categoria WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_compra` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_compra` (IN `p_id` INT(11))   BEGIN
     DELETE FROM compras WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_detalle_venta` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_detalle_venta` (IN `p_id` INT(11))   BEGIN
     DELETE FROM det_venta WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_pago` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_pago` (IN `p_id` INT(11))   BEGIN
     DELETE FROM pagos WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_persona` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_persona` (IN `p_id` INT(11))   BEGIN
     DELETE FROM persona WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_sesion` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_sesion` (IN `p_id` INT(11))   BEGIN
     DELETE FROM sesiones WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_venta` (IN `p_id` INT(11))   BEGIN
+CREATE  PROCEDURE `eliminar_venta` (IN `p_id` INT(11))   BEGIN
     DELETE FROM venta WHERE id = p_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_categoria` (IN `p_nombre` VARCHAR(20), IN `p_detalle` VARCHAR(100))   BEGIN
+CREATE  PROCEDURE `insertar_categoria` (IN `p_nombre` VARCHAR(20), IN `p_detalle` VARCHAR(100))   BEGIN
     DECLARE existe_categoria INT;
     DECLARE id INT;
     SET existe_categoria = (SELECT COUNT(*) FROM categoria WHERE nombre = p_nombre);
@@ -238,7 +238,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_categoria` (IN `p_nombre` 
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_compra` (IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_fecha_compra` DATETIME, IN `p_id_trabajador` INT(11))   BEGIN
+CREATE  PROCEDURE `insertar_compra` (IN `p_id_producto` INT(11), IN `p_cantidad` INT(5), IN `p_precio` DECIMAL(6,2), IN `p_fecha_compra` DATETIME, IN `p_id_trabajador` INT(11))   BEGIN
     DECLARE id INT;
     INSERT INTO compras (id_producto, cantidad, precio, fecha_compra, id_trabajador) 
     VALUES (p_id_producto, p_cantidad, p_precio, p_fecha_compra, p_id_trabajador);
@@ -247,7 +247,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_compra` (IN `p_id_producto
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_detalle_venta` (IN `p_id_venta` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5))   BEGIN
+CREATE  PROCEDURE `insertar_detalle_venta` (IN `p_id_venta` INT(11), IN `p_id_producto` INT(11), IN `p_cantidad` INT(5))   BEGIN
     DECLARE id INT;
     INSERT INTO det_venta (id_venta, id_producto, cantidad) 
     VALUES (p_id_venta, p_id_producto, p_cantidad);
@@ -256,7 +256,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_detalle_venta` (IN `p_id_v
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_pago` (IN `p_id_venta` INT(11), IN `p_fecha` DATETIME, IN `p_monto` DECIMAL(6,2), IN `p_metodo_pago` VARCHAR(20), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `insertar_pago` (IN `p_id_venta` INT(11), IN `p_fecha` DATETIME, IN `p_monto` DECIMAL(6,2), IN `p_metodo_pago` VARCHAR(20), IN `p_estado` INT(1))   BEGIN
     DECLARE id INT;
     INSERT INTO pagos (id_venta, fecha, monto, metodo_pago, estado) 
     VALUES (p_id_venta, p_fecha, p_monto, p_metodo_pago, p_estado);
@@ -265,7 +265,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_pago` (IN `p_id_venta` INT
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_persona` (IN `p_nro_identidad` VARCHAR(11), IN `p_razon_social` VARCHAR(123), IN `p_telefono` VARCHAR(13), IN `p_correo` VARCHAR(100), IN `p_departamento` VARCHAR(20), IN `p_provincia` VARCHAR(30), IN `p_distrito` VARCHAR(50), IN `p_codigo_postal` INT(5), IN `p_direccion` VARCHAR(100), IN `p_rol` VARCHAR(15), IN `p_password` VARCHAR(500), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `insertar_persona` (IN `p_nro_identidad` VARCHAR(11), IN `p_razon_social` VARCHAR(123), IN `p_telefono` VARCHAR(13), IN `p_correo` VARCHAR(100), IN `p_departamento` VARCHAR(20), IN `p_provincia` VARCHAR(30), IN `p_distrito` VARCHAR(50), IN `p_codigo_postal` INT(5), IN `p_direccion` VARCHAR(100), IN `p_rol` VARCHAR(15), IN `p_password` VARCHAR(500), IN `p_estado` INT(1))   BEGIN
     DECLARE id INT;
     INSERT INTO persona (nro_identidad, razon_social, telefono, correo, departamento, provincia, distrito, codigo_postal, direccion, rol, password, estado) 
     VALUES (p_nro_identidad, p_razon_social, p_telefono, p_correo, p_departamento, p_provincia, p_distrito, p_codigo_postal, p_direccion, p_rol, p_password, p_estado);
@@ -274,7 +274,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_persona` (IN `p_nro_identi
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_sesion` (IN `p_id_persona` INT(11), IN `p_fecha_hora_inicio` DATETIME, IN `p_fecha_hora_fin` DATETIME, IN `p_token` VARCHAR(30), IN `p_ip` VARCHAR(20))   BEGIN
+CREATE  PROCEDURE `insertar_sesion` (IN `p_id_persona` INT(11), IN `p_fecha_hora_inicio` DATETIME, IN `p_fecha_hora_fin` DATETIME, IN `p_token` VARCHAR(30), IN `p_ip` VARCHAR(20))   BEGIN
     DECLARE id INT;
     INSERT INTO sesiones (id_persona, fecha_hora_inicio, fecha_hora_fin, token, ip) 
     VALUES (p_id_persona, p_fecha_hora_inicio, p_fecha_hora_fin, p_token, p_ip);
@@ -283,7 +283,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_sesion` (IN `p_id_persona`
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_venta` (IN `p_codigo_venta` VARCHAR(20), IN `p_fecha_hora` DATETIME, IN `p_id_cliente` INT(11), IN `p_id_vendedor` INT(11), IN `p_estado` INT(1))   BEGIN
+CREATE  PROCEDURE `insertar_venta` (IN `p_codigo_venta` VARCHAR(20), IN `p_fecha_hora` DATETIME, IN `p_id_cliente` INT(11), IN `p_id_vendedor` INT(11), IN `p_estado` INT(1))   BEGIN
     DECLARE id INT;
     INSERT INTO venta (codigo_venta, fecha_hora, id_cliente, id_vendedor, estado) 
     VALUES (p_codigo_venta, p_fecha_hora, p_id_cliente, p_id_vendedor, p_estado);
@@ -292,7 +292,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_venta` (IN `p_codigo_venta
     SELECT id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertProducto` (IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN 
+CREATE  PROCEDURE `insertProducto` (IN `p_codigo` VARCHAR(20), IN `p_nombre` VARCHAR(30), IN `p_detalle` VARCHAR(100), IN `p_precio` DECIMAL(6,2), IN `p_stock` INT(5), IN `p_id_categoria` INT(11), IN `p_img` VARCHAR(16), IN `p_id_proveedor` INT(11))   BEGIN 
 DECLARE existe_producto INT;
 DECLARE id INT;
 set existe_producto = (SELECT COUNT(*) FROM producto WHERE codigo = p_codigo);
