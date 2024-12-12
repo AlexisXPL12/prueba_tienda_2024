@@ -56,7 +56,7 @@ class ProductoModel{
     }
     public function hayDependencias($id){
         $id = $this->conexion->real_escape_string($id);
-        $sql = $this->conexion->query("SELECT COUNT(*) as count FROM producto WHERE id_categoria = '{$id}'");
+        $sql = $this->conexion->query("SELECT COUNT(*) as count FROM compras WHERE id_producto = '{$id}'");
         $result = $sql->fetch_object();
         return $result->count > 0;
     }

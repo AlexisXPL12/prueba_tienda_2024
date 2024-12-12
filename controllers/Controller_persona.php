@@ -137,7 +137,7 @@ if ($tipo == "editar") {
 if ($tipo == 'eliminar') {
     $id_persona = $_POST['id'];
     if($objPersona->hayPersonasAsociadas($id_persona)){
-        $arr_Respuesta = array('status' => false,'mensaje' => 'No se puede eliminar la persona, posee personas asociadas.');
+        $arr_Respuesta = array('status' => false,'mensaje' => 'No se puede eliminar la persona, posee compras o productos asociados.');
     }else{
         $resultado = $objPersona->eliminarPersona($id_persona);
         if ($resultado) {
