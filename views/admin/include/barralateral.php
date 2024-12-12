@@ -11,6 +11,7 @@
 <!-- CSS Personalizado -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="img/xtremeai.png" sizes="15x15" type="image/png">
 <link rel="stylesheet" href="<?php echo BD_URL ?>views/admin/css/admin.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
