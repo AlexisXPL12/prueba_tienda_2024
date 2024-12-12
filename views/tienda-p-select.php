@@ -144,7 +144,7 @@
                     <input type="text" class="form-control" id="textoBase" maxlength="25">
                 </div>
 
-                <a href="Carrito.html" type="button" class="btn btn-warning col-4">Añadir al carrito</a>
+                <a href="<?php echo BD_URL ?>carrito" type="button" class="btn btn-warning col-4">Añadir al carrito</a>
 
                 <div class="mt-4">
                     <table class="table table-bordered">

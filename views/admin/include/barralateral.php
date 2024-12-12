@@ -22,7 +22,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <nav class="sidebar col-lg-3 col-md-4 bg-dark text-white">
+            <nav class="sidebar col-lg-3 col-md-4 bg-dark text-white" id="sidebar">
                 <a href="<?php echo BD_URL ?>inicio" class="d-flex align-items-center py-2 text-white">
                     <i class="bi bi-arrow-bar-left"></i> <i class="bi bi-shop ms-5"></i> Tienda
                 </a>

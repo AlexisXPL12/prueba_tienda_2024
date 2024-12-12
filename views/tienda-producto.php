@@ -80,7 +80,7 @@
                 <button class="btn btn-outline-warning mb-2 col-5">Medidas</button>
                 <button class="btn btn-outline-warning mb-2 col-5">Stock</button>
             </div>
-            <a href="Carrito.html">
+            <a href="<?php echo BD_URL ?>carrito">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-6 text-center">
