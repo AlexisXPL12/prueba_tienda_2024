@@ -53,7 +53,7 @@
     </div>
     <br>
 
-    <button id="botonproducto" type="button" class="btn btn-warning" onclick="registrar_producto()">Agregar Producto</button>
+    <button id="botonproducto" type="button" class="btn btn-success" onclick="registrar_producto()">Agregar Producto</button>
 </form>
 </main>
 

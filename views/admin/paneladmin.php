@@ -1,5 +1,5 @@
 <div class="container ">
-    <header class="header bg-warning text-white p-3 mb-3 rounded">
+    <header class="header text-white text-center p-3 mb-3 rounded" style="background: #ff9900;">
         <h1 class="h4">Bienvenido al Panel Administrativo del Sistema de Ventas</h1>
     </header>
     <div class="row text-center">

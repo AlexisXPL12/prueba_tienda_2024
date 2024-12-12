@@ -13,11 +13,12 @@
     display: block;
     margin: 5px 0;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .sidebar a:hover {
     background-color: #ff9900;
+    transform: translateX(10px);
 }
 
 .main-content {
@@ -26,19 +27,44 @@
     min-height: 100vh;
 }
 
-.header {
-    background-color: #ff9900;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
+.table-responsive {
+    margin-top: 20px;
 }
 
-footer {
-    padding: 10px;
+.table th {
+    background-color: #343a40;
     color: white;
-    text-align: center;
+    border: 1px solid #dee2e6;
 }
+
+.table td {
+    border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-warning {
+    background-color: #ff9900;
+    border-color: #ff9900;
+}
+
+.btn-warning:hover {
+    background-color: #e08e0b;
+    border-color: #d58512;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;
@@ -48,5 +74,55 @@ footer {
 
     .main-content {
         padding: 10px;
+    }
+
+    .table th, .table td {
+        font-size: 14px;
+    }
+}
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-label, .form-control {
+        font-size: 14px;
     }
 }

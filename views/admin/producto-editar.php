@@ -61,7 +61,7 @@
         </div>
         <br>
 
-        <button id="botonproducto" type="button" class="btn btn-warning" onclick="actualizar_producto()">Actualizar Producto</button>
+        <button id="botonproducto" type="button" class="btn btn-success" onclick="actualizar_producto()">Actualizar Producto</button>
     </form>
 </main>
 
