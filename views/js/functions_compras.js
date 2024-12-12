@@ -43,11 +43,14 @@ async function listar_compras() {
       datos.forEach((element) => {
         let fila = document.createElement("tr");
         cont += 1;
+        // Calcular el total
+        let total = element.cantidad * element.precio;
         fila.innerHTML = `
                                 <th scope="row" class="text-center">${cont}</th>
                                 <td class="text-center">${element.producto.nombre}</td>
                                 <td class="text-center">${element.cantidad}</td>
                                 <td class="text-center">${element.precio}</td>
+                                <td class="text-center">${total.toFixed(2)}</td>
                                 <td class="text-center">${element.fecha_compra}</td>
                                 <td class="text-center">${element.trabajador.razon_social}</td>
                                 <td class="text-center">${element.options}</td>

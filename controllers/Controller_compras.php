@@ -110,8 +110,8 @@ if ($tipo == "editar") {
             $arr_Respuesta = array('status' => false, 'mensaje' => 'Error: campos vacíos');
         } else {
             $arrCompra = $objCompra->editarCompra($id, $producto_id, $cantidad, $precio_unitario, $trabajador_id);
-            if ($arrCompra->p_id > 0) {
-                $arr_Respuesta = array('status' => true, 'mensaje' => 'Actualización exitosa');
+            if ($arrCompra->status) {
+                $arr_Respuesta = array('status' => true, 'mensaje' => 'Compra actualizada exitosamente y stock actualizado');
             } else {
                 $arr_Respuesta = array('status' => false, 'mensaje' => 'Error al actualizar la compra');
             }

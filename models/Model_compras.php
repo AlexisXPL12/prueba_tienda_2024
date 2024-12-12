@@ -55,10 +55,51 @@ class CompraModel
         return null;
     }
     public function editarCompra($id, $producto_id, $cantidad, $precio_unitario, $trabajador_id) {
-        $sql = $this->conexion->query("CALL actualizar_compra('{$id}', '{$producto_id}', '{$cantidad}', '{$precio_unitario}', '{$trabajador_id}')");
-        $result = $sql->fetch_object();
-        return $result;
+        $this->conexion->begin_transaction();
+    
+        // Obtener la cantidad actual de la compra
+        $sqlGetCantidadCompra = "SELECT cantidad FROM compras WHERE id = '{$id}'";
+        $result = $this->conexion->query($sqlGetCantidadCompra);
+        if (!$result) {
+            throw new Exception("Error al obtener la cantidad de la compra: " . $this->conexion->error);
+        }
+        $row = $result->fetch_assoc();
+        $cantidadActualCompra = $row['cantidad'];
+        $result->free(); // Liberar el resultado
+    
+        // Actualizar la compra
+        $sqlCompra = "UPDATE compras SET id_producto = '{$producto_id}', cantidad = '{$cantidad}', precio = '{$precio_unitario}', id_trabajador = '{$trabajador_id}' WHERE id = '{$id}'";
+        if (!$this->conexion->query($sqlCompra)) {
+            throw new Exception("Error al actualizar la compra: " . $this->conexion->error);
+        }
+    
+        // Calcular la diferencia de cantidad
+        if ($cantidad > $cantidadActualCompra) {
+            $diferenciaCantidad = $cantidad - $cantidadActualCompra;
+        } elseif ($cantidad < $cantidadActualCompra) {
+            $diferenciaCantidad = $cantidadActualCompra - $cantidad;
+        } else {
+            $diferenciaCantidad = 0;
+        }
+    
+        // Actualizar el stock del producto
+        if ($cantidad > $cantidadActualCompra) {
+            $sqlUpdateStock = "UPDATE producto SET stock = stock + {$diferenciaCantidad} WHERE id = '{$producto_id}'";
+        } elseif ($cantidad < $cantidadActualCompra) {
+            $sqlUpdateStock = "UPDATE producto SET stock = stock - {$diferenciaCantidad} WHERE id = '{$producto_id}'";
+        } else {
+            $sqlUpdateStock = "UPDATE producto SET stock = stock WHERE id = '{$producto_id}'";
+        }
+    
+        if (!$this->conexion->query($sqlUpdateStock)) {
+            throw new Exception("Error al actualizar el stock: " . $this->conexion->error);
+        }
+    
+        $this->conexion->commit();
+    
+        return (object) ['status' => true, 'id' => $id, 'mensaje' => 'Compra actualizada exitosamente y stock actualizado'];
     }
+    
     public function eliminarCompra($id)
     {
         $sql = $this->conexion->query("CALL eliminar_compra('{$id}')");

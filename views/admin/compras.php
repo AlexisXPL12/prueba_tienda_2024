@@ -16,6 +16,7 @@
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio Unitario</th>
+                        <th>Total</th>
                         <th>Fecha de la compra</th>
                         <th>Trabajador que registra la compra</th>
                         <th>Acciones</th>

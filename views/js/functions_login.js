@@ -15,7 +15,7 @@ document.getElementById('togglePassword').addEventListener('click', function() {
 async function iniciar_Sesion() {
     let usuario = document.getElementById('usuario').value;
     let password = document.getElementById('password').value;
-    
+
     if (usuario == "" || password == "") {
         Swal.fire('Por favor, complete todos los campos.');
         return;
@@ -28,11 +28,10 @@ async function iniciar_Sesion() {
             cache: 'no-cache',
             body: datos
         });
-        json = await respuesta.json();
+        let json = await respuesta.json();
         if (json.status) {
             location.replace(base_url + "inicio");
         } else {
-            //Swal.fire('Éxito', 'Has iniciado sesión correctamente','success');
             Swal.fire('Error', json.mensaje, 'error');
         }
         console.log(json);
@@ -42,28 +41,27 @@ async function iniciar_Sesion() {
     }
 }
 
-if (document.getElementById('form_iniciarSesion')){
+if (document.getElementById('form_iniciarSesion')) {
     let form_iniciarSesion = document.getElementById('form_iniciarSesion');
-    form_iniciarSesion.onsubmit = function (e){
+    form_iniciarSesion.onsubmit = function (e) {
         e.preventDefault();
         iniciar_Sesion();
     }
 }
 
-async function cerrarSesion(){
+async function cerrarSesion() {
     try {
-        let respuesta = await fetch(base_url + 'controllers/Controller_login.php?tipo=cerrar_sesion',{
+        let respuesta = await fetch(base_url + 'controllers/Controller_login.php?tipo=cerrar_sesion', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
         });
-        json = await respuesta.json();
+        let json = await respuesta.json();
         if (json.status) {
-            //Swal.fire('Éxito', 'Has cerrado sesión correctamente','success');
             location.replace(base_url + "login");
         }
     } catch (error) {
-        console.log('Ocurrio un error'.error);
+        console.log('Ocurrió un error', error);
     }
 }
 
